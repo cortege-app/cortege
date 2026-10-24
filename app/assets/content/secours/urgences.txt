@@ -1,0 +1,43 @@
+titre: Numéros d'urgence
+resume: 15, 17, 18, 112.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Numéros
+- 15 : SAMU, urgence médicale.
+- 17 : police secours.
+- 18 : pompiers.
+- 112 : numéro d'urgence européen.
+- 114 : urgence pour les personnes sourdes ou malentendantes, par SMS, visiophonie, tchat ou fax.
+
+Ces appels sont gratuits et possibles 24 heures sur 24, depuis un fixe ou un mobile, même si le téléphone est bloqué ou sans crédit.
+
+Source : service-public.gouv.fr et gendarmerie.interieur.gouv.fr, vérifiés le 18 octobre 2026.
+
+# L'appel
+- 15 pour un problème de santé : malaise, blessure grave, personne inconsciente.
+- 18 pour un accident, un incendie, un secours à personne.
+- 17 pour une infraction : agression, violences.
+- 112 : numéro unique, utilisable pour l'un ou l'autre de ces besoins.
+
+À la personne qui répond, donne :
+- le numéro de téléphone d'où tu appelles,
+- ton nom si nécessaire,
+- la nature du problème : malaise, maladie ou accident,
+- les risques éventuels,
+- le lieu précis,
+- le nombre de personnes concernées,
+- l'état de chaque victime,
+- ce que tu as déjà fait.
+
+Réponds ensuite aux questions des secours ou du médecin.
+
+# Sources
+- Croix-Rouge française, « Les étapes pour porter secours : protéger, alerter, secourir » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/4-etapes-pour-porter-secours
+- service-public.gouv.fr, « Numéros d'urgence » : https://www.service-public.gouv.fr/particuliers/vosdroits/F33954
+- Ministère de l'Intérieur, « Ma Sécurité », numéros utiles nationaux : https://www.masecurite.interieur.gouv.fr/fr/fiches-pratiques/famille-et-aides-aux-victimes/numeros-utiles-nationaux
+- Ministère de l'Intérieur, le 114 : https://www.interieur.gouv.fr/Archives/Archives-des-dossiers-de-presse/Le-114-numero-d-urgence-pour-les-personnes-sourdes-et-malentendantes
+- Assurance maladie (ameli), pour la gratuité depuis un téléphone bloqué ou sans crédit : https://www.ameli.fr/assure/sante/themes/canicule-chaleur/canicule-et-soins-urgents-epuisement-deshydratation-et-coup-de-chaleur
+
+Rédigée le 24 octobre 2026 à partir de ces sources par l'assistant de développement, qui n'est pas secouriste. Aucune relecture humaine à ce jour.

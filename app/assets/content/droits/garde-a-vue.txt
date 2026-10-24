@@ -1,0 +1,72 @@
+titre: Garde à vue
+resume: Si on te retient au commissariat.
+relecture: juriste
+statut: a_valider
+redaction: brouillon_source
+
+# Ce que c'est
+La garde à vue est une mesure par laquelle on te retient au poste de police ou de gendarmerie. Elle est décidée par un officier de police judiciaire, de sa propre initiative ou sur instruction du procureur de la République, qui est informé dès le début.
+
+Il faut des raisons plausibles de penser que tu as commis ou tenté de commettre un crime ou un délit puni d'emprisonnement. Et la garde à vue doit être le seul moyen d'atteindre au moins un de ces objectifs :
+
+- poursuivre l'enquête en s'assurant de ta présence,
+- te présenter à un magistrat,
+- empêcher la destruction de preuves,
+- empêcher une concertation avec d'autres personnes,
+- empêcher des pressions sur des témoins ou des victimes,
+- mettre fin à l'infraction en cours.
+
+Ce n'est pas la même chose que l'audition libre, où tu n'es pas retenu.
+
+# Tes droits dès le début
+On doit te les dire dans une langue que tu comprends, avec un écrit qui les récapitule : le début de la garde à vue, sa durée possible, l'infraction soupçonnée (date et lieu supposés) et ses objectifs.
+
+- Te taire. Une fois ton identité donnée, tu peux faire des déclarations, répondre aux questions, ou te taire. Ton seul devoir est de donner ton identité.
+- Faire prévenir un proche. Tu peux demander à faire prévenir par téléphone la personne avec qui tu vis, un de tes parents en ligne directe, un frère ou une soeur, et ton employeur. Si tu es étranger, ton consulat. Sauf circonstances insurmontables, dans un délai de 3 heures au plus à partir de ta demande. Le procureur ou le juge peut retarder ou refuser ces avis s'ils sont nécessaires à l'enquête ou pour prévenir une atteinte grave à la vie, à la liberté ou à l'intégrité d'une personne.
+- Voir un médecin. Tu peux le demander dès le début et à chaque prolongation. Si la garde à vue dépasse 48 heures, l'examen est obligatoire.
+- Avoir un avocat. Tu peux demander un avocat de ton choix dès le début, à tout moment, et au début de chaque prolongation. Si tu n'en as pas, ou s'il ne peut pas être joint, tu peux demander un avocat commis d'office. Il peut s'entretenir avec toi 30 minutes, de façon confidentielle, puis assister à tes auditions et à tes confrontations. Il dispose de 2 heures pour venir : l'audition ne peut commencer avant, sauf autorisation écrite et motivée du procureur. Son intervention ne peut être retardée que sur décision d'un magistrat, pour des raisons impérieuses, et pour une durée limitée par la loi.
+- Avoir un interprète, gratuitement, si tu ne parles pas ou ne comprends pas le français, pour tes auditions et pour parler à ton avocat.
+- Lire certaines pièces. Tu peux demander à consulter, au plus tard avant une éventuelle prolongation : le procès-verbal de notification de ton placement, les certificats médicaux et les procès-verbaux de tes auditions.
+- Présenter des observations. Quand le magistrat décide d'une prolongation, tu peux lui présenter des observations pour qu'il mette fin à la garde à vue.
+
+Les conditions de ta garde à vue : un matelas et une couverture pour te reposer, une cellule propre, de l'eau, des repas chauds aux heures normales.
+
+# La durée
+- 24 heures au début, comptées à partir de ton arrestation (ou de l'heure du test d'alcoolémie ou de stupéfiants, ou du placement en chambre de dégrisement).
+- Une prolongation de 24 heures, soit 48 au total, est possible si l'infraction est punie d'au moins 1 an de prison et si c'est le seul moyen d'atteindre un des objectifs. Elle est décidée par le procureur, ou par le juge d'instruction. Tu peux présenter tes observations.
+- Pour certaines infractions graves, la garde à vue peut aller jusqu'à 72, 96 ou 144 heures (144 heures pour le terrorisme), sur décision du juge des libertés et de la détention ou du juge d'instruction.
+
+# Les interrogatoires
+Tu n'es pas obligé de répondre aux questions : tu peux te taire. Tu peux être auditionné et confronté tant que la garde à vue dure.
+
+Tes propos sont retranscrits dans un procès-verbal. Tu peux le relire, y faire consigner tes observations et le signer. Si tu refuses de le signer, le procès-verbal doit le mentionner. La signature atteste que l'audition a eu lieu et de ce qui y a été dit (Cour de cassation, 9 novembre 2010).
+
+Avant de signer : relis tout et vérifie que ce qui est écrit est bien ce que tu as dit. Parles-en à ton avocat, qui peut aussi relire le procès-verbal et ajouter des observations écrites, jointes à la procédure.
+
+Le procès-verbal de la garde à vue contient aussi des mentions sur son déroulement, que tu dois parapher. Si tu refuses, il en est fait mention (article 64 du code de procédure pénale).
+
+Si tu subis des violences pendant la garde à vue, fais-le noter dans le procès-verbal et parles-en à ton avocat.
+
+On peut aussi te photographier (fichier TAJ), prendre tes empreintes digitales, et pour certaines infractions graves faire un prélèvement biologique. Refuser ces opérations est une infraction.
+
+# À la sortie
+Tes effets personnels te sont rendus, sauf ceux qui sont confisqués.
+
+À la fin de la garde à vue, le procureur ou le juge d'instruction décide de te remettre en liberté ou de te présenter à un magistrat. Cette présentation a lieu le jour même de la fin de la garde à vue. Si ce n'est pas possible, au plus tard 20 heures après, et tu restes alors dans une cellule du tribunal.
+
+Un an après la fin de la garde à vue, tu peux demander au procureur, par lettre recommandée ou par déclaration au greffe, à consulter le dossier de la procédure pour formuler des observations.
+
+? Quels documents te remet-on exactement à la sortie, en dehors de tes effets personnels et du récapitulatif de tes droits ?
+
+# Sources
+- Ministère de la Justice, « Déclaration des droits » remise à une personne majeure placée en garde à vue (version trafic de stupéfiants, février 2023) : https://www.justice.gouv.fr/sites/default/files/2023-06/F3%20-GAV-Majeur-Trafic%20stup%C3%A9fiants%20modifi%C3%A9e%20LPJ.pdf
+- service-public.gouv.fr, « Garde à vue », page vérifiée le 10 juillet 2025 : https://www.service-public.gouv.fr/particuliers/vosdroits/F14837
+- Code de procédure pénale, articles 62-2, 63 à 64-1, 706-88 (Légifrance) : https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006575090/1993-02-28
+- Cour de cassation, chambre criminelle, 9 novembre 2010, n° 10-85.072 : https://www.legifrance.gouv.fr/juri/id/JURITEXT000023164973
+- Amnesty International France, « Manifester en France : tout savoir sur tes droits », 5 octobre 2026 : https://www.amnesty.fr/reperes/france-connaitre-droits-manifestation/
+
+La déclaration des droits lue est celle d'une garde à vue pour trafic de stupéfiants : pour une infraction ordinaire, les durées sont celles de cette fiche. Le délai de 3 heures pour prévenir un proche et la durée de report de l'avocat sont à faire vérifier pour une garde à vue ordinaire.
+
+Ces articles seront abrogés et remplacés par un nouveau code le 1er janvier 2029 (ordonnance n° 2025-1091 du 19 novembre 2025) : la fiche devra alors être revue.
+
+Rédigée le 24 octobre 2026 à partir de ces sources par l'assistant de développement, qui n'est pas juriste. Aucune relecture humaine à ce jour.

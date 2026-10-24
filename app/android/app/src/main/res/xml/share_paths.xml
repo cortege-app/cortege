@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Un seul dossier peut être prêté à une autre appli : celui où l'appli copie son
+     propre fichier d'installation le temps de l'envoyer. Rien d'autre du
+     stockage de l'appli n'est exposé. -->
+<paths>
+    <cache-path name="partage" path="share/" />
+</paths>

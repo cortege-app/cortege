@@ -1,0 +1,61 @@
+titre: Blessure
+resume: Plaie, choc, chute, bousculade.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Avant d'agir
+Repère les dangers : circulation, incendie, électricité. N'approche pas si cela t'expose à un risque. Si tu ne peux pas agir sans danger, alerte les secours et délimite un périmètre de sécurité.
+
+Regarde si la personne est consciente et si elle respire normalement. Si elle est consciente, dis-lui qui tu es et ce que tu vas faire, pour la rassurer.
+
+Reste calme et n'agis pas dans la précipitation.
+
+# Une plaie qui saigne
+- Évite si possible tout contact avec le sang. Protège tes mains avec des gants jetables, un sac plastique ou du linge.
+- Si la personne peut le faire, demande-lui d'appuyer elle-même sur sa plaie. Sinon, appuie directement sur la plaie.
+- Allonge la personne à l'horizontale.
+- Demande à quelqu'un d'alerter les secours. Si tu es seul, fais-le toi-même.
+- Si la plaie saigne encore, appuie plus fort et continue jusqu'à l'arrivée des secours.
+- Si tu es seul et que tu dois te libérer, par exemple pour alerter, remplace ta compression par un tampon relais.
+- Lave-toi les mains ensuite.
+
+Le tampon relais : un tissu propre qui recouvre toute la plaie, maintenu par un lien assez large pour recouvrir le tampon et faire au moins 2 fois le tour du membre. Serre assez pour appuyer sur la plaie. Si le sang passe, pose un second tampon par-dessus. En cas d'échec, reprends la compression avec la main.
+
+Si le saignement d'un bras ou d'une jambe ne s'arrête pas malgré la compression, un garrot peut être posé entre le cœur et la plaie et serré jusqu'à l'arrêt du saignement. Un garrot fabriqué pour cela est préférable ; à défaut, un lien large.
+
+! À faire vérifier par des secouristes : le garrot (quand le poser, où, ce qu'il faut noter). Le guide du ministère de l'Intérieur n'a pas pu être lu directement.
+
+# Un choc, une chute
+Si la personne est consciente et se plaint de douleurs après le choc (os, articulation, plaie), dis-lui fermement de ne pas bouger la partie atteinte. Alerte les secours et applique leurs consignes. Protège-la du chaud, du froid ou de la pluie. Surveille-la en lui parlant régulièrement.
+
+Si elle a mal au cou ou au dos après une chute : demande-lui de ne pas bouger la tête, alerte les secours et, si tu peux, maintiens sa tête à deux mains. Surveille-la.
+
+Si elle est inconsciente mais respire, on la met en position latérale de sécurité, sauf si on pense à un traumatisme (chute, choc violent) : dans ce cas, appelle les secours et suis leurs conseils.
+
+# Ce qu'il ne faut pas faire
+- Ne relâche pas la compression tant que les secours ne sont pas là.
+- Évite tout contact direct avec le sang.
+- Ne fais pas bouger la tête d'une personne qui a mal au cou ou au dos.
+- N'appuie pas sur la partie molle sous le menton d'une personne inconsciente.
+
+? Quels autres gestes aggravent une blessure, notamment en cas de bousculade ou de coup ?
+
+# Quand demander de l'aide
+Appelle le 15, le 18 ou le 112 dans ces cas :
+- un saignement qui ne s'arrête pas,
+- une personne qui ne répond pas,
+- une douleur au cou ou au dos après une chute,
+- un os, une articulation ou une plaie qui paraît grave,
+- une brûlure grave ou étendue.
+
+Pour décrire la situation, donne le lieu précis, le nombre de personnes, l'état de chacune et ce que tu as déjà fait. Voir la fiche « Numéros d'urgence ».
+
+# Sources
+- Croix-Rouge française, « L'hémorragie » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/hemorragie
+- Croix-Rouge française, « Les étapes pour porter secours » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/4-etapes-pour-porter-secours
+- Croix-Rouge française, « L'inconscience » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/inconscience
+- Ministère de l'Intérieur, formation PSC1, traumatismes (douleur du cou ou du dos, partie atteinte à ne pas bouger), tel que rapporté par une recherche : https://www.interieur.gouv.fr/content/download/36645/277100/file/PSC1_version%201.1.1.pdf
+- Ministère de l'Intérieur, « Les gestes qui sauvent », guide 2024, pour le garrot, tel que rapporté par une recherche, non lu directement : https://www.interieur.gouv.fr/actualites/actualites-du-ministere/gestes-qui-sauvent
+
+Rédigée le 24 octobre 2026 à partir de ces sources par l'assistant de développement, qui n'est pas secouriste. Aucune relecture humaine à ce jour.

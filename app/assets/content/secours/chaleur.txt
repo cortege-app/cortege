@@ -1,0 +1,53 @@
+titre: Chaleur
+resume: Soleil, foule, déshydratation.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Reconnaître
+Trois états, du moins grave au plus grave :
+
+- Déshydratation. D'abord de la soif, les lèvres sèches, une fatigue anormale. Puis une soif intense, la bouche et la langue sèches, la peau sèche, froide et pâle, peu d'urine, des maux de tête, des vertiges, parfois de la désorientation.
+- Épuisement par la chaleur. Une température entre 38 et 40 °C (parfois normale, surtout chez les personnes âgées), de la faiblesse, des maux de tête, des vertiges, des nausées ou des vomissements, une respiration rapide, beaucoup de transpiration, un changement de comportement.
+- Coup de chaleur. Une température d'au moins 40 °C, d'abord avec des sueurs puis la peau sèche sans transpiration, une grande faiblesse, des troubles de la conscience (perte de connaissance, convulsions, délire, coma), une chute importante de la tension.
+
+Les signes qui annoncent un coup de chaleur : maux de tête, vertiges, nausées, confusion ou somnolence, température au-dessus de 39 °C, peau rouge et chaude, soif intense, pouls et respiration rapides.
+
+Un épuisement ou une déshydratation se traitent sur place, puis on consulte un médecin. Le coup de chaleur est une urgence médicale : une température d'au moins 40 °C avec des troubles de la conscience ou une chute de tension.
+
+# Les premiers gestes
+Pour un épuisement ou une déshydratation :
+- Installe la personne dans un endroit frais, sec et aéré, et fais-la allonger.
+- Fais-la boire tout de suite et régulièrement : de l'eau, du jus de fruits ou une boisson énergétique.
+- Rafraîchis-la : asperge-la d'eau froide, évente sa peau mouillée, ou pose des linges humides. Chez un adulte, on peut poser de la glace enveloppée dans un tissu sur la tête, la nuque, les aisselles et l'aine.
+
+Pour un coup de chaleur :
+- Appelle tout de suite le 15 ou le 112.
+- Installe la personne dans un endroit frais et fais-la boire.
+- Enlève ses vêtements, asperge-la d'eau fraîche ou couvre-la de linges humides. Crée des courants d'air si tu peux.
+- Si elle est inconsciente et respire normalement, mets-la en position latérale de sécurité en attendant les secours (voir la fiche « Malaise »).
+
+# Éviter d'en arriver là
+- Bois de l'eau régulièrement, avant d'avoir soif.
+- Reste au frais dès que tu le peux, et ménage-toi : évite les efforts inutiles.
+- Limite le café, le thé et l'alcool.
+
+? Que faire avant et pendant une manifestation pour limiter les risques : quoi emporter, où se mettre à l'ombre, à quel rythme boire ?
+
+# Ce qu'il ne faut pas faire
+- Ne donne pas d'aspirine, d'anti-inflammatoire non stéroïdien ni de paracétamol en cas de coup de chaleur : ils peuvent aggraver les symptômes.
+- Ne pose pas de glaçons directement sur la peau : enveloppe-les dans un tissu pour éviter les brûlures.
+
+# Quand demander de l'aide
+Appelle le 15 ou le 112 dès que tu penses à un coup de chaleur, et dès les signes qui l'annoncent.
+
+Pour une déshydratation, appelle le 15 sans attendre en cas de troubles de la conscience, si la personne refuse de boire ou ne peut pas, ou si sa peau a une couleur anormale.
+
+# Sources
+- Assurance maladie (ameli), « Canicule et soins urgents : épuisement, déshydratation et coup de chaleur », mise à jour le 2 juin 2026 : https://www.ameli.fr/assure/sante/themes/canicule-chaleur/canicule-et-soins-urgents-epuisement-deshydratation-et-coup-de-chaleur
+- Santé publique France, « Les fortes chaleurs nous concernent tous : adoptons les bons réflexes » : https://www.santepubliquefrance.fr/index.php/les-actualites/les-fortes-chaleurs-nous-concernent-tous-adoptons-les-bons-reflexes
+- Croix-Rouge française, « L'inconscience » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/inconscience
+
+Les seuils de température varient selon les sources : agis dès les premiers signes.
+
+Rédigée le 24 octobre 2026 à partir de ces sources par l'assistant de développement, qui n'est pas secouriste. Aucune relecture humaine à ce jour.

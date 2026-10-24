@@ -1,0 +1,78 @@
+titre: Malaise
+resume: Quelqu'un se sent mal ou tombe.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Reconnaître
+Les signes d'un malaise cardiaque : une douleur qui serre la poitrine, qui peut aller vers le bras, l'épaule, le cou, la mâchoire ou l'estomac. Parfois aussi des difficultés à respirer, des sueurs, des nausées, des douleurs au ventre.
+
+Un malaise peut aussi venir de la chaleur ou d'un manque d'eau : voir la fiche « Chaleur ».
+
+# La personne répond
+Ne minimise pas, même si elle dit que ce n'est pas grave : elle doit être prise en charge tout de suite.
+
+Pose-lui ces questions : depuis combien de temps dure le malaise, est-ce la première fois, a-t-elle déjà été hospitalisée ou prend-elle des médicaments pour cela ?
+
+Alerte le 15 (SAMU), ou demande à quelqu'un de le faire. Si tu es seul, fais-le toi-même.
+
+Installe-la au repos dans une position confortable : allongée, ou semi-assise, ou assise si elle le souhaite. Vérifie régulièrement qu'elle est consciente et qu'elle respire normalement.
+
+# La personne ne répond pas
+- D'abord, desserre le col, la cravate ou la ceinture. Pose une main sur son front et bascule doucement sa tête en arrière. Avec deux doigts de l'autre main, soulève le menton.
+- Ensuite, vérifie sa respiration pendant 10 secondes : regarde si la poitrine se soulève, écoute près de sa bouche, sens le souffle sur ta joue.
+- Puis fais alerter les secours : 15 ou 18. Si tu es seul, va chercher de l'aide ou appelle toi-même.
+
+Si elle respire normalement : mets-la en position latérale de sécurité (PLS), sauf si tu penses à un traumatisme (dans ce cas appelle les secours et suis leurs conseils) :
+- Retire ses lunettes et aligne ses jambes dans l'axe du corps.
+- Place son bras le plus proche de toi à angle droit, coude plié, paume vers le haut.
+- Ramène son autre bras contre son oreille, côté sauveteur, et garde les paumes l'une contre l'autre.
+- Saisis sa jambe la plus éloignée juste derrière le genou et relève-la, le pied restant au sol.
+- Fais-la rouler vers toi en tirant sur la jambe, jusqu'à ce que son genou touche le sol.
+- Dégage doucement ta main de sous sa tête en maintenant le coude, sans bouger la tête.
+- Ajuste la jambe du dessus pour que la hanche et le genou forment un angle droit.
+- Ouvre sa bouche avec le pouce et l'index, sans bouger la tête, pour laisser couler les liquides.
+- Vérifie régulièrement que sa respiration reste normale.
+
+Si elle ne respire pas, ou pas normalement, c'est un arrêt cardiaque :
+- Fais alerter le 15 ou le 18 et apporter un défibrillateur s'il y en a un. Si tu es seul, fais-le toi-même.
+- Allonge-la sur le dos, sur une surface dure. Agenouille-toi à côté d'elle.
+- Pose le talon d'une main au centre de sa poitrine nue, l'autre main par-dessus. N'appuie ni sur les côtes ni sur le bas du sternum.
+- Bras tendus, épaules à l'aplomb de sa poitrine, enfonce le sternum de 5 à 6 cm. Laisse la poitrine remonter complètement entre chaque pression. Fais 30 compressions, à environ 2 par seconde.
+- Si tu sais le faire, fais ensuite 2 insufflations bouche à bouche, puis recommence 30 compressions. Si tu ne peux pas insuffler, continue les compressions seules.
+- Dès que le défibrillateur est là, allume-le et suis ses instructions vocales.
+- Continue jusqu'à l'arrivée des secours ou jusqu'à ce qu'elle respire normalement.
+
+# Si la personne s'étouffe
+Elle est consciente mais ne peut ni parler, ni respirer, ni tousser. Elle peut siffler ou essayer de tousser sans bruit.
+
+- Place-toi sur le côté et un peu en arrière. Penche-la vers l'avant en soutenant sa poitrine d'une main.
+- Donne jusqu'à 5 claques entre les omoplates. Après chaque claque, regarde si l'objet est sorti.
+- Sinon, place-toi derrière elle, passe tes bras autour du haut de son ventre et penche-la vers l'avant. Place un poing fermé entre le nombril et le bas du sternum, tenu par l'autre main. Tire fort vers toi et vers le haut, jusqu'à 5 fois.
+- Si l'objet ne sort pas, alterne 5 claques dans le dos et 5 compressions du ventre.
+- Si elle perd connaissance, allonge-la doucement, alerte les secours tout de suite et commence les compressions de la poitrine comme pour un arrêt cardiaque.
+
+# Ce qu'il ne faut pas faire
+- Ne minimise pas un malaise parce que la personne dit que ça va.
+- N'appuie pas sur la partie molle sous le menton d'une personne inconsciente.
+- Ne mets pas en PLS une personne que tu soupçonnes d'avoir un traumatisme : appelle les secours et suis leurs conseils.
+
+? Quels autres gestes aggravent un malaise, par exemple lui donner à boire ou la relever d'un coup ?
+
+# Quand demander de l'aide
+Appelle le 15, le 18 ou le 112 dans tous ces cas :
+- une douleur qui serre la poitrine,
+- une personne qui ne répond pas,
+- une personne qui ne respire pas, ou pas normalement,
+- une personne qui s'étouffe et que les claques et les compressions n'aident pas.
+
+# Sources
+- Croix-Rouge française, « Malaise cardiaque » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/malaise-cardiaque
+- Croix-Rouge française, « L'inconscience » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/inconscience
+- Croix-Rouge française, « L'arrêt cardiaque » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/arret-cardiaque
+- Croix-Rouge française, « L'étouffement » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/etouffement
+- Croix-Rouge française, « Les étapes pour porter secours » : https://www.croix-rouge.fr/les-gestes-de-premiers-secours/4-etapes-pour-porter-secours
+
+La page de la Croix-Rouge sur l'arrêt cardiaque donne deux rythmes de compressions (100 et 120 par minute) : la fiche dit « environ 2 par seconde ». Les dates de mise à jour de ces pages ne sont pas indiquées.
+
+Rédigée le 24 octobre 2026 à partir de ces sources par l'assistant de développement, qui n'est pas secouriste. Aucune relecture humaine à ce jour.

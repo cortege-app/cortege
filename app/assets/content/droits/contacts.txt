@@ -1,0 +1,41 @@
+titre: Contacts utiles
+resume: Aide juridique à joindre.
+relecture: juriste
+statut: a_valider
+redaction: brouillon_source
+
+# Aide juridique
+Le numéro de la permanence juridique de l'événement, s'il existe, est donné par les organisateurs : tu le trouves dans l'événement, rubrique « Organisation ».
+
+Si tu es placé en garde à vue, tu peux demander un avocat de ton choix, ou un avocat commis d'office (voir la fiche « Garde à vue »).
+
+Des guides juridiques sur les droits en manifestation sont publiés par la Ligue des droits de l'Homme, le Syndicat des avocats de France, le Syndicat de la magistrature et l'Observatoire parisien des libertés publiques.
+
+? Quelles associations et quels avocats de ta ville assistent les personnes interpellées, et à quel numéro les joindre ?
+
+# Après coup
+Si tu estimes avoir subi un abus de la part des forces de l'ordre, tu peux, ensemble ou séparément :
+
+- saisir le Défenseur des droits, en ligne par la démarche de service-public.gouv.fr « Saisir en ligne le Défenseur des droits », ou par courrier gratuit et sans timbre : Défenseur des droits, Libre réponse 71120, 75342 Paris cedex 07. Tu peux aussi prendre rendez-vous avec un délégué du Défenseur des droits près de chez toi.
+- signaler les faits à l'IGPN, l'inspection de la police nationale, par son formulaire en ligne : https://www.signalement-igpn.fsi.interieur.gouv.fr/
+- signaler les faits à l'IGGN, l'inspection de la gendarmerie, par son formulaire en ligne (démarche sur service-public.gouv.fr).
+- pour la police municipale, t'adresser au maire de la commune.
+- porter plainte, au commissariat, à la gendarmerie, ou auprès du procureur de la République.
+
+Un signalement à l'IGPN ou à l'IGGN n'est pas un dépôt de plainte. Les signalements anonymes ne sont pas traités. Une dénonciation mensongère peut être transmise à la justice (article 226-10 du code pénal).
+
+Saisir le Défenseur des droits ne suspend pas les délais pour agir en justice.
+
+# Urgences
+Les numéros d'urgence sont dans la rubrique Secours.
+
+# Sources
+- service-public.gouv.fr, « Litige avec les forces de l'ordre ou une société de sécurité privée », page vérifiée le 13 août 2026 : https://www.service-public.gouv.fr/particuliers/vosdroits/F2546
+- Défenseur des droits, saisine en ligne : https://www.service-public.gouv.fr/particuliers/vosdroits/R20689 ; carte des délégués : https://www.defenseurdesdroits.fr/carte-des-delegues
+- IGPN, plateforme de signalement : https://www.signalement-igpn.fsi.interieur.gouv.fr/
+- IGGN, signalement en ligne : https://www.service-public.gouv.fr/particuliers/vosdroits/R47031
+- Amnesty International France, 5 octobre 2026, pour les guides des associations : https://www.amnesty.fr/reperes/france-connaitre-droits-manifestation/
+
+Aucun numéro de téléphone du Défenseur des droits n'a pu être vérifié : il n'est pas indiqué ici.
+
+Rédigée le 24 octobre 2026 à partir de ces sources par l'assistant de développement, qui n'est pas juriste. Aucune relecture humaine à ce jour.

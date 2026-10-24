@@ -1,0 +1,35 @@
+# Clés des organisateurs : une clé secrète ne doit jamais partir dans le dépôt
+*.cle
+*.cle.qr.png
+
+# Clés de signature de l'appli
+key.properties
+*.jks
+*.keystore
+
+# Vidéos et sauvegardes : trop lourdes, et pas du code
+*.mp4
+*.mov
+*.zip
+Sauvegardes*/
+
+# Tests jetables, pas livrés
+spikes/
+
+# Image de travail à la racine, hors du dépôt tant que le logo n'est pas fixé
+/A*Maillage*.png
+
+# Construction et outils
+build/
+.dart_tool/
+.gradle/
+.cxx/
+.kotlin/
+.idea/
+*.iml
+local.properties
+.flutter-plugins
+.flutter-plugins-dependencies
+*.log
+.DS_Store
+Thumbs.db

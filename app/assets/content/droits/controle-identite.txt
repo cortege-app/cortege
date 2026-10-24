@@ -1,0 +1,57 @@
+titre: Contrôle d'identité
+resume: Quand on te demande tes papiers.
+relecture: juriste
+statut: a_valider
+redaction: brouillon_source
+
+# Qui peut te contrôler, et quand
+Toute personne présente en France doit accepter de se prêter à un contrôle d'identité. Mais la police ou la gendarmerie ne peut le faire que dans certains cas :
+
+- Tu es soupçonné d'avoir commis ou tenté de commettre une infraction, de te préparer à en commettre une, ou tu peux donner des renseignements utiles à une enquête.
+- Tu es recherché sur ordre de la justice.
+- Il existe un risque sérieux et actuel pour la sécurité des personnes ou des biens, à cet endroit et à ce moment. Le contrôle est alors possible quel que soit ton comportement.
+- Le procureur de la République l'a demandé par écrit pour chercher des infractions précises, dans les lieux et pendant la durée qu'il fixe.
+
+Les officiers de police judiciaire peuvent te contrôler, ainsi que les agents de police judiciaire placés sous leur responsabilité et certains agents de police judiciaire adjoints. Les douaniers peuvent aussi contrôler une personne qui entre dans un territoire douanier.
+
+Le contrôle doit toujours être justifié par l'un de ces cas. Les textes ne disent pas que l'agent doit annoncer le motif tout de suite : tu peux le demander. Un contrôle qui n'est pas justifié peut être contesté devant la justice.
+
+# Ce que tu dois présenter
+Tu peux prouver ton identité par tout moyen. Les papiers avec photo (carte d'identité, passeport, permis de conduire) comptent davantage, mais d'autres documents peuvent servir : acte de naissance, carte vitale, carte d'étudiant. Le témoignage d'une personne qui t'accompagne peut être accepté. Les justificatifs de l'application France Identité ne sont pas obligatoirement acceptés par les forces de l'ordre.
+
+Pour les Français, la carte d'identité n'est pas obligatoire. Si tu ne peux pas prouver ton identité autrement, tu peux être retenu le temps de la vérifier (voir plus bas).
+
+Si tu es étranger : pour un séjour de plus de 3 mois, tu dois pouvoir présenter un titre de séjour ou un visa de long séjour. Pour un séjour court, un passeport avec un visa valide, sauf dispense de visa. Sans document de séjour, tu peux être conduit au poste pour vérifier ton droit au séjour. Un mineur étranger ne peut pas faire l'objet d'un contrôle de titre de séjour.
+
+# Si tu refuses ou si tu n'as pas de papiers
+Tu peux être retenu sur place ou au poste pour vérifier ton identité. On te présente tout de suite à un officier de police judiciaire, qui doit te laisser prouver ton identité par tout moyen : nouveaux papiers, témoins.
+
+Tu peux faire prévenir le procureur de la République et une personne de ton choix, par exemple ta famille. Si tu es mineur, le procureur est prévenu dès le début et tu dois en principe être assisté de ton représentant légal.
+
+Si tu refuses de te prêter aux prises d'empreintes digitales ou de photographies autorisées par le procureur ou un juge, tu risques 3 mois de prison et 3 750 € d'amende.
+
+La rétention ne peut pas durer plus de 4 heures à partir du contrôle (8 heures en Guyane et à Mayotte). Le procureur peut y mettre fin à tout moment.
+
+Un procès-verbal est établi et présenté à ta signature. Demande-en une copie.
+
+! À faire vérifier par le juriste : service-public.gouv.fr indique qu'une copie du procès-verbal est remise à la personne, alors que le texte de l'article 78-3 la prévoit dans des cas plus limités.
+
+Si aucune procédure judiciaire ne suit, la vérification ne peut pas donner lieu à une mise en mémoire, et le procès-verbal est détruit dans un délai de 6 mois.
+
+# Pendant le contrôle
+Les policiers et les gendarmes doivent porter de façon visible leur numéro d'identification individuel, le RIO, un matricule à 7 chiffres (article R434-15 du code de la sécurité intérieure). Tu peux le lire et le noter. Le Conseil d'État a reconnu en 2023 que le port du RIO est obligatoire, mais des associations constatent qu'il est souvent mal visible.
+
+Tu peux filmer ou photographier les forces de l'ordre dans l'exercice de leur travail, au nom de la liberté d'informer. La diffusion des images est encadrée : pas d'atteinte grave à leur vie privée, pas d'incitation à la haine ni à la violence. Un film est un mode de preuve recevable devant un tribunal.
+
+Si le contrôle te paraît abusif, note si tu peux l'heure, le lieu, les numéros RIO et les noms des témoins, et garde tes vidéos. Tu peux saisir le Défenseur des droits, signaler les faits à l'IGPN (police nationale) ou à l'IGGN (gendarmerie), et porter plainte. Voir la fiche « Contacts utiles ». Les agents fautifs peuvent subir des sanctions disciplinaires ou pénales.
+
+# Sources
+- service-public.gouv.fr, « Contrôle d'identité », page vérifiée le 19 août 2026 : https://www.service-public.gouv.fr/particuliers/vosdroits/F1036
+- Code de procédure pénale, articles 78-1 à 78-5, version en vigueur le 23 octobre 2026 (Légifrance) : https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006151880/
+- Code de la sécurité intérieure, article R434-15, et ordonnance de référé du Conseil d'État de 2023, d'après la Ligue des droits de l'Homme : https://www.ldh-france.org/wp-content/uploads/2023/03/Communique-RIO-refere-liberte-1.pdf
+- Amnesty International France, « Manifester en France : tout savoir sur tes droits », 5 octobre 2026 : https://www.amnesty.fr/reperes/france-connaitre-droits-manifestation/
+- service-public.gouv.fr, « Litige avec les forces de l'ordre », page vérifiée le 13 août 2026 : https://www.service-public.gouv.fr/particuliers/vosdroits/F2546
+
+Les articles 78-1 à 78-5 seront abrogés et remplacés par un nouveau code le 1er janvier 2029 (ordonnance n° 2025-1091 du 19 novembre 2025) : la fiche devra alors être revue.
+
+Rédigée le 24 octobre 2026 à partir de ces sources par l'assistant de développement, qui n'est pas juriste. Aucune relecture humaine à ce jour.

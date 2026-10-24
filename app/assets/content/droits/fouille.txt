@@ -1,0 +1,58 @@
+titre: Fouille
+resume: Sac, vêtements, véhicule, téléphone.
+relecture: juriste
+statut: a_valider
+redaction: brouillon_source
+
+# Fouille de tes affaires
+Dans la rue, la police ne peut inspecter ou fouiller ton sac que dans des cas précis :
+
+- Sur réquisitions écrites du procureur de la République, pour rechercher certaines infractions (terrorisme, armes, explosifs, vol, recel, trafic de stupéfiants), dans les lieux et pendant la durée qu'il fixe : au plus 24 heures, renouvelables par décision motivée. La fouille se fait en ta présence, et tu ne peux être retenu que le temps nécessaire (article 78-2-2).
+- Sur les lieux d'une manifestation sur la voie publique et à ses abords immédiats, toujours sur réquisitions écrites du procureur (article 78-2-5).
+- Pour prévenir une atteinte grave à la sécurité des personnes et des biens, avec ton accord ou, à défaut, sur instruction du procureur. En attendant ses instructions, tu peux être retenu 30 minutes au plus (article 78-2-4).
+- Les agents de sécurité privés agréés, la SNCF et la RATP peuvent regarder dans ton sac. Pour le fouiller, ils ont besoin de ton consentement.
+
+Une simple palpation de sécurité ne permet pas de fouiller ta sacoche sans ton accord, sauf indice d'une infraction flagrante (Cour de cassation, 23 mars 2016).
+
+Quand la fouille est faite sur réquisitions du procureur, la loi ne demande pas ton accord : elle demande ta présence. Face à un agent de sécurité privé, à la SNCF ou à la RATP, tu peux refuser, mais on peut alors t'interdire l'accès au lieu.
+
+# Palpation de sécurité
+C'est une recherche extérieure, au-dessus des vêtements, d'objets dangereux, par exemple un cutter.
+
+- En garde à vue, un policier ou un gendarme peut la faire sans ton consentement.
+- Lors d'un contrôle d'identité, elle doit se faire à l'abri du regard du public.
+- À l'entrée d'un événement de plus de 300 personnes, elle est faite par un agent de sécurité privé agréé, sous le contrôle d'un officier de police judiciaire. Ton accord exprès est obligatoire : sans lui, on peut te refuser l'accès.
+
+La personne qui te palpe doit être du même sexe que toi.
+
+# Fouille plus poussée
+La fouille intégrale, dite fouille à corps, est un déshabillage complet, sans contact. Elle n'est possible que si la palpation ou un détecteur ne suffit pas, et elle doit être faite par une personne du même sexe.
+
+En garde à vue, elle doit être ordonnée par un officier de police judiciaire et être indispensable à l'enquête. Elle se passe dans un local fermé et retiré, à l'abri des regards.
+
+Une fouille à l'intérieur du corps ne peut être faite que par un médecin.
+
+# Ton téléphone
+Le texte de service-public.gouv.fr sur les fouilles ne prévoit aucune règle propre au téléphone.
+
+Dans le cadre d'une enquête, les autorités judiciaires peuvent te demander le code de déverrouillage. Le refuser peut être un délit (article 434-15-2 du code pénal) : 3 ans de prison et 270 000 € d'amende, et 5 ans et 450 000 € si la remise du code aurait permis d'éviter un crime ou un délit ou d'en limiter les effets.
+
+Les conditions : tu connais le code, le téléphone est équipé d'un moyen de cryptologie susceptible d'avoir servi à préparer ou commettre une infraction, et la demande vient des autorités judiciaires, sur réquisition. La Cour de cassation a jugé le 7 novembre 2022 qu'un code de déverrouillage peut être une convention secrète de déchiffrement si le téléphone est équipé d'un moyen de cryptologie et si le code permet de mettre au clair des données. Le juge doit le vérifier.
+
+! À faire vérifier par le juriste : l'état de la jurisprudence depuis 2022, et ce qui s'applique à un simple contrôle dans la rue. Avant de répondre à cette demande, tu peux demander à parler à un avocat.
+
+# Après la fouille
+Un procès-verbal est établi si une infraction est découverte ou si tu le demandes. Il indique le lieu, la date et les heures de début et de fin de l'inspection ou de la fouille. Un exemplaire t'est remis, un autre est transmis au procureur de la République.
+
+Si tu peux, note l'heure, le lieu, ce qui a été regardé, les numéros RIO des agents et les noms des témoins.
+
+# Sources
+- service-public.gouv.fr, « Fouilles, palpations et contrôles des effets personnels », page vérifiée le 19 août 2026 : https://www.service-public.gouv.fr/particuliers/vosdroits/F32041
+- Code de procédure pénale, articles 78-2-2, 78-2-4 et 78-2-5, version en vigueur le 23 octobre 2026 (Légifrance) : https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006151880/
+- Cour de cassation, chambre criminelle, 23 mars 2016, n° 14-87.370 : https://www.legifrance.gouv.fr/juri/id/JURITEXT000032311314/
+- Code pénal, article 434-15-2 (Légifrance) : https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032654251
+- Cour de cassation, 7 novembre 2022, n° 21-83.146, arrêt publié au bulletin : https://www.legifrance.gouv.fr/juri/id/JURITEXT000046583035
+
+Ces articles seront abrogés et remplacés par un nouveau code le 1er janvier 2029 (ordonnance n° 2025-1091 du 19 novembre 2025) : la fiche devra alors être revue.
+
+Rédigée le 24 octobre 2026 à partir de ces sources par l'assistant de développement, qui n'est pas juriste. Aucune relecture humaine à ce jour.

@@ -1,0 +1,50 @@
+titre: Lacrymogènes
+resume: Gaz, yeux et peau qui piquent.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Reconnaître
+Les gaz lacrymogènes sont des agents qui irritent. Le plus courant, le CS, irrite les yeux, les voies respiratoires et la peau. Les signes :
+
+- aux yeux : larmoiement, rougeur, parfois gêne à la lumière,
+- à la peau : brûlure, picotements, parfois des cloques si le produit reste sur la peau,
+- au nez et à la gorge : écoulement, toux, éternuements, respiration sifflante, essoufflement, douleur dans la poitrine,
+- parfois : nausées, vomissements, maux de tête.
+
+Ces effets sont réversibles en quelques heures. La plupart des personnes se rétablissent dans la demi-heure qui suit.
+
+# Les premiers gestes
+- Sors de la zone, vers de l'air frais. Sortir de la zone suffit généralement à retrouver rapidement une respiration normale.
+- Yeux : rince abondamment, à l'eau pure ou au sérum physiologique, paupières écartées, pendant au moins 10 minutes. Pour un produit chimique dans l'œil, l'INRS recommande 15 minutes.
+- Peau : enlève le produit en brossant, en lavant ou en rinçant à l'eau abondante. L'eau peut accentuer brièvement la douleur, mais elle reste efficace.
+
+? Comment te placer par rapport au vent et à la hauteur pour sortir du nuage le plus vite possible ?
+
+# Ce qu'il ne faut pas faire
+- Ne te frotte pas les yeux avec les doigts : cela peut aggraver l'irritation (avis d'un ophtalmologue de l'hôpital Cochin rapporté par la presse).
+- Le lait ou le Coca-Cola ne sont pas plus efficaces que l'eau. Les conseils de Maalox, de vinaigre ou de citron ne sont validés par aucune source médicale consultée.
+
+! À faire vérifier par des secouristes : les deux points ci-dessus viennent de la presse, pas d'une source officielle.
+
+# Cas particuliers
+Lentilles : si tu en portes, retire-les si tu peux, avec des mains propres, avant de rincer. L'INRS conseille aux porteurs de lentilles souples de mettre des lunettes quand ils risquent d'être exposés à des aérosols.
+
+Asthme et poumons : certaines personnes font une irritation des bronches, avec des crises d'essoufflement semblables à de l'asthme. Les personnes qui ont une maladie chronique des yeux, de la peau ou des poumons devraient éviter de s'exposer.
+
+? Enfants, femmes enceintes : qu'est-ce qui change ?
+
+# Quand demander de l'aide
+Si les troubles durent ou si d'autres signes apparaissent, consulte un médecin.
+
+? À partir de quel niveau de gêne pour respirer ou de douleur aux yeux faut-il appeler le 15 ?
+
+# Sources
+- INRS, fiche toxicologique n° 215, (2-chlorobenzylidène)malononitrile (gaz CS), mise à jour 2014 : https://www.inrs.fr/dam/ficheTox/FicheFicheTox/FICHETOX_215-1.pdf
+- INRS, « Produit chimique dans l'œil ou sur la peau : les bons réflexes » : https://www.inrs.fr/actualites/affiches-produit-chimique-peau-oeil.html
+- Manuel MSD, « Agents chimiques de lutte anti-émeute », dernière révision octobre 2024 : https://www.merckmanuals.com/fr-ca/accueil/l%C3%A9sions-et-intoxications/armes-de-destruction-massive/agents-chimiques-de-lutte-anti-%C3%A9meute
+- Slate.fr, « le lait n'est pas le remède miracle pour soulager les effets des gaz lacrymogènes » : https://www.slate.fr/story/91107/gaz-lacrymogenes-remedes
+
+Aucune consigne officielle française propre à la manifestation (SAMU, ministère de l'Intérieur ou de la Santé) n'a été trouvée. L'INRS écrit pour le milieu du travail ; la fiche CS date de 2014 ; le Manuel MSD est un ouvrage médical, pas une consigne de secours.
+
+Rédigée le 24 octobre 2026 à partir de ces sources par l'assistant de développement, qui n'est pas secouriste. Aucune relecture humaine à ce jour.
