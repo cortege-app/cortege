@@ -1,3 +1,5 @@
+<img src="logo/cortege-logo.png" alt="Logo de Cortège : une maille jaune en forme de C autour d'un point blanc" width="96" align="right">
+
 # Cortège
 
 Appli de sécurité pour les manifestations, pour Android. Elle doit servir quand le réseau mobile est saturé et ne laisser aucune trace exploitable.

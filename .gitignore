@@ -16,7 +16,7 @@ Sauvegardes*/
 # Tests jetables, pas livrés
 spikes/
 
-# Image de travail à la racine, hors du dépôt tant que le logo n'est pas fixé
+# Image de travail à la racine : la copie du logo qui sert est dans logo/
 /A*Maillage*.png
 
 # Construction et outils
