@@ -11,7 +11,9 @@ Appli de sécurité pour les manifestations, pour Android. Elle doit servir quan
 > - La version publiée est signée avec la clé du projet. Un APK que tu construis toi-même est signé avec la clé de test d'Android.
 > - Essayée sur deux téléphones Android seulement. iOS n'existe pas.
 
-**Télécharger :** [Cortege-0.1.0-essai.apk](https://github.com/cortege-app/cortege/releases/download/v0.1.0-essai/Cortege-0.1.0-essai.apk) (53 Mo). La [page de cette version](https://github.com/cortege-app/cortege/releases/tag/v0.1.0-essai) donne l'empreinte pour vérifier le fichier. Lis d'abord le bandeau ci-dessus.
+**Télécharger : [cortege-app.github.io](https://cortege-app.github.io)**, une page avec un gros bouton et les étapes d'installation. Lis d'abord le bandeau ci-dessus.
+
+Lien direct du fichier : [Cortege-0.1.0-essai.apk](https://github.com/cortege-app/cortege/releases/download/v0.1.0-essai/Cortege-0.1.0-essai.apk) (53 Mo). La [page de cette version](https://github.com/cortege-app/cortege/releases/tag/v0.1.0-essai) donne l'empreinte pour vérifier le fichier.
 
 Pour utiliser l'appli pas à pas : [MODE-D-EMPLOI.md](MODE-D-EMPLOI.md).
 
