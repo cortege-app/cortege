@@ -2,10 +2,17 @@
 *.cle
 *.cle.qr.png
 
-# Clés de signature de l'appli
-key.properties
+# Clés de signature de l'appli et leurs mots de passe, sous toutes leurs formes
+key.properties*
 *.jks
 *.keystore
+*.p12
+Cortege-cle-signature/
+
+# Fichiers prêts à publier : ils partent dans une release, jamais dans le dépôt
+Cortege-publication/
+*.apk
+*.aab
 
 # Vidéos et sauvegardes : trop lourdes, et pas du code
 *.mp4
