@@ -139,7 +139,7 @@ Les captures d'écran sont bloquées dans l'appli.
 ## Si ça ne marche pas
 
 - **Code incorrect** : après 5 codes faux de suite, l'appli t'impose une attente qui grandit (30 secondes, puis jusqu'à 1 heure). Le bon code, ou le code de contrainte, remet le compte à zéro.
-- **Code oublié** : il n'existe aucun moyen de le retrouver. Il faut effacer les données de l'appli dans les paramètres d'Android (Applications, Cortège, Stockage, Effacer les données) ou la désinstaller puis la réinstaller. Tu perds tout ce qu'elle contenait.
+- **Code oublié** : sur l'écran de code, appuie sur **Code oublié ?**, sous le clavier. Personne ne peut retrouver ton code. La seule issue est de tout effacer : garde le doigt appuyé 3 secondes sur « Tout effacer ». Tu perds tout ce que l'appli contenait, puis tu choisis un nouveau code. Ça marche aussi pendant l'attente après trop de codes faux.
 - **« Position introuvable »** : active la localisation de ton téléphone et réessaie dehors.
 - **Le QR ne se scanne pas** : voir plus haut, étape 6.
 - **Plus aucun voisin** : rapproche-toi d'un autre téléphone de l'événement, vérifie que le Bluetooth est allumé des deux côtés.

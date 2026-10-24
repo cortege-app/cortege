@@ -125,6 +125,14 @@ Limite assumée : le TTL doit rester lisible par les relais et change à chaque 
 - **Ce que cela ne protège pas** : quelqu'un qui lit et modifie les fichiers de l'appli (téléphone débloqué au niveau du système) peut remettre le compteur à zéro. Il se heurte alors à Argon2id et au secret du Keystore, qui ne dépendent pas du compteur. Le compteur freine surtout celui qui tape des codes sur l'écran.
 - **Tests** : 11 (barème, redémarrage, horloge reculée, fichier abîmé, coffre avec ou sans code de contrainte, secrets disparus, effacement total, écran de code avec décompte).
 
+### Code oublié (24 octobre 2026)
+
+- **Principe.** Sous le clavier de l'écran de code, « Code oublié ? » ouvre un écran qui dit que le code ne se retrouve pas et propose « Tout effacer » (appui de 3 secondes, comme dans les Réglages). C'est le même effacement : secrets matériels détruits d'abord, puis fichiers du coffre, cartes, fichiers reçus et compteur d'essais. L'appli retombe sur la création du coffre. Avant ce chemin, l'appli disait « il faut tout effacer » sans offrir de moyen d'y arriver sans le code.
+- **Pendant l'attente.** Le chemin reste ouvert quand le clavier est figé après trop d'essais ratés : celui qui a oublié son code n'attend pas une heure, et l'effacement remet l'attente à zéro.
+- **Pourquoi ce n'est pas une faille.** Effacer ne donne rien à celui qui tient le téléphone, tout est détruit, et il pouvait déjà vider les données de l'appli depuis Android. Ce qui change, c'est qu'une personne qui a oublié son code a une issue claire. Contrepartie : un passant qui tient ton téléphone peut détruire tes données depuis l'écran de code, comme il le pouvait depuis Android.
+- **Navigation.** L'écran « Code oublié » ne reste pas empilé après l'effacement : les écrans empilés se ferment à tout changement d'état qui sort du coffre ouvert, pas seulement au verrouillage.
+- **Tests** : 5 (écran et texte, « Retour » qui ne touche à rien, appui trop court sans effet, effacement complet puis nouveau départ avec ancien code et code de contrainte refusés, chemin ouvert pendant l'attente avec compteur remis à zéro). Un test échoue si la règle de fermeture des écrans revient à l'ancienne.
+
 ## 7. Mode binôme
 
 Réalisé à l'étape d, voir la section 15.

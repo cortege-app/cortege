@@ -71,11 +71,11 @@ class _CortegeAppState extends State<CortegeApp> with WidgetsBindingObserver {
     super.dispose();
   }
 
-  /// Un écran empilé (réglages...) ne doit pas rester visible après un
-  /// verrouillage ou un effacement.
+  /// Un écran empilé (réglages, « code oublié »...) ne doit pas rester visible
+  /// après un verrouillage ou un effacement.
   void _onControllerChange() {
     final phase = widget.controller.phase;
-    if (_lastPhase == AppPhase.unlocked && phase != AppPhase.unlocked) {
+    if (phase != _lastPhase && phase != AppPhase.unlocked) {
       _navigatorKey.currentState?.popUntil((route) => route.isFirst);
     }
     final opened = _lastPhase != AppPhase.unlocked && phase == AppPhase.unlocked;
