@@ -1,3 +1,14 @@
+import java.util.Properties
+
+// Clé de signature de diffusion : `android/key.properties`, hors du dépôt (voir .gitignore).
+// Sans ce fichier, la construction retombe sur la clé de test d'Android : de quoi essayer
+// l'appli, pas de quoi la diffuser.
+val signingProperties = Properties().apply {
+    val file = rootProject.file("key.properties")
+    if (file.exists()) file.inputStream().use { load(it) }
+}
+val hasReleaseKey = signingProperties.getProperty("storeFile") != null
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -28,11 +39,23 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        if (hasReleaseKey) {
+            create("release") {
+                storeFile = file(signingProperties.getProperty("storeFile"))
+                storePassword = signingProperties.getProperty("storePassword")
+                keyAlias = signingProperties.getProperty("keyAlias")
+                keyPassword = signingProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // Clé de test d'Android : suffit aux essais, pas à une diffusion. Il faudra une
-            // vraie clé de signature avant de publier un APK (ARCHITECTURE.md, section 19).
-            signingConfig = signingConfigs.getByName("debug")
+            if (!hasReleaseKey) {
+                logger.warn("key.properties absent : l'APK est signé avec la clé de test d'Android, à ne pas diffuser.")
+            }
+            signingConfig = signingConfigs.getByName(if (hasReleaseKey) "release" else "debug")
         }
     }
 }
