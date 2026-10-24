@@ -510,6 +510,7 @@ Selon Google (developer.android.com/developer-verification), à partir du 30 sep
 - **Construire avec la clé.** `app/android/key.properties` (non versionné) donne le fichier de clé, l'alias et les mots de passe. Sans lui, la construction signe avec la clé de test d'Android et l'avertit.
 - **Téléphones d'essai.** Les APK d'essai déjà installés portent la clé de test : Android refuse de les mettre à jour avec la vraie clé. Il faut désinstaller d'abord, et le coffre est perdu.
 - **Version.** 0.1.0-essai, code de version 1. Le code de version doit augmenter à chaque mise à jour publiée.
+- **Essai du fichier signé (HONOR, 24 octobre 2026)** : installé après désinstallation de la version de test, il s'ouvre, et l'écran « Partager l'appli » affiche l'empreinte courte calculée sur l'ordinateur (`d9c5 20d5 8fa5 b4be`). Le SHA-256 du fichier installé sur le téléphone est celui du fichier de publication.
 - **Vérifier un fichier téléchargé.** Les notes de la release donnent l'empreinte SHA-256 du fichier, à comparer avec celle que calcule l'ordinateur de la personne, et l'empreinte courte de l'écran « Partager l'appli » une fois l'appli installée.
 
 ## 20. Contrôle du code (24 octobre 2026)
