@@ -6,8 +6,10 @@ Appli de sécurité pour les manifestations, pour Android. Elle doit servir quan
 >
 > - Aucune personne extérieure n'a relu ce code. Le contrôle fait jusqu'ici est celui de l'équipe (section 20 de [ARCHITECTURE.md](ARCHITECTURE.md)).
 > - Les fiches Droits et Secours sont des brouillons écrits par un assistant d'après des sources officielles. Aucun juriste ni secouriste ne les a relus ([RELECTURE-DES-FICHES.md](RELECTURE-DES-FICHES.md)). L'appli le dit sur chaque fiche.
-> - L'APK est signé avec une clé de test, pas avec une clé du projet.
+> - La version publiée est signée avec la clé du projet. Un APK que tu construis toi-même est signé avec la clé de test d'Android.
 > - Essayée sur deux téléphones Android seulement. iOS n'existe pas.
+
+**Télécharger :** [Cortege-0.1.0-essai.apk](https://github.com/cortege-app/cortege/releases/download/v0.1.0-essai/Cortege-0.1.0-essai.apk) (53 Mo). La [page de cette version](https://github.com/cortege-app/cortege/releases/tag/v0.1.0-essai) donne l'empreinte pour vérifier le fichier. Lis d'abord le bandeau ci-dessus.
 
 Pour utiliser l'appli pas à pas : [MODE-D-EMPLOI.md](MODE-D-EMPLOI.md).
 
@@ -41,7 +43,7 @@ Limites à connaître :
 - Si tu coupes le Bluetooth en cours de route, le maillage repart tout seul quand tu le rallumes (compte jusqu'à 10 secondes).
 - Une alerte n'est pas confirmée tant qu'aucun medic n'a répondu. Si aucun medic n'est à portée du maillage, elle n'arrive pas. En cas de doute, appelle le 15 ou le 112.
 - Le clavier du téléphone est utilisé pour écrire un message, avec l'apprentissage personnalisé désactivé. Le clavier reste celui d'Android : choisis-en un qui n'envoie rien en ligne.
-- Les APK construits ici sont signés avec la clé de débogage d'Android : ils servent aux essais, pas à une diffusion. Il faudra une vraie clé de signature.
+- Un APK construit sans le fichier `android/key.properties` est signé avec la clé de test d'Android : il sert aux essais, pas à une diffusion. La clé du projet reste hors du dépôt. Si elle était perdue, plus aucune mise à jour ne serait possible : chaque personne devrait désinstaller l'appli et perdrait son coffre.
 - Deux organisateurs dont les noms s'écrivent avec des lettres qui se ressemblent (latin et cyrillique, par exemple) ne se distinguent pas par le nom : seule l'empreinte de leur clé compte, c'est pourquoi l'appli l'affiche en grand à la première confiance.
 - Argon2id met environ 160 ms à ouvrir le coffre sur les deux téléphones d'essai. Il n'a pas été réglé pour un téléphone d'entrée de gamme.
 - iOS : pas encore pris en charge. L'appli refuse de créer un coffre sans protection matérielle.

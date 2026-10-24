@@ -12,7 +12,11 @@ Cortège est une version d'essai. Elle peut avoir des défauts, et personne d'ex
 
 ### 1. Installer l'appli
 
-L'appli ne se trouve pas dans un magasin. Reçois-la d'une personne en qui tu as confiance : elle ouvre « Partager l'appli » sur son téléphone et te l'envoie (Bluetooth, Quick Share, clé USB). Android te demande d'autoriser l'installation depuis cette source : accepte. Ensuite, comparez la ligne « Empreinte » de l'écran « Partager l'appli » sur vos deux téléphones : elle doit être identique.
+L'appli ne se trouve pas dans un magasin. Deux façons de l'avoir :
+- **Télécharge-la** depuis la page des versions du projet, dont le lien est en haut du [README](README.md), et seulement depuis cette page. Compare l'empreinte du fichier avec celle de la page.
+- **Ou reçois-la d'une personne en qui tu as confiance** : elle ouvre « Partager l'appli » sur son téléphone et te l'envoie (Bluetooth, Quick Share, clé USB).
+
+Android te demande d'autoriser l'installation depuis cette source : accepte. Ensuite, comparez la ligne « Empreinte » de l'écran « Partager l'appli » sur vos deux téléphones : elle doit être identique.
 
 ### 2. Choisir ton code
 

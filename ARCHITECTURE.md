@@ -483,7 +483,7 @@ Selon Google (developer.android.com/developer-verification), à partir du 30 sep
 
 ### Ordre recommandé
 
-1. Avant tout : une vraie clé de signature (l'APK est signé avec la clé de test) et les fiches relues (le test de diffusion refuse sinon).
+1. Avant tout : une vraie clé de signature (faite le 24 octobre 2026) et les fiches relues (le test de diffusion refuse sinon : pour la première version d'essai, ce choix est assumé, voir plus bas).
 2. Petit essai de confiance : le fichier signé, passé de main en main à quelques groupes, avec son empreinte.
 3. Code source public, puis F-Droid et IzzyOnDroid.
 4. Plus tard, peut-être, Google Play.
@@ -502,6 +502,15 @@ Selon Google (developer.android.com/developer-verification), à partir du 30 sep
 
 - Fichiers ajoutés à la racine : `.gitignore` (clés `.cle`, clés de signature, vidéos, zips, sauvegardes, tests jetables `spikes/`, dossiers de construction), `SECURITY.md` (signalement privé par GitHub, pas d'adresse personnelle), `CONTRIBUTING.md` (règles qu'on ne change pas, tests, fiches). Le README annonce l'état réel : version d'essai, code non relu de l'extérieur, fiches non relues, clé de test, mention de l'aide de l'assistant.
 - Contrôle des fichiers à envoyer (219) : aucune clé, aucun mot de passe, aucune adresse e-mail, aucun chemin de l'ordinateur ; aucun fichier de plus de 1 Mo.
+
+### Première version d'essai publique (24 octobre 2026, préparée, pas encore publiée)
+
+- **Fiches.** Le responsable du projet a choisi d'inclure les brouillons de fiches, avec leur bandeau « À FAIRE VALIDER », dans la première version publique. Il avait été prévenu que cela contredit la règle de diffusion du projet : le contrôle `CORTEGE_RELEASE_CHECK=1` échoue exprès tant que les fiches ne sont pas relues, et il échoue donc pour cette version. C'est un choix assumé, que les notes de la release disent.
+- **Clé de signature.** Clé RSA de 4096 bits créée le 24 octobre 2026, gardée hors du dépôt (le `.gitignore` refuse `key.properties` et `*.jks`). Empreinte SHA-256 de son certificat : `20:95:2E:13:8B:98:D6:55:91:45:BD:EC:92:FA:97:25:3E:AD:83:66:ED:DD:E3:C8:5E:CF:D7:F3:A6:36:F3:11`. Elle signera toutes les mises à jour : si elle est perdue, elle ne peut pas être remplacée, et chaque personne devrait désinstaller l'appli (et perdre son coffre) pour passer à une autre clé. La sauvegarde hors ligne de la clé et de son mot de passe est à la charge du responsable du projet.
+- **Construire avec la clé.** `app/android/key.properties` (non versionné) donne le fichier de clé, l'alias et les mots de passe. Sans lui, la construction signe avec la clé de test d'Android et l'avertit.
+- **Téléphones d'essai.** Les APK d'essai déjà installés portent la clé de test : Android refuse de les mettre à jour avec la vraie clé. Il faut désinstaller d'abord, et le coffre est perdu.
+- **Version.** 0.1.0-essai, code de version 1. Le code de version doit augmenter à chaque mise à jour publiée.
+- **Vérifier un fichier téléchargé.** Les notes de la release donnent l'empreinte SHA-256 du fichier, à comparer avec celle que calcule l'ordinateur de la personne, et l'empreinte courte de l'écran « Partager l'appli » une fois l'appli installée.
 
 ## 20. Contrôle du code (24 octobre 2026)
 
@@ -531,7 +540,7 @@ Ce contrôle a été fait par l'assistant qui a écrit le code, en relisant les 
 - Deux organisateurs qui s'écrivent avec des lettres qui se ressemblent (alphabet latin et cyrillique) ne sont pas distingués par le nom. Seule l'empreinte compte, c'est pourquoi l'écran la montre en grand.
 - Le fichier `.cle` de l'organisateur contient sa clé secrète sans mot de passe. Qui le copie signe à sa place.
 - Argon2id a été mesuré à 160 ms sur les deux téléphones d'essai, mais n'a pas été réglé pour un téléphone d'entrée de gamme.
-- L'APK est signé avec la clé de test d'Android, pas avec une clé à nous.
+- Au moment du contrôle, l'APK était signé avec la clé de test d'Android. La première version publique est signée avec la clé du projet (voir plus haut).
 - Si l'appli reste fermée plus longtemps que la durée d'effacement, rien n'est effacé avant la prochaine ouverture : il n'y a pas de balayage en arrière-plan (section 6).
 - Aucun test n'a été fait contre un vrai attaquant disposant du téléphone, ni contre un autre appareil Bluetooth malveillant en conditions réelles.
 
