@@ -9,6 +9,8 @@ Appli de sécurité pour les manifestations, pour Android. Elle doit servir quan
 > - L'APK est signé avec une clé de test, pas avec une clé du projet.
 > - Essayée sur deux téléphones Android seulement. iOS n'existe pas.
 
+Pour utiliser l'appli pas à pas : [MODE-D-EMPLOI.md](MODE-D-EMPLOI.md).
+
 État : étapes a à e faites et essayées sur un HONOR et un OnePlus, voir [ARCHITECTURE.md](ARCHITECTURE.md). La f (iOS) est reportée : elle demande un Mac et un iPhone. Ce qui existe aujourd'hui : verrouillage par code avec attente croissante après cinq essais ratés, code de contrainte, effacement automatique avec renouvellement du secret, coffre chiffré, fiches droits et secours (brouillons sourcés, non relus), messagerie chiffrée entre téléphones Android sans réseau (groupes par QR, relais de téléphone en téléphone par Bluetooth), mode binôme (signe de vie régulier, alerte si un proche se tait), signalement de blessé aux medics, carte hors ligne et infos signées des organisateurs (parcours, points d'eau, rendez-vous, contacts) dans un seul fichier, et partage de l'appli de téléphone à téléphone.
 
 ## Ce que l'appli garantit, et ce qu'elle ne garantit pas
