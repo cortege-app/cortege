@@ -1,5 +1,7 @@
 import 'package:flutter/services.dart';
 
+import '../l10n/language.dart';
+
 /// Garde l'appli en vie quand elle passe en arrière-plan (service au premier
 /// plan d'Android, avec une notification). Sans lui, Android arrête l'appli et
 /// le maillage avec elle quelques minutes après l'extinction de l'écran.
@@ -13,14 +15,14 @@ class PlatformKeepAlive implements KeepAlive {
   static const _channel = MethodChannel('org.cortege.app/keepalive');
 
   @override
-  Future<void> start() => _call('start');
+  Future<void> start() => _call('start', {'title': tr('Service running', 'Service actif')});
 
   @override
   Future<void> stop() => _call('stop');
 
-  Future<void> _call(String method) async {
+  Future<void> _call(String method, [Map<String, Object?>? arguments]) async {
     try {
-      await _channel.invokeMethod<void>(method);
+      await _channel.invokeMethod<void>(method, arguments);
     } on MissingPluginException {
       // Plateforme sans service au premier plan (iOS, tests).
     } on PlatformException {

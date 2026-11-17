@@ -1,0 +1,43 @@
+titre: Emergency numbers
+resume: 15, 17, 18, 112.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Numbers
+- 15: SAMU, medical emergency.
+- 17: police emergency.
+- 18: fire brigade.
+- 112: European emergency number.
+- 114: emergency number for deaf or hard-of-hearing people, by text message, video call, chat or fax.
+
+These calls are free and available 24 hours a day, from a landline or a mobile, even if the phone is locked or has no credit.
+
+Source: service-public.gouv.fr and gendarmerie.interieur.gouv.fr, checked on 18 October 2026.
+
+# The call
+- 15 for a health problem: feeling unwell, serious injury, unconscious person.
+- 18 for an accident, a fire, rescuing a person.
+- 17 for an offence: assault, violence.
+- 112: single number, usable for any of these needs.
+
+Give the person who answers:
+- the phone number you are calling from,
+- your name if needed,
+- the nature of the problem: feeling unwell, illness or accident,
+- any risks,
+- the exact location,
+- the number of people involved,
+- the condition of each victim,
+- what you have already done.
+
+Then answer the questions from the emergency services or the doctor.
+
+# Sources
+- Croix-Rouge française, "Les étapes pour porter secours : protéger, alerter, secourir": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/4-etapes-pour-porter-secours
+- service-public.gouv.fr, "Numéros d'urgence": https://www.service-public.gouv.fr/particuliers/vosdroits/F33954
+- Ministry of the Interior, "Ma Sécurité", national useful numbers: https://www.masecurite.interieur.gouv.fr/fr/fiches-pratiques/famille-et-aides-aux-victimes/numeros-utiles-nationaux
+- Ministry of the Interior, the 114: https://www.interieur.gouv.fr/Archives/Archives-des-dossiers-de-presse/Le-114-numero-d-urgence-pour-les-personnes-sourdes-et-malentendantes
+- Assurance maladie (ameli), for calls being free from a locked phone or one with no credit: https://www.ameli.fr/assure/sante/themes/canicule-chaleur/canicule-et-soins-urgents-epuisement-deshydratation-et-coup-de-chaleur
+
+Written on 24 October 2026 from these sources by the development assistant, who is not a first aider, and translated from French. No human review so far.

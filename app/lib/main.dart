@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'app_controller.dart';
 import 'crypto/vault_crypto.dart';
+import 'l10n/language.dart';
 import 'mesh/alert_signal.dart';
 import 'mesh/ble_transport.dart';
 import 'mesh/keep_alive.dart';
@@ -28,6 +29,7 @@ Future<void> main() async {
   final crypto = await VaultCrypto.create();
   final meshCrypto = MeshCrypto(crypto);
   final directory = await getApplicationSupportDirectory();
+  await Language.load(directory);
   final controller = AppController(
     store: VaultStore(
       crypto: crypto,

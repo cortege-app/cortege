@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../l10n/language.dart';
 import '../mesh/buddy_invite.dart';
 import '../mesh/buddy_service.dart';
 import '../mesh/mesh_controller.dart';
@@ -45,7 +46,7 @@ class SilenceBanner extends StatelessWidget {
       color: Palette.danger,
       child: Text(
         silent
-            .map((p) => 'Plus de nouvelles de ${p.name} ${sinceText(p.lastHeard, now)}')
+            .map((p) => tr('No news from ${p.name} ${sinceText(p.lastHeard, now)}', 'Plus de nouvelles de ${p.name} ${sinceText(p.lastHeard, now)}'))
             .join('\n'),
         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Colors.black),
       ),
@@ -73,13 +74,13 @@ class BuddyScreen extends StatelessWidget {
           mesh: mesh,
           buddyId: mesh.buddies.idForInvite(invite),
           instruction:
-              'Fais scanner ce code par ton proche. Ensuite, scanne le sien avec « Scanner un proche ».',
+              tr('Have your buddy scan this code. Then scan theirs with “Scan a buddy”.', 'Fais scanner ce code par ton proche. Ensuite, scanne le sien avec « Scanner un proche ».'),
         ),
       );
     } on DifferentEventException {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Tu es déjà dans un autre événement.')),
+        SnackBar(content: Text(tr("You're already in another event.", 'Tu es déjà dans un autre événement.'))),
       );
     }
   }
@@ -99,41 +100,41 @@ class BuddyScreen extends StatelessWidget {
         final infos = mesh.buddies.infos;
         final now = mesh.now();
         return Scaffold(
-          appBar: AppBar(title: const Text('Binôme')),
+          appBar: AppBar(title: Text(tr('Buddy', 'Binôme'))),
           body: SafeArea(
             child: ListView(
               padding: const EdgeInsets.all(16),
               children: [
                 SilenceBanner(mesh: mesh),
                 Text(
-                  'Tu t\'appaires avec 1 à 3 proches, en face à face, en scannant vos codes. Ensuite, vos téléphones s\'envoient un signe de vie à intervalle régulier, et l\'appli te prévient si l\'un d\'eux se tait.',
+                  tr("You pair with 1 to 3 people you trust, face to face, by scanning each other's codes. Then your phones send each other a check-in at regular intervals, and the app warns you if one of them goes silent.", 'Tu t\'appaires avec 1 à 3 proches, en face à face, en scannant vos codes. Ensuite, vos téléphones s\'envoient un signe de vie à intervalle régulier, et l\'appli te prévient si l\'un d\'eux se tait.'),
                   style: theme.bodyLarge,
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  '« Se taire » veut dire qu\'on n\'entend plus rien de la personne dans le maillage. L\'appli ne sait pas où elle est.',
+                  tr('“Going silent” means nothing more is heard from that person on the mesh. The app does not know where they are.', '« Se taire » veut dire qu\'on n\'entend plus rien de la personne dans le maillage. L\'appli ne sait pas où elle est.'),
                   style: theme.bodyMedium?.copyWith(color: Palette.muted),
                 ),
                 const SizedBox(height: 16),
                 for (final info in infos) ...[
                   NavTile(
                     title: info.others.isEmpty
-                        ? 'Binôme en attente'
-                        : 'Avec ${info.others.map((p) => p.name).join(', ')}',
+                        ? tr('Buddy group waiting', 'Binôme en attente')
+                        : tr("With ${info.others.map((p) => p.name).join(', ')}", 'Avec ${info.others.map((p) => p.name).join(', ')}'),
                     subtitle: info.hasSilent
-                        ? 'Plus de nouvelles de ${info.others.firstWhere((p) => p.silent).name}'
+                        ? tr('No news from ${info.others.firstWhere((p) => p.silent).name}', 'Plus de nouvelles de ${info.others.firstWhere((p) => p.silent).name}')
                         : info.others.isEmpty
-                            ? 'Scanne le code d\'un proche'
-                            : 'Dernier signe : ${agoText(info.others.map((p) => p.lastHeard).whereType<DateTime>().fold<DateTime?>(null, (a, b) => a == null || b.isAfter(a) ? b : a), now)}',
+                            ? tr("Scan a buddy's code", 'Scanne le code d\'un proche')
+                            : tr('Last check-in: ${agoText(info.others.map((p) => p.lastHeard).whereType<DateTime>().fold<DateTime?>(null, (a, b) => a == null || b.isAfter(a) ? b : a), now)}', 'Dernier signe : ${agoText(info.others.map((p) => p.lastHeard).whereType<DateTime>().fold<DateTime?>(null, (a, b) => a == null || b.isAfter(a) ? b : a), now)}'),
                     onTap: () => _push(context, BuddyDetailScreen(mesh: mesh, buddyId: info.id)),
                   ),
                   const SizedBox(height: 8),
                 ],
                 const SizedBox(height: 8),
-                BigButton(label: 'Créer un binôme', onPressed: () => _create(context)),
+                BigButton(label: tr('Create a buddy group', 'Créer un binôme'), onPressed: () => _create(context)),
                 const SizedBox(height: 12),
                 BigButton(
-                  label: 'Rejoindre le binôme d\'un proche',
+                  label: tr("Join a buddy's group", 'Rejoindre le binôme d\'un proche'),
                   primary: false,
                   onPressed: () => _join(context),
                 ),
@@ -164,7 +165,7 @@ class _BuddyDetailScreenState extends State<BuddyDetailScreen> {
 
   Future<void> _checkIn() async {
     await widget.mesh.buddies.checkIn(widget.buddyId);
-    if (mounted) setState(() => _sent = 'Envoyé. Tes proches savent que tu vas bien.');
+    if (mounted) setState(() => _sent = tr('Sent. Your buddies know you are OK.', 'Envoyé. Tes proches savent que tu vas bien.'));
   }
 
   Future<void> _leave() async {
@@ -184,17 +185,17 @@ class _BuddyDetailScreenState extends State<BuddyDetailScreen> {
         final now = widget.mesh.now();
         final minutes = widget.mesh.session.state.checkInEvery.inMinutes;
         return Scaffold(
-          appBar: AppBar(title: const Text('Binôme')),
+          appBar: AppBar(title: Text(tr('Buddy', 'Binôme'))),
           body: SafeArea(
             child: ListView(
               padding: const EdgeInsets.all(16),
               children: [
                 SilenceBanner(mesh: widget.mesh),
-                Text('Les personnes', style: theme.titleLarge),
+                Text(tr('People', 'Les personnes'), style: theme.titleLarge),
                 const SizedBox(height: 8),
                 if (info.others.isEmpty)
                   Text(
-                    'Personne d\'autre pour l\'instant. Montre ton code à un proche, puis scanne le sien.',
+                    tr('Nobody else yet. Show your code to a buddy, then scan theirs.', 'Personne d\'autre pour l\'instant. Montre ton code à un proche, puis scanne le sien.'),
                     style: theme.bodyLarge?.copyWith(color: Palette.muted),
                   ),
                 for (final person in info.others) ...[
@@ -215,10 +216,10 @@ class _BuddyDetailScreenState extends State<BuddyDetailScreen> {
                               Text('${person.name} (${person.keyTag})', style: theme.titleMedium),
                               Text(
                                 person.silent
-                                    ? 'Plus de nouvelles ${sinceText(person.lastHeard, now)}'
+                                    ? tr('No news ${sinceText(person.lastHeard, now)}', 'Plus de nouvelles ${sinceText(person.lastHeard, now)}')
                                     : person.lastHeard == null
-                                        ? 'Pas encore de signe'
-                                        : 'Signe de vie ${agoText(person.lastHeard, now)}',
+                                        ? tr('No check-in yet', 'Pas encore de signe')
+                                        : tr('Check-in ${agoText(person.lastHeard, now)}', 'Signe de vie ${agoText(person.lastHeard, now)}'),
                                 style: theme.bodyMedium?.copyWith(
                                   color: person.silent ? Palette.danger : Palette.muted,
                                   fontWeight: person.silent ? FontWeight.w800 : FontWeight.w400,
@@ -234,7 +235,7 @@ class _BuddyDetailScreenState extends State<BuddyDetailScreen> {
                 ],
                 const SizedBox(height: 16),
                 if (info.others.isNotEmpty) ...[
-                  BigButton(label: 'Je vais bien', onPressed: _checkIn),
+                  BigButton(label: tr("I'm OK", 'Je vais bien'), onPressed: _checkIn),
                   if (_sent != null) ...[
                     const SizedBox(height: 8),
                     Text(_sent!, style: theme.bodyMedium?.copyWith(color: Palette.muted)),
@@ -242,30 +243,30 @@ class _BuddyDetailScreenState extends State<BuddyDetailScreen> {
                   const SizedBox(height: 4),
                   Text(
                     info.lastCheckIn == null
-                        ? 'Un signe de vie part tout seul toutes les $minutes min tant que le maillage tourne.'
-                        : 'Ton dernier signe : ${agoText(info.lastCheckIn, now)}. Il en part un tout seul toutes les $minutes min.',
+                        ? tr('A check-in is sent automatically every $minutes min while the mesh is running.', 'Un signe de vie part tout seul toutes les $minutes min tant que le maillage tourne.')
+                        : tr('Your last check-in: ${agoText(info.lastCheckIn, now)}. One is sent automatically every $minutes min.', 'Ton dernier signe : ${agoText(info.lastCheckIn, now)}. Il en part un tout seul toutes les $minutes min.'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                   const SizedBox(height: 16),
                 ],
                 BigButton(
-                  label: 'Montrer mon code',
+                  label: tr('Show my code', 'Montrer mon code'),
                   primary: false,
                   onPressed: () => _push(BuddyCodeScreen(
                     mesh: widget.mesh,
                     buddyId: widget.buddyId,
-                    instruction: 'Fais scanner ce code par la personne à ajouter.',
+                    instruction: tr('Have the person you want to add scan this code.', 'Fais scanner ce code par la personne à ajouter.'),
                   )),
                 ),
                 const SizedBox(height: 8),
                 BigButton(
-                  label: 'Scanner un proche',
+                  label: tr('Scan a buddy', 'Scanner un proche'),
                   primary: false,
                   onPressed: () => _push(BuddyScanScreen(mesh: widget.mesh)),
                 ),
                 const SizedBox(height: 24),
                 HoldToConfirmButton(
-                  label: 'Quitter le binôme',
+                  label: tr('Leave the buddy group', 'Quitter le binôme'),
                   onConfirmed: _leave,
                   duration: const Duration(seconds: 2),
                 ),
@@ -320,15 +321,15 @@ class _BuddyCodeScreenState extends State<BuddyCodeScreen> {
     final code = _code;
     if (code == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Mon code')),
+        appBar: AppBar(title: Text(tr('My code', 'Mon code'))),
         body: Padding(
           padding: const EdgeInsets.all(16),
-          child: Text('Ce binôme n\'existe plus.', style: theme.bodyLarge),
+          child: Text(tr('This buddy group no longer exists.', 'Ce binôme n\'existe plus.'), style: theme.bodyLarge),
         ),
       );
     }
     return Scaffold(
-      appBar: AppBar(title: const Text('Mon code')),
+      appBar: AppBar(title: Text(tr('My code', 'Mon code'))),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
@@ -338,11 +339,11 @@ class _BuddyCodeScreenState extends State<BuddyCodeScreen> {
             Text(widget.instruction, style: theme.bodyLarge),
             const SizedBox(height: 8),
             Text(
-              'Ce code ne sert qu\'à lire tes prochains messages dans le binôme. Ne le photographie pas.',
+              tr('This code is only used to read your next messages in the buddy group. Do not take a photo of it.', 'Ce code ne sert qu\'à lire tes prochains messages dans le binôme. Ne le photographie pas.'),
               style: theme.bodyMedium?.copyWith(color: Palette.muted),
             ),
             const SizedBox(height: 16),
-            BigButton(label: 'Terminé', onPressed: () => Navigator.of(context).pop()),
+            BigButton(label: tr('Done', 'Terminé'), onPressed: () => Navigator.of(context).pop()),
           ],
         ),
       ),
@@ -376,7 +377,7 @@ class _BuddyScanScreenState extends State<BuddyScanScreen> {
       invite = BuddyInvite.decode(text);
     } on FormatException {
       setState(() {
-        _message = 'Ce QR n\'est pas un code de binôme Cortège.';
+        _message = tr('This QR is not a Cortège buddy code.', 'Ce QR n\'est pas un code de binôme Cortège.');
         _error = true;
       });
       return;
@@ -408,23 +409,23 @@ class _BuddyScanScreenState extends State<BuddyScanScreen> {
                 mesh: widget.mesh,
                 buddyId: result.buddyId,
                 instruction:
-                    'Tu as rejoint le binôme de ${invite.name}. Maintenant, ${invite.name} doit scanner ce code.',
+                    tr("You joined ${invite.name}'s buddy group. Now ${invite.name} has to scan this code.", 'Tu as rejoint le binôme de ${invite.name}. Maintenant, ${invite.name} doit scanner ce code.'),
               ),
             ),
           );
           return;
         case BuddyScanOutcome.added:
-          setState(() => _done = '${invite.name} est ajouté au binôme.');
+          setState(() => _done = tr('${invite.name} was added to the buddy group.', '${invite.name} est ajouté au binôme.'));
         case BuddyScanOutcome.alreadyKnown:
           setState(() {
             _busy = false;
-            _message = '${invite.name} est déjà dans ton binôme.';
+            _message = tr('${invite.name} is already in your buddy group.', '${invite.name} est déjà dans ton binôme.');
             _error = false;
           });
         case BuddyScanOutcome.ownCode:
           setState(() {
             _busy = false;
-            _message = 'C\'est ton propre code. Scanne celui de ton proche.';
+            _message = tr("That's your own code. Scan your buddy's.", 'C\'est ton propre code. Scanne celui de ton proche.');
             _error = true;
           });
       }
@@ -435,9 +436,9 @@ class _BuddyScanScreenState extends State<BuddyScanScreen> {
         _conflict = invite;
       });
     } on BuddyFullException {
-      _fail('Un binôme tient au plus à quatre personnes.');
+      _fail(tr('A buddy group holds at most four people.', 'Un binôme tient au plus à quatre personnes.'));
     } on NeedsDisplayNameException {
-      _fail('Choisis d\'abord un pseudo.');
+      _fail(tr('Choose a nickname first.', 'Choisis d\'abord un pseudo.'));
     }
   }
 
@@ -455,7 +456,7 @@ class _BuddyScanScreenState extends State<BuddyScanScreen> {
     final theme = Theme.of(context).textTheme;
     final conflict = _conflict;
     return Scaffold(
-      appBar: AppBar(title: const Text('Scanner un proche')),
+      appBar: AppBar(title: Text(tr('Scan a buddy', 'Scanner un proche'))),
       body: SafeArea(
         child: conflict != null
             ? LeaveEventPrompt(
@@ -471,11 +472,11 @@ class _BuddyScanScreenState extends State<BuddyScanScreen> {
                   Text(_done!, style: theme.headlineMedium),
                   const SizedBox(height: 8),
                   Text(
-                    'Les autres personnes du binôme le recevront par le maillage.',
+                    tr('The other people in the buddy group will receive it over the mesh.', 'Les autres personnes du binôme le recevront par le maillage.'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                   const SizedBox(height: 24),
-                  BigButton(label: 'Terminé', onPressed: () => Navigator.of(context).pop()),
+                  BigButton(label: tr('Done', 'Terminé'), onPressed: () => Navigator.of(context).pop()),
                 ],
               )
             : QrScanner(
@@ -483,7 +484,7 @@ class _BuddyScanScreenState extends State<BuddyScanScreen> {
                 paused: _busy,
                 message: _message,
                 messageIsError: _error,
-                pasteLabel: 'Coller un code copié',
+                pasteLabel: tr('Paste a copied code', 'Coller un code copié'),
               ),
       ),
     );

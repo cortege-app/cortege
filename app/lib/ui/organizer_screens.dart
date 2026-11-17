@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
+import '../l10n/language.dart';
 import '../organizer/file_picker.dart';
 import '../organizer/organizer_packet.dart';
 import '../organizer/organizer_service.dart';
@@ -16,25 +17,35 @@ import 'widgets.dart';
 
 /// Le message qui explique pourquoi un fichier d'événement ou une carte est refusé.
 String describePacketProblem(PacketRejected rejected) => switch (rejected.problem) {
-      PacketProblem.malformed => 'Ce fichier n\'est pas un événement Cortège lisible.',
-      PacketProblem.tooBig => 'Ce fichier est trop gros pour un événement.',
+      PacketProblem.malformed => tr("This file isn't a readable Cortège event.", 'Ce fichier n\'est pas un événement Cortège lisible.'),
+      PacketProblem.tooBig => tr('This file is too big to be an event.', 'Ce fichier est trop gros pour un événement.'),
       PacketProblem.badSignature =>
-        'La signature ne correspond pas : le fichier a été modifié, ou il ne vient pas de la clé qu\'il annonce. Ne l\'utilise pas.',
+        tr("The signature doesn't match: the file was modified, or it doesn't come from the key it claims. Don't use it.", 'La signature ne correspond pas : le fichier a été modifié, ou il ne vient pas de la clé qu\'il annonce. Ne l\'utilise pas.'),
       PacketProblem.unknownOrganizer =>
-        'Ce fichier est signé par un organisateur que tu n\'as pas encore accepté (empreinte ${rejected.detail ?? '?'}).',
-      PacketProblem.expired => 'Cet événement est expiré.',
+        tr(
+          "This file is signed by an organizer you haven't accepted yet (fingerprint ${rejected.detail ?? '?'}).",
+          'Ce fichier est signé par un organisateur que tu n\'as pas encore accepté (empreinte ${rejected.detail ?? '?'}).',
+        ),
+      PacketProblem.expired => tr('This event has expired.', 'Cet événement est expiré.'),
       PacketProblem.notYetValid =>
-        'La date de cet événement est dans le futur. Vérifie l\'heure de ton téléphone.',
-      PacketProblem.older => 'Tu as déjà cet événement, ou une version plus récente.',
+        tr("This event's date is in the future. Check your phone's clock.", 'La date de cet événement est dans le futur. Vérifie l\'heure de ton téléphone.'),
+      PacketProblem.older => tr('You already have this event, or a newer version.', 'Tu as déjà cet événement, ou une version plus récente.'),
       PacketProblem.mapNotExpected =>
-        'Cette carte n\'est annoncée par aucun de tes événements. Ouvre d\'abord le fichier de l\'événement.',
+        tr('None of your events announces this map. Open the event file first.', 'Cette carte n\'est annoncée par aucun de tes événements. Ouvre d\'abord le fichier de l\'événement.'),
       PacketProblem.mapCorrupted =>
-        'La carte ne correspond pas à celle que l\'organisateur a signée : elle est abîmée ou modifiée.',
+        tr("The map doesn't match the one the organizer signed: it's damaged or modified.", 'La carte ne correspond pas à celle que l\'organisateur a signée : elle est abîmée ou modifiée.'),
     };
+
+/// Le nom d'un type de lieu dans la langue de l'appli.
+extension PointKindText on PointKind {
+  String get displayLabel => tr(englishLabel, label);
+}
 
 String megabytesText(int bytes) {
   final mb = bytes / (1024 * 1024);
-  return mb < 1 ? '${(bytes / 1024).round()} Ko' : '${mb.toStringAsFixed(1)} Mo';
+  return mb < 1
+      ? tr('${(bytes / 1024).round()} KB', '${(bytes / 1024).round()} Ko')
+      : tr('${mb.toStringAsFixed(1)} MB', '${mb.toStringAsFixed(1)} Mo');
 }
 
 /// Événements reçus, organisateurs de confiance, carte hors ligne.
@@ -72,28 +83,30 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
         final packets = _service.packets;
         final map = _service.mapInfo;
         return Scaffold(
-          appBar: AppBar(title: const Text('Organisation')),
+          appBar: AppBar(title: Text(tr('Organization', 'Organisation'))),
           body: SafeArea(
             child: ListView(
               padding: const EdgeInsets.all(16),
               children: [
                 Text(
-                  'L\'organisateur envoie un seul fichier : parcours, points d\'eau, toilettes, rendez-vous, contacts, et la carte s\'il en joint une. Ouvre-le depuis ta messagerie, ou importe-le ici. Il est signé : l\'appli vérifie qui l\'a écrit avant de l\'afficher.',
+                  tr("The organizer sends a single file: route, water points, toilets, meeting points, contacts, and the map if they include one. Open it from your messaging app, or import it here. It's signed: the app checks who wrote it before showing it.", 'L\'organisateur envoie un seul fichier : parcours, points d\'eau, toilettes, rendez-vous, contacts, et la carte s\'il en joint une. Ouvre-le depuis ta messagerie, ou importe-le ici. Il est signé : l\'appli vérifie qui l\'a écrit avant de l\'afficher.'),
                   style: theme.bodyMedium?.copyWith(color: Palette.muted),
                 ),
                 const SizedBox(height: 24),
-                Text('Événements', style: theme.titleLarge),
+                Text(tr('Events', 'Événements'), style: theme.titleLarge),
                 const SizedBox(height: 8),
                 if (packets.isEmpty)
                   Text(
-                    'Aucun événement valable.',
+                    tr('No valid event.', 'Aucun événement valable.'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                 for (final p in packets) ...[
                   NavTile(
                     title: p.payload.name,
-                    subtitle:
-                        '${p.payload.points.length} lieu${p.payload.points.length > 1 ? 'x' : ''}, jusqu\'à ${clockText(p.payload.expires.toLocal(), now)}',
+                    subtitle: tr(
+                      "${p.payload.points.length} place${p.payload.points.length != 1 ? 's' : ''}, until ${clockText(p.payload.expires.toLocal(), now)}",
+                      '${p.payload.points.length} lieu${p.payload.points.length > 1 ? 'x' : ''}, jusqu\'à ${clockText(p.payload.expires.toLocal(), now)}',
+                    ),
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute<void>(builder: (_) => PacketScreen(packet: p, organizerName: _nameOf(p))),
                     ),
@@ -102,38 +115,41 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
                 ],
                 const SizedBox(height: 8),
                 BigButton(
-                  label: 'Importer un événement (fichier)',
+                  label: tr('Import an event (file)', 'Importer un événement (fichier)'),
                   primary: packets.isEmpty,
                   onPressed: _importEvent,
                 ),
                 const SizedBox(height: 24),
-                Text('Carte hors ligne', style: theme.titleLarge),
+                Text(tr('Offline map', 'Carte hors ligne'), style: theme.titleLarge),
                 const SizedBox(height: 8),
                 Text(
                   map == null
-                      ? 'Pas de carte. Sans elle, le parcours et les lieux s\'affichent quand même, sur un fond vide.'
-                      : '${map.name}, ${megabytesText(map.size)}. Chiffrée sur le téléphone : elle disparaît avec l\'effacement automatique.',
+                      ? tr('No map. Without it, the route and places still show, on a blank background.', 'Pas de carte. Sans elle, le parcours et les lieux s\'affichent quand même, sur un fond vide.')
+                      : tr(
+                          "${map.name}, ${megabytesText(map.size)}. Encrypted on the phone: it disappears with the automatic erasure.",
+                          '${map.name}, ${megabytesText(map.size)}. Chiffrée sur le téléphone : elle disparaît avec l\'effacement automatique.',
+                        ),
                   style: theme.bodyMedium?.copyWith(color: map == null ? Palette.muted : Palette.text),
                 ),
                 const SizedBox(height: 8),
                 BigButton(
-                  label: 'Ouvrir la carte',
+                  label: tr('Open the map', 'Ouvrir la carte'),
                   primary: false,
                   onPressed: () => Navigator.of(context).push(
                     MaterialPageRoute<void>(builder: (_) => MapScreen(controller: widget.controller)),
                   ),
                 ),
                 const SizedBox(height: 24),
-                Text('Organisateurs de confiance', style: theme.titleLarge),
+                Text(tr('Trusted organizers', 'Organisateurs de confiance'), style: theme.titleLarge),
                 const SizedBox(height: 8),
                 Text(
-                  'Un organisateur est ajouté quand tu compares son empreinte en important son fichier, ou en scannant son code QR.',
+                  tr('An organizer is added when you compare their fingerprint while importing their file, or by scanning their QR code.', 'Un organisateur est ajouté quand tu compares son empreinte en important son fichier, ou en scannant son code QR.'),
                   style: theme.bodyMedium?.copyWith(color: Palette.muted),
                 ),
                 const SizedBox(height: 8),
                 if (_service.organizers.isEmpty)
                   Text(
-                    'Aucun pour l\'instant.',
+                    tr('None yet.', 'Aucun pour l\'instant.'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                 for (final o in _service.organizers) ...[
@@ -145,7 +161,7 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
                 ],
                 const SizedBox(height: 8),
                 BigButton(
-                  label: 'Ajouter un organisateur (scanner)',
+                  label: tr('Add an organizer (scan)', 'Ajouter un organisateur (scanner)'),
                   primary: false,
                   onPressed: () => Navigator.of(context).push(
                     MaterialPageRoute<void>(
@@ -168,7 +184,7 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
         return o.name;
       }
     }
-    return 'organisateur inconnu';
+    return tr('unknown organizer', 'organisateur inconnu');
   }
 }
 
@@ -189,12 +205,15 @@ class _OrganizerTile extends StatelessWidget {
         children: [
           Text(record.name, style: theme.titleMedium),
           Text(
-            'Empreinte ${OrganizerPacket.fingerprintOf(record.publicKey)}',
+            tr(
+              'Fingerprint ${OrganizerPacket.fingerprintOf(record.publicKey)}',
+              'Empreinte ${OrganizerPacket.fingerprintOf(record.publicKey)}',
+            ),
             style: theme.bodyMedium?.copyWith(color: Palette.muted),
           ),
           const SizedBox(height: 8),
           HoldToConfirmButton(
-            label: 'Ne plus faire confiance',
+            label: tr('Stop trusting', 'Ne plus faire confiance'),
             duration: const Duration(seconds: 2),
             onConfirmed: onForget,
           ),
@@ -302,11 +321,11 @@ class _EventImportScreenState extends State<EventImportScreen> {
   String _mapLine(IncomingEvent e) {
     final announced = e.packet?.payload.map;
     if (e.hasMap) {
-      if (announced == null) return 'jointe mais non annoncée : ignorée';
-      if (!e.mapWanted) return 'déjà en place';
-      return '${megabytesText(e.mapLength)}, jointe';
+      if (announced == null) return tr('included but not announced: ignored', 'jointe mais non annoncée : ignorée');
+      if (!e.mapWanted) return tr('already installed', 'déjà en place');
+      return tr('${megabytesText(e.mapLength)}, included', '${megabytesText(e.mapLength)}, jointe');
     }
-    return announced == null ? 'aucune' : 'annoncée, non jointe';
+    return announced == null ? tr('none', 'aucune') : tr('announced, not included', 'annoncée, non jointe');
   }
 
   @override
@@ -315,7 +334,7 @@ class _EventImportScreenState extends State<EventImportScreen> {
     return PopScope(
       canPop: _stage != _ImportStage.importing,
       child: Scaffold(
-        appBar: AppBar(title: const Text('Événement')),
+        appBar: AppBar(title: Text(tr('Event', 'Événement'))),
         body: SafeArea(
           child: ListView(
             padding: const EdgeInsets.all(16),
@@ -324,19 +343,19 @@ class _EventImportScreenState extends State<EventImportScreen> {
                   const SizedBox(height: 24),
                   const Center(child: CircularProgressIndicator()),
                   const SizedBox(height: 16),
-                  Center(child: Text('Lecture du fichier...', style: theme.bodyLarge)),
+                  Center(child: Text(tr('Reading the file...', 'Lecture du fichier...'), style: theme.bodyLarge)),
                 ],
               _ImportStage.refused => _refused(theme),
               _ImportStage.ready => _ready(theme),
               _ImportStage.importing => [
-                  Text('Import en cours', style: theme.headlineSmall),
+                  Text(tr('Importing', 'Import en cours'), style: theme.headlineSmall),
                   const SizedBox(height: 12),
                   LinearProgressIndicator(value: _progress, minHeight: 8),
                   const SizedBox(height: 12),
                   Text(
                     _event?.hasMap ?? false
-                        ? 'La carte est vérifiée puis chiffrée sur le téléphone. Ça peut prendre un moment : ne quitte pas cet écran.'
-                        : 'Un instant.',
+                        ? tr("The map is checked, then encrypted on the phone. This can take a while: don't leave this screen.", 'La carte est vérifiée puis chiffrée sur le téléphone. Ça peut prendre un moment : ne quitte pas cet écran.')
+                        : tr('One moment.', 'Un instant.'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                 ],
@@ -349,7 +368,7 @@ class _EventImportScreenState extends State<EventImportScreen> {
   }
 
   List<Widget> _refused(TextTheme theme) => [
-        Text('Import impossible', style: theme.headlineSmall),
+        Text(tr('Import failed', 'Import impossible'), style: theme.headlineSmall),
         const SizedBox(height: 12),
         Container(
           padding: const EdgeInsets.all(12),
@@ -357,7 +376,7 @@ class _EventImportScreenState extends State<EventImportScreen> {
           child: Text(describePacketProblem(_problem!), style: theme.bodyLarge),
         ),
         const SizedBox(height: 24),
-        BigButton(label: 'Fermer', onPressed: () => Navigator.of(context).pop()),
+        BigButton(label: tr('Close', 'Fermer'), onPressed: () => Navigator.of(context).pop()),
       ];
 
   List<Widget> _ready(TextTheme theme) {
@@ -365,18 +384,18 @@ class _EventImportScreenState extends State<EventImportScreen> {
     final packet = event.packet;
     if (packet == null) {
       return [
-        Text('Carte hors ligne', style: theme.headlineSmall),
+        Text(tr('Offline map', 'Carte hors ligne'), style: theme.headlineSmall),
         const SizedBox(height: 8),
-        InfoRow('Taille', megabytesText(event.mapLength)),
+        InfoRow(tr('Size', 'Taille'), megabytesText(event.mapLength)),
         const SizedBox(height: 8),
         Text(
-          'Cette carte est comparée à ce que tes événements annoncent. Si elle n\'est pas la bonne, elle est refusée.',
+          tr("This map is compared with what your events announce. If it's not the right one, it's rejected.", 'Cette carte est comparée à ce que tes événements annoncent. Si elle n\'est pas la bonne, elle est refusée.'),
           style: theme.bodyMedium?.copyWith(color: Palette.muted),
         ),
         const SizedBox(height: 24),
-        BigButton(label: 'Importer la carte', onPressed: () => _import(trust: false)),
+        BigButton(label: tr('Import the map', 'Importer la carte'), onPressed: () => _import(trust: false)),
         const SizedBox(height: 12),
-        BigButton(label: 'Annuler', primary: false, onPressed: () => Navigator.of(context).pop()),
+        BigButton(label: tr('Cancel', 'Annuler'), primary: false, onPressed: () => Navigator.of(context).pop()),
       ];
     }
     final payload = packet.payload;
@@ -389,17 +408,17 @@ class _EventImportScreenState extends State<EventImportScreen> {
         decoration: BoxDecoration(border: Border.all(color: Palette.line, width: 2)),
         child: Column(
           children: [
-            InfoRow('Valable jusqu\'à', clockText(payload.expires.toLocal(), now)),
-            InfoRow('Lieux', '${payload.points.length}'),
+            InfoRow(tr('Valid until', 'Valable jusqu\'à'), clockText(payload.expires.toLocal(), now)),
+            InfoRow(tr('Places', 'Lieux'), '${payload.points.length}'),
             InfoRow('Contacts', '${payload.contacts.length}'),
-            InfoRow('Carte', _mapLine(event)),
+            InfoRow(tr('Map', 'Carte'), _mapLine(event)),
           ],
         ),
       ),
       if (!event.packetIsNew) ...[
         const SizedBox(height: 8),
         Text(
-          'Tu as déjà cet événement. Ce fichier apporte la carte.',
+          tr('You already have this event. This file brings the map.', 'Tu as déjà cet événement. Ce fichier apporte la carte.'),
           style: theme.bodyMedium?.copyWith(color: Palette.muted),
         ),
       ],
@@ -409,19 +428,25 @@ class _EventImportScreenState extends State<EventImportScreen> {
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(border: Border.all(color: Palette.accent, width: 2)),
           child: Text(
-            'Cet événement fixe aussi la clé des medics : tes alertes de blessé, avec ta position, seront chiffrées pour cette clé. Ne l\'importe que si tu fais confiance à son organisateur.',
+            tr("This event also sets the medics' key: your injury alerts, with your location, will be encrypted for this key. Only import it if you trust its organizer.", 'Cet événement fixe aussi la clé des medics : tes alertes de blessé, avec ta position, seront chiffrées pour cette clé. Ne l\'importe que si tu fais confiance à son organisateur.'),
             style: theme.bodyLarge,
           ),
         ),
       ],
       const SizedBox(height: 16),
       if (event.trusted) ...[
-        Text('Organisateur de confiance', style: theme.titleMedium),
-        Text('${event.knownName}, empreinte ${packet.fingerprint}', style: theme.bodyLarge),
+        Text(tr('Trusted organizer', 'Organisateur de confiance'), style: theme.titleMedium),
+        Text(
+          tr(
+            '${event.knownName}, fingerprint ${packet.fingerprint}',
+            '${event.knownName}, empreinte ${packet.fingerprint}',
+          ),
+          style: theme.bodyLarge,
+        ),
         const SizedBox(height: 24),
-        BigButton(label: 'Importer', onPressed: () => _import(trust: false)),
+        BigButton(label: tr('Import', 'Importer'), onPressed: () => _import(trust: false)),
         const SizedBox(height: 12),
-        BigButton(label: 'Annuler', primary: false, onPressed: () => Navigator.of(context).pop()),
+        BigButton(label: tr('Cancel', 'Annuler'), primary: false, onPressed: () => Navigator.of(context).pop()),
       ] else ...[
         Container(
           padding: const EdgeInsets.all(12),
@@ -429,20 +454,23 @@ class _EventImportScreenState extends State<EventImportScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Organisateur inconnu', style: theme.titleLarge),
+              Text(tr('Unknown organizer', 'Organisateur inconnu'), style: theme.titleLarge),
               const SizedBox(height: 8),
-              Text('Empreinte', style: theme.bodyMedium?.copyWith(color: Palette.muted)),
+              Text(tr('Fingerprint', 'Empreinte'), style: theme.bodyMedium?.copyWith(color: Palette.muted)),
               Text(packet.fingerprint, style: theme.headlineMedium),
               const SizedBox(height: 8),
               Text(
                 payload.organizerName.isEmpty
-                    ? 'Il ne donne pas de nom.'
-                    : 'Il se présente comme « ${payload.organizerName} ». C\'est lui qui l\'écrit : ça ne prouve rien.',
+                    ? tr("They don't give a name.", 'Il ne donne pas de nom.')
+                    : tr(
+                        'They call themselves “${payload.organizerName}”. They wrote that themselves: it proves nothing.',
+                        'Il se présente comme « ${payload.organizerName} ». C\'est lui qui l\'écrit : ça ne prouve rien.',
+                      ),
                 style: theme.bodyMedium,
               ),
               const SizedBox(height: 12),
               Text(
-                'Compare l\'empreinte avec celle que l\'organisateur te donne de vive voix, sur son téléphone ou sur son papier. Si elle est différente, ou si tu ne peux pas la vérifier, n\'importe pas ce fichier : tout ce qu\'il signe s\'affichera comme sûr.',
+                tr("Compare the fingerprint with the one the organizer gives you in person, on their phone or on paper. If it's different, or if you can't check it, don't import this file: everything they sign will show as trusted.", 'Compare l\'empreinte avec celle que l\'organisateur te donne de vive voix, sur son téléphone ou sur son papier. Si elle est différente, ou si tu ne peux pas la vérifier, n\'importe pas ce fichier : tout ce qu\'il signe s\'affichera comme sûr.'),
                 style: theme.bodyLarge,
               ),
             ],
@@ -454,15 +482,15 @@ class _EventImportScreenState extends State<EventImportScreen> {
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(border: Border.all(color: Palette.danger, width: 2)),
             child: Text(
-              'Attention : tu as déjà un organisateur de ce nom, avec une autre empreinte. Quelqu\'un se fait peut-être passer pour lui.',
+              tr('Warning: you already have an organizer with this name, with a different fingerprint. Someone may be impersonating them.', 'Attention : tu as déjà un organisateur de ce nom, avec une autre empreinte. Quelqu\'un se fait peut-être passer pour lui.'),
               style: theme.bodyLarge,
             ),
           ),
         ],
         const SizedBox(height: 24),
-        BigButton(label: 'Faire confiance et importer', onPressed: () => _import(trust: true)),
+        BigButton(label: tr('Trust and import', 'Faire confiance et importer'), onPressed: () => _import(trust: true)),
         const SizedBox(height: 12),
-        BigButton(label: 'Annuler', primary: false, onPressed: () => Navigator.of(context).pop()),
+        BigButton(label: tr('Cancel', 'Annuler'), primary: false, onPressed: () => Navigator.of(context).pop()),
       ],
     ];
   }
@@ -471,7 +499,7 @@ class _EventImportScreenState extends State<EventImportScreen> {
     final result = _result!;
     final map = result.map;
     return [
-      Text(result.packetAdded ? 'Événement en place' : 'Carte en place', style: theme.headlineSmall),
+      Text(result.packetAdded ? tr('Event installed', 'Événement en place') : tr('Map installed', 'Carte en place'), style: theme.headlineSmall),
       if (result.packet != null) ...[
         const SizedBox(height: 4),
         Text(result.packet!.payload.name, style: theme.titleMedium),
@@ -482,26 +510,32 @@ class _EventImportScreenState extends State<EventImportScreen> {
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(border: Border.all(color: Palette.danger, width: 2)),
           child: Text(
-            'L\'événement est en place, mais pas sa carte. ${describePacketProblem(result.mapProblem!)}',
+            tr(
+              'The event is installed, but not its map. ${describePacketProblem(result.mapProblem!)}',
+              'L\'événement est en place, mais pas sa carte. ${describePacketProblem(result.mapProblem!)}',
+            ),
             style: theme.bodyLarge,
           ),
         )
       else if (map != null)
-        Text('Carte hors ligne en place : ${map.name}.', style: theme.bodyLarge)
+        Text(
+          tr('Offline map installed: ${map.name}.', 'Carte hors ligne en place : ${map.name}.'),
+          style: theme.bodyLarge,
+        )
       else
         Text(
-          'Pas de carte avec cet événement : le parcours et les lieux s\'affichent sur un fond vide.',
+          tr('No map with this event: the route and places show on a blank background.', 'Pas de carte avec cet événement : le parcours et les lieux s\'affichent sur un fond vide.'),
           style: theme.bodyLarge,
         ),
       const SizedBox(height: 24),
       BigButton(
-        label: 'Ouvrir la carte',
+        label: tr('Open the map', 'Ouvrir la carte'),
         onPressed: () => Navigator.of(context).pushReplacement(
           MaterialPageRoute<void>(builder: (_) => MapScreen(controller: widget.controller)),
         ),
       ),
       const SizedBox(height: 12),
-      BigButton(label: 'Terminé', primary: false, onPressed: () => Navigator.of(context).pop()),
+      BigButton(label: tr('Done', 'Terminé'), primary: false, onPressed: () => Navigator.of(context).pop()),
     ];
   }
 }
@@ -533,21 +567,21 @@ class PacketScreen extends StatelessWidget {
               decoration: BoxDecoration(border: Border.all(color: Palette.line, width: 2)),
               child: Column(
                 children: [
-                  InfoRow('Signé par', organizerName),
-                  InfoRow('Empreinte', packet.fingerprint),
-                  InfoRow('Publié', clockText(payload.issued.toLocal(), now)),
-                  InfoRow('Valable jusqu\'à', clockText(payload.expires.toLocal(), now)),
+                  InfoRow(tr('Signed by', 'Signé par'), organizerName),
+                  InfoRow(tr('Fingerprint', 'Empreinte'), packet.fingerprint),
+                  InfoRow(tr('Published', 'Publié'), clockText(payload.issued.toLocal(), now)),
+                  InfoRow(tr('Valid until', 'Valable jusqu\'à'), clockText(payload.expires.toLocal(), now)),
                 ],
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Le contenu est vérifié par la signature avant d\'être affiché. Cela prouve qui l\'a écrit, pas que ce qu\'il dit est juste.',
+              tr("The content is checked against the signature before it's shown. That proves who wrote it, not that what it says is right.", 'Le contenu est vérifié par la signature avant d\'être affiché. Cela prouve qui l\'a écrit, pas que ce qu\'il dit est juste.'),
               style: theme.bodyMedium?.copyWith(color: Palette.muted),
             ),
             for (final entry in byKind.entries) ...[
               const SizedBox(height: 24),
-              Text('${entry.key.label} (${entry.value.length})', style: theme.titleLarge),
+              Text('${entry.key.displayLabel} (${entry.value.length})', style: theme.titleLarge),
               const SizedBox(height: 8),
               for (final point in entry.value) ...[
                 Container(
@@ -558,7 +592,7 @@ class PacketScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(point.name.isEmpty ? entry.key.label : point.name, style: theme.titleMedium),
+                      Text(point.name.isEmpty ? entry.key.displayLabel : point.name, style: theme.titleMedium),
                       if (point.note.isNotEmpty) Text(point.note, style: theme.bodyLarge),
                     ],
                   ),
@@ -617,7 +651,7 @@ class _OrganizerScanScreenState extends State<OrganizerScanScreen> {
         _message = null;
       });
     } on FormatException {
-      setState(() => _message = 'Ce QR n\'est pas un code d\'organisateur Cortège.');
+      setState(() => _message = tr("This QR isn't a Cortège organizer code.", 'Ce QR n\'est pas un code d\'organisateur Cortège.'));
     }
   }
 
@@ -631,40 +665,43 @@ class _OrganizerScanScreenState extends State<OrganizerScanScreen> {
     final theme = Theme.of(context).textTheme;
     final found = _found;
     return Scaffold(
-      appBar: AppBar(title: const Text('Ajouter un organisateur')),
+      appBar: AppBar(title: Text(tr('Add an organizer', 'Ajouter un organisateur'))),
       body: SafeArea(
         child: _done
             ? ListView(
                 padding: const EdgeInsets.all(16),
                 children: [
-                  Text('Organisateur ajouté.', style: theme.headlineMedium),
+                  Text(tr('Organizer added.', 'Organisateur ajouté.'), style: theme.headlineMedium),
                   const SizedBox(height: 8),
                   Text(
-                    'Tu peux maintenant ouvrir ses fichiers d\'événement.',
+                    tr('You can now open their event files.', 'Tu peux maintenant ouvrir ses fichiers d\'événement.'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                   const SizedBox(height: 24),
-                  BigButton(label: 'Terminé', onPressed: () => Navigator.of(context).pop()),
+                  BigButton(label: tr('Done', 'Terminé'), onPressed: () => Navigator.of(context).pop()),
                 ],
               )
             : found != null
                 ? ListView(
                     padding: const EdgeInsets.all(16),
                     children: [
-                      Text('Faire confiance à cet organisateur ?', style: theme.titleLarge),
+                      Text(tr('Trust this organizer?', 'Faire confiance à cet organisateur ?'), style: theme.titleLarge),
                       const SizedBox(height: 12),
                       Text(found.name, style: theme.headlineMedium),
-                      Text('Empreinte ${found.fingerprint}', style: theme.titleMedium),
+                      Text(
+                        tr('Fingerprint ${found.fingerprint}', 'Empreinte ${found.fingerprint}'),
+                        style: theme.titleMedium,
+                      ),
                       const SizedBox(height: 12),
                       Text(
-                        'Compare cette empreinte avec celle que l\'organisateur te donne de vive voix, sur son téléphone ou sur son papier. Tout ce qu\'il signe sera affiché sur ta carte et dans tes infos.',
+                        tr('Compare this fingerprint with the one the organizer gives you in person, on their phone or on paper. Everything they sign will be shown on your map and in your info.', 'Compare cette empreinte avec celle que l\'organisateur te donne de vive voix, sur son téléphone ou sur son papier. Tout ce qu\'il signe sera affiché sur ta carte et dans tes infos.'),
                         style: theme.bodyLarge,
                       ),
                       const SizedBox(height: 24),
-                      BigButton(label: 'Faire confiance', onPressed: () => _trust(found)),
+                      BigButton(label: tr('Trust', 'Faire confiance'), onPressed: () => _trust(found)),
                       const SizedBox(height: 12),
                       BigButton(
-                        label: 'Annuler',
+                        label: tr('Cancel', 'Annuler'),
                         primary: false,
                         onPressed: () => setState(() => _found = null),
                       ),
@@ -674,7 +711,7 @@ class _OrganizerScanScreenState extends State<OrganizerScanScreen> {
                     onText: _onText,
                     message: _message,
                     messageIsError: _message != null,
-                    pasteLabel: 'Coller un code copié',
+                    pasteLabel: tr('Paste a copied code', 'Coller un code copié'),
                   ),
       ),
     );

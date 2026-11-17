@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
+import '../l10n/language.dart';
 import '../vault/pin_policy.dart';
 import 'pin_create_flow.dart';
 import 'texts.dart';
@@ -46,9 +47,11 @@ class _SetupScreenState extends State<SetupScreen> {
             child: switch (_step) {
               _Step.intro => _intro(context),
               _Step.pin => PinCreateFlow(
-                  title: 'Choisis ton code',
-                  hint:
-                      '${PinPolicy.minLength} à ${PinPolicy.maxLength} chiffres. Pas de suite facile comme 123456.',
+                  title: tr('Choose your code', 'Choisis ton code'),
+                  hint: tr(
+                    '${PinPolicy.minLength} to ${PinPolicy.maxLength} digits. No easy sequence like 123456.',
+                    '${PinPolicy.minLength} à ${PinPolicy.maxLength} chiffres. Pas de suite facile comme 123456.',
+                  ),
                   onPin: (pin) async {
                     setState(() {
                       _pin = pin;
@@ -60,20 +63,23 @@ class _SetupScreenState extends State<SetupScreen> {
                 ),
               _Step.duressAsk => _duressAsk(context),
               _Step.duress => PinCreateFlow(
-                  title: 'Code de contrainte',
-                  hint: 'Différent du premier. Tu dois pouvoir le taper sans réfléchir.',
+                  title: tr('Duress code', 'Code de contrainte'),
+                  hint: tr(
+                    'Different from the first one. You must be able to type it without thinking.',
+                    'Différent du premier. Tu dois pouvoir le taper sans réfléchir.',
+                  ),
                   onPin: (duress) async {
                     if (duress == _pin) {
-                      return 'Il doit être différent de ton code.';
+                      return tr('It must be different from your code.', 'Il doit être différent de ton code.');
                     }
                     return _createVault(duress);
                   },
                 ),
-              _Step.creating => const Center(
+              _Step.creating => Center(
                   child: Text(
-                    'Création du coffre...\nÇa prend quelques secondes.',
+                    tr('Creating the vault...\nThis takes a few seconds.', 'Création du coffre...\nÇa prend quelques secondes.'),
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
                   ),
                 ),
             },
@@ -86,15 +92,27 @@ class _SetupScreenState extends State<SetupScreen> {
     return ListView(
       children: [
         Text('Cortège', style: theme.headlineMedium),
-        const SizedBox(height: 24),
-        Text('Avant de commencer :', style: theme.titleMedium),
+        const SizedBox(height: 16),
+        // Langue d'abord : tout le reste de l'écran en dépend.
+        Text('Language / Langue', style: theme.titleMedium),
+        const SizedBox(height: 8),
+        for (final language in AppLanguage.values) ...[
+          ChoiceRow(
+            label: language.nativeName,
+            selected: language == Language.current,
+            onTap: () => Language.set(language),
+          ),
+          const SizedBox(height: 8),
+        ],
+        const SizedBox(height: 16),
+        Text(tr('Before you start:', 'Avant de commencer :'), style: theme.titleMedium),
         const SizedBox(height: 12),
-        _point(context, 'Tout reste sur ce téléphone. Pas de compte, pas de serveur, aucune connexion.'),
-        _point(context, 'Ton code ouvre l\'appli. Personne ne peut le retrouver : si tu l\'oublies, il faut tout effacer.'),
-        _point(context, 'Les messages disparaissent tout seuls au bout de 24 h. Tu peux changer ça dans les réglages.'),
+        _point(context, tr('Everything stays on this phone. No account, no server, no connection.', 'Tout reste sur ce téléphone. Pas de compte, pas de serveur, aucune connexion.')),
+        _point(context, tr("Your code opens the app. Nobody can recover it: if you forget it, you'll have to erase everything.", 'Ton code ouvre l\'appli. Personne ne peut le retrouver : si tu l\'oublies, il faut tout effacer.')),
+        _point(context, tr('Messages disappear on their own after 24 h. You can change that in the settings.', 'Les messages disparaissent tout seuls au bout de 24 h. Tu peux changer ça dans les réglages.')),
         const SizedBox(height: 24),
         BigButton(
-          label: 'Choisir mon code',
+          label: tr('Choose my code', 'Choisir mon code'),
           onPressed: () => setState(() => _step = _Step.pin),
         ),
       ],
@@ -105,25 +123,31 @@ class _SetupScreenState extends State<SetupScreen> {
     final theme = Theme.of(context).textTheme;
     return ListView(
       children: [
-        Text('Code de contrainte', style: theme.headlineMedium),
+        Text(tr('Duress code', 'Code de contrainte'), style: theme.headlineMedium),
         const SizedBox(height: 16),
         Text(
-          'Si on te force à ouvrir l\'appli, ce second code ouvre une version vide, sans tes groupes ni tes messages.',
+          tr(
+            'If someone forces you to open the app, this second code opens an empty version, without your groups or messages.',
+            'Si on te force à ouvrir l\'appli, ce second code ouvre une version vide, sans tes groupes ni tes messages.',
+          ),
           style: theme.bodyLarge,
         ),
         const SizedBox(height: 12),
         Text(
-          'Ça te sort d\'un contrôle rapide. Ça ne trompe pas quelqu\'un qui analyse le téléphone en détail.',
+          tr(
+            "It gets you through a quick check. It won't fool someone who analyses the phone in detail.",
+            'Ça te sort d\'un contrôle rapide. Ça ne trompe pas quelqu\'un qui analyse le téléphone en détail.',
+          ),
           style: theme.bodyMedium?.copyWith(color: Palette.muted),
         ),
         const SizedBox(height: 24),
         BigButton(
-          label: 'Choisir un code de contrainte',
+          label: tr('Choose a duress code', 'Choisir un code de contrainte'),
           onPressed: () => setState(() => _step = _Step.duress),
         ),
         const SizedBox(height: 12),
         BigButton(
-          label: 'Plus tard, dans les réglages',
+          label: tr('Later, in the settings', 'Plus tard, dans les réglages'),
           primary: false,
           onPressed: () => _createVault(null),
         ),

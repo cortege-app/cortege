@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../app_controller.dart';
+import '../l10n/language.dart';
 import 'home_screen.dart';
 import 'lock_screen.dart';
 import 'organizer_screens.dart';
@@ -32,6 +33,20 @@ class _CortegeAppState extends State<CortegeApp> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     _lastPhase = widget.controller.phase;
     widget.controller.addListener(_onControllerChange);
+    Language.notifier.addListener(_onLanguageChange);
+  }
+
+  /// Toute l'interface est redessinée dans la nouvelle langue, écrans empilés
+  /// compris, sans perdre la navigation en cours.
+  void _onLanguageChange() {
+    if (!mounted) return;
+    setState(() {});
+    void rebuild(Element element) {
+      element.markNeedsBuild();
+      element.visitChildren(rebuild);
+    }
+
+    (context as Element).visitChildren(rebuild);
   }
 
   /// Un fichier d'événement ouvert avec Cortège depuis une autre appli attend
@@ -67,6 +82,7 @@ class _CortegeAppState extends State<CortegeApp> with WidgetsBindingObserver {
   @override
   void dispose() {
     widget.controller.removeListener(_onControllerChange);
+    Language.notifier.removeListener(_onLanguageChange);
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -104,8 +120,8 @@ class _CortegeAppState extends State<CortegeApp> with WidgetsBindingObserver {
         debugShowCheckedModeBanner: false,
         theme: buildTheme(),
         navigatorKey: _navigatorKey,
-        locale: const Locale('fr'),
-        supportedLocales: const [Locale('fr')],
+        locale: Language.current.locale,
+        supportedLocales: [for (final language in AppLanguage.values) language.locale],
         localizationsDelegates: GlobalMaterialLocalizations.delegates,
         home: ListenableBuilder(
           listenable: widget.controller,
@@ -137,15 +153,18 @@ class _UnrecoverableScreen extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Text('Données perdues', style: theme.headlineMedium),
+            Text(tr('Data lost', 'Données perdues'), style: theme.headlineMedium),
             const SizedBox(height: 16),
             Text(
-              'La protection matérielle du téléphone a été réinitialisée ou effacée. Ce qui était chiffré est définitivement illisible, même avec le bon code.',
+              tr(
+                "The phone's hardware protection was reset or erased. Everything that was encrypted is permanently unreadable, even with the right code.",
+                'La protection matérielle du téléphone a été réinitialisée ou effacée. Ce qui était chiffré est définitivement illisible, même avec le bon code.',
+              ),
               style: theme.bodyLarge,
             ),
             const SizedBox(height: 24),
             BigButton(
-              label: 'Effacer et repartir de zéro',
+              label: tr('Erase and start over', 'Effacer et repartir de zéro'),
               onPressed: controller.wipeEverything,
             ),
           ],
@@ -168,10 +187,13 @@ class _FailedScreen extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Text('Impossible de continuer', style: theme.headlineMedium),
+            Text(tr('Cannot continue', 'Impossible de continuer'), style: theme.headlineMedium),
             const SizedBox(height: 16),
             Text(
-              'L\'appli n\'arrive pas à utiliser la protection matérielle ou le stockage de ce téléphone. Elle ne démarre pas sans, pour ne pas laisser tes données sans protection.',
+              tr(
+                "The app can't use this phone's hardware protection or storage. It won't start without them, so your data is never left unprotected.",
+                'L\'appli n\'arrive pas à utiliser la protection matérielle ou le stockage de ce téléphone. Elle ne démarre pas sans, pour ne pas laisser tes données sans protection.',
+              ),
               style: theme.bodyLarge,
             ),
             const SizedBox(height: 12),

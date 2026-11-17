@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 
+import '../l10n/language.dart';
 import '../vault/vault_state.dart';
 import '../vault/vault_store.dart';
 import 'alert_signal.dart';
@@ -560,7 +561,7 @@ class MeshController extends ChangeNotifier implements MeshHost {
     } catch (e) {
       keys.dispose();
       _status = MeshStatus.unavailable;
-      _statusDetail = 'erreur radio';
+      _statusDetail = tr('radio error', 'erreur radio');
       _retryable = true;
       _scheduleRetry();
     }

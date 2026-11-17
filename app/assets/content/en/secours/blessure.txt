@@ -1,0 +1,61 @@
+titre: Injury
+resume: Wound, blow, fall, crush.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Before you act
+Look out for dangers: traffic, fire, electricity. Don't go closer if it puts you at risk. If you can't act safely, alert the emergency services and set up a safety perimeter.
+
+Check whether the person is conscious and breathing normally. If they are conscious, tell them who you are and what you are going to do, to reassure them.
+
+Stay calm and don't rush.
+
+# A bleeding wound
+- If possible, avoid any contact with blood. Protect your hands with disposable gloves, a plastic bag or cloth.
+- If the person can, ask them to press on their wound themselves. Otherwise, press directly on the wound.
+- Lay the person down flat.
+- Ask someone to alert the emergency services. If you are alone, do it yourself.
+- If the wound is still bleeding, press harder and keep going until help arrives.
+- If you are alone and need to free your hands, for example to call for help, replace your pressure with a pressure pad (tampon relais).
+- Wash your hands afterwards.
+
+The pressure pad: a clean cloth covering the whole wound, held in place by a strip wide enough to cover the pad and go around the limb at least 2 times. Tighten enough to press on the wound. If blood comes through, put a second pad on top. If that fails, go back to pressing with your hand.
+
+If bleeding from an arm or leg doesn't stop despite pressure, a tourniquet can be applied between the heart and the wound and tightened until the bleeding stops. A purpose-made tourniquet is best; failing that, a wide strip.
+
+! To be checked by first aiders: the tourniquet (when to apply it, where, what to write down). The Ministry of the Interior guide could not be read directly.
+
+# A blow, a fall
+If the person is conscious and complains of pain after the blow (bone, joint, wound), tell them firmly not to move the injured part. Alert the emergency services and follow their instructions. Protect them from heat, cold or rain. Keep an eye on them and talk to them regularly.
+
+If their neck or back hurts after a fall: ask them not to move their head, alert the emergency services and, if you can, hold their head with both hands. Keep an eye on them.
+
+If they are unconscious but breathing, put them in the recovery position (position latérale de sécurité), unless you suspect a trauma injury (fall, violent blow): in that case, call the emergency services and follow their advice.
+
+# What not to do
+- Don't release the pressure until help arrives.
+- Avoid any direct contact with blood.
+- Don't move the head of someone whose neck or back hurts.
+- Don't press on the soft part under the chin of an unconscious person.
+
+? What other actions make an injury worse, especially after a crush or a blow?
+
+# When to call for help
+Call 15, 18 or 112 in these cases:
+- bleeding that won't stop,
+- a person who doesn't respond,
+- neck or back pain after a fall,
+- a bone, joint or wound that looks serious,
+- a serious or large burn.
+
+To describe the situation, give the exact location, the number of people, the condition of each one and what you have already done. See the "Emergency numbers" sheet.
+
+# Sources
+- Croix-Rouge française, "L'hémorragie": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/hemorragie
+- Croix-Rouge française, "Les étapes pour porter secours": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/4-etapes-pour-porter-secours
+- Croix-Rouge française, "L'inconscience": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/inconscience
+- Ministry of the Interior, PSC1 training, trauma (neck or back pain, injured part not to be moved), as reported by a search: https://www.interieur.gouv.fr/content/download/36645/277100/file/PSC1_version%201.1.1.pdf
+- Ministry of the Interior, "Les gestes qui sauvent", 2024 guide, for the tourniquet, as reported by a search, not read directly: https://www.interieur.gouv.fr/actualites/actualites-du-ministere/gestes-qui-sauvent
+
+Written on 24 October 2026 from these sources by the development assistant, who is not a first aider, and translated from French. No human review so far.

@@ -1,0 +1,57 @@
+titre: Identity check
+resume: When you're asked for your papers.
+relecture: juriste
+statut: a_valider
+redaction: brouillon_source
+
+# Who can check you, and when
+Anyone present in France must agree to an identity check (contrôle d'identité). But the police or the gendarmerie can only do it in certain cases:
+
+- You are suspected of having committed or attempted an offence, of preparing to commit one, or you can give information useful to an investigation.
+- You are wanted by order of the courts.
+- There is a serious and current risk to the safety of people or property, at that place and at that time. The check is then possible whatever your behaviour.
+- The public prosecutor (procureur de la République) has requested it in writing to look for specific offences, in the places and for the length of time they set.
+
+Judicial police officers (officiers de police judiciaire) can check you, as can judicial police agents under their responsibility and some assistant judicial police agents. Customs officers can also check a person entering a customs territory.
+
+The check must always be justified by one of these cases. The law does not say the officer must state the reason straight away: you can ask for it. An unjustified check can be challenged in court.
+
+# What you must show
+You can prove your identity by any means. Papers with a photo (identity card, passport, driving licence) carry more weight, but other documents can be used: birth certificate, carte vitale (health insurance card), student card. The statement of a person with you may be accepted. Proofs from the France Identité app are not necessarily accepted by the police.
+
+For French citizens, the identity card is not compulsory. If you can't prove your identity any other way, you can be held while it is checked (see below).
+
+If you are a foreign national: for a stay of more than 3 months, you must be able to show a residence permit (titre de séjour) or a long-stay visa. For a short stay, a passport with a valid visa, unless you are visa-exempt. Without a residence document, you can be taken to the station to check your right to stay. A foreign minor cannot be subjected to a residence permit check.
+
+# If you refuse or have no papers
+You can be held on the spot or at the station to check your identity. You are immediately brought before a judicial police officer, who must let you prove your identity by any means: new papers, witnesses.
+
+You can have the public prosecutor and a person of your choice informed, for example your family. If you are a minor, the prosecutor is informed from the start and you must in principle be assisted by your legal guardian.
+
+If you refuse fingerprinting or photographs authorized by the prosecutor or a judge, you risk 3 months in prison and a €3,750 fine.
+
+The holding cannot last more than 4 hours from the check (8 hours in French Guiana and Mayotte). The prosecutor can end it at any time.
+
+A written report (procès-verbal) is drawn up and presented to you for signature. Ask for a copy.
+
+! To be checked by the lawyer: service-public.gouv.fr says a copy of the report is given to the person, while the text of article 78-3 provides for it in more limited cases.
+
+If no legal proceedings follow, the check cannot be recorded, and the report is destroyed within 6 months.
+
+# During the check
+Police officers and gendarmes must visibly wear their individual identification number, the RIO, a 7-digit number (article R434-15 of the internal security code). You can read it and write it down. The Conseil d'État recognized in 2023 that wearing the RIO is compulsory, but organizations note that it is often hard to see.
+
+You can film or photograph the police while they are working, under the freedom to inform. Sharing the images is regulated: no serious invasion of their privacy, no incitement to hatred or violence. A video is admissible evidence in court.
+
+If the check seems abusive to you, write down if you can the time, the place, the RIO numbers and the names of witnesses, and keep your videos. You can refer the matter to the Défenseur des droits, report the facts to the IGPN (national police) or the IGGN (gendarmerie), and file a complaint. See the "Useful contacts" sheet. Officers at fault can face disciplinary or criminal sanctions.
+
+# Sources
+- service-public.gouv.fr, "Contrôle d'identité", page checked on 19 August 2026: https://www.service-public.gouv.fr/particuliers/vosdroits/F1036
+- Code of criminal procedure (code de procédure pénale), articles 78-1 to 78-5, version in force on 23 October 2026 (Légifrance): https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006151880/
+- Internal security code, article R434-15, and Conseil d'État interim order of 2023, according to the Ligue des droits de l'Homme: https://www.ldh-france.org/wp-content/uploads/2023/03/Communique-RIO-refere-liberte-1.pdf
+- Amnesty International France, "Manifester en France : tout savoir sur tes droits", 5 October 2026: https://www.amnesty.fr/reperes/france-connaitre-droits-manifestation/
+- service-public.gouv.fr, "Litige avec les forces de l'ordre", page checked on 13 August 2026: https://www.service-public.gouv.fr/particuliers/vosdroits/F2546
+
+Articles 78-1 to 78-5 will be repealed and replaced by a new code on 1 January 2029 (ordonnance n° 2025-1091 of 19 November 2025): this sheet will need to be reviewed then.
+
+Written on 24 October 2026 from these sources by the development assistant, who is not a lawyer, and translated from French. No human review so far.

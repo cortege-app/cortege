@@ -3,6 +3,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../l10n/language.dart';
 import '../mesh/compass.dart';
 import 'theme.dart';
 
@@ -70,8 +71,11 @@ class _CompassViewState extends State<CompassView> {
     if (heading == null) {
       return Text(
         _failed || _ended
-            ? 'Ce téléphone n\'a pas de boussole. Utilise la direction écrite.'
-            : 'La boussole démarre...',
+            ? tr(
+                "This phone has no compass. Use the written direction.",
+                'Ce téléphone n\'a pas de boussole. Utilise la direction écrite.',
+              )
+            : tr('Starting the compass...', 'La boussole démarre...'),
         style: theme.bodyMedium?.copyWith(color: Palette.muted),
       );
     }
@@ -94,19 +98,30 @@ class _CompassViewState extends State<CompassView> {
         ),
         const SizedBox(height: 8),
         Text(
-          widget.indicative ? 'Indicatif : ${turnInstruction(relative).toLowerCase()}' : turnInstruction(relative),
+          widget.indicative
+              ? tr(
+                  'Approximate: ${turnInstruction(relative).toLowerCase()}',
+                  'Indicatif : ${turnInstruction(relative).toLowerCase()}',
+                )
+              : turnInstruction(relative),
           style: theme.titleLarge,
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 4),
         Text(
-          'Le téléphone regarde vers ${heading.round()}°, la cible est vers ${widget.bearing.round()}° (0° : nord, 90° : est).',
+          tr(
+            'The phone points to ${heading.round()}°, the target is at ${widget.bearing.round()}° (0°: north, 90°: east).',
+            'Le téléphone regarde vers ${heading.round()}°, la cible est vers ${widget.bearing.round()}° (0° : nord, 90° : est).',
+          ),
           style: theme.bodyMedium?.copyWith(color: Palette.muted),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 4),
         Text(
-          'Tiens le téléphone à plat, ou debout devant toi. Éloigne-le des objets en métal.',
+          tr(
+            'Hold the phone flat, or upright in front of you. Keep it away from metal objects.',
+            'Tiens le téléphone à plat, ou debout devant toi. Éloigne-le des objets en métal.',
+          ),
           style: theme.bodyMedium?.copyWith(color: Palette.muted),
           textAlign: TextAlign.center,
         ),

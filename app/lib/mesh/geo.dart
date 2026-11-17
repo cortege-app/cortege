@@ -1,5 +1,7 @@
 import 'dart:math' as math;
 
+import '../l10n/language.dart';
+
 /// Un point sur la Terre. Jamais écrit sur disque : une position ne vit qu'en
 /// mémoire, le temps d'une alerte.
 class GeoPoint {
@@ -99,16 +101,36 @@ const _compass = [
   'nord-ouest',
 ];
 
-String compassWord(double degrees) => _compass[((degrees + 22.5) % 360 ~/ 45) % 8];
+const _compassEn = [
+  'north',
+  'north-east',
+  'east',
+  'south-east',
+  'south',
+  'south-west',
+  'west',
+  'north-west',
+];
+
+String compassWord(double degrees) =>
+    (Language.isFrench ? _compass : _compassEn)[((degrees + 22.5) % 360 ~/ 45) % 8];
 
 /// « à 350 m vers le nord-est », arrondi pour ne pas promettre plus de précision
 /// que la position n'en a.
 String describeOffset(GeoPoint from, GeoPoint to) {
   final meters = distanceMeters(from, to);
   final word = compassWord(bearingDegrees(from, to));
-  if (meters < 60) return 'tout près';
-  if (meters < 1000) return 'à ${(meters / 10).round() * 10} m vers le $word';
-  return 'à ${(meters / 1000).toStringAsFixed(1)} km vers le $word';
+  if (meters < 60) return tr('very close', 'tout près');
+  if (meters < 1000) {
+    return tr(
+      '${(meters / 10).round() * 10} m to the $word',
+      'à ${(meters / 10).round() * 10} m vers le $word',
+    );
+  }
+  return tr(
+    '${(meters / 1000).toStringAsFixed(1)} km to the $word',
+    'à ${(meters / 1000).toStringAsFixed(1)} km vers le $word',
+  );
 }
 
 double _rad(double degrees) => degrees * math.pi / 180;

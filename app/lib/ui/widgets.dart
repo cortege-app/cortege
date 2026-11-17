@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../l10n/language.dart';
 import '../vault/pin_policy.dart';
 import 'theme.dart';
 
@@ -227,7 +228,7 @@ class _PinPadState extends State<PinPad> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
-    final status = widget.busy ? 'Un instant...' : widget.error;
+    final status = widget.busy ? tr('One moment...', 'Un instant...') : widget.error;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -241,7 +242,7 @@ class _PinPadState extends State<PinPad> {
         ],
         const SizedBox(height: 20),
         Semantics(
-          label: '${_digits.length} chiffres tapés',
+          label: tr('${_digits.length} digits entered', '${_digits.length} chiffres tapés'),
           child: _Dots(count: _digits.length),
         ),
         Container(
@@ -268,7 +269,7 @@ class _PinPadState extends State<PinPad> {
                     _Key(label: digit, onTap: () => _add(digit)),
                 ]),
               _KeyRow([
-                _Key(label: 'Effacer', small: true, onTap: _erase),
+                _Key(label: tr('Delete', 'Effacer'), small: true, onTap: _erase),
                 _Key(label: '0', onTap: () => _add('0')),
                 _Key(label: 'OK', small: true, accent: true, onTap: _submit),
               ]),
@@ -427,7 +428,7 @@ class _HoldToConfirmButtonState extends State<HoldToConfirmButton> {
     return Semantics(
       button: true,
       label: widget.label,
-      hint: 'Garde le doigt appuyé pour confirmer',
+      hint: tr('Keep your finger pressed to confirm', 'Garde le doigt appuyé pour confirmer'),
       onLongPress: widget.onConfirmed,
       excludeSemantics: true,
       child: Listener(
@@ -450,7 +451,7 @@ class _HoldToConfirmButtonState extends State<HoldToConfirmButton> {
               ),
               Center(
                 child: Text(
-                  holding ? 'Continue d\'appuyer...' : widget.label,
+                  holding ? tr('Keep pressing...', 'Continue d\'appuyer...') : widget.label,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,

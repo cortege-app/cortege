@@ -1,0 +1,72 @@
+titre: Police custody
+resume: If you're held at the police station.
+relecture: juriste
+statut: a_valider
+redaction: brouillon_source
+
+# What it is
+Police custody (garde à vue) is a measure by which you are held at the police or gendarmerie station. It is decided by a judicial police officer (officier de police judiciaire), on their own initiative or on the instructions of the public prosecutor (procureur de la République), who is informed from the start.
+
+There must be plausible reasons to believe you committed or attempted to commit a crime or an offence punishable by imprisonment. And custody must be the only way to achieve at least one of these aims:
+
+- continue the investigation while making sure you are present,
+- bring you before a magistrate,
+- prevent evidence from being destroyed,
+- prevent you from coordinating with other people,
+- prevent pressure on witnesses or victims,
+- stop an offence in progress.
+
+It is not the same as a voluntary interview (audition libre), where you are not held.
+
+# Your rights from the start
+They must be told to you in a language you understand, with a written summary: the start of custody, how long it may last, the suspected offence (presumed date and place) and its aims.
+
+- Remain silent. Once you have given your identity, you can make statements, answer questions, or remain silent. Your only obligation is to give your identity.
+- Have someone close to you informed. You can ask for the person you live with, one of your parents or children, a brother or sister, and your employer to be informed by phone. If you are a foreign national, your consulate. Unless circumstances make it impossible, within 3 hours at most of your request. The prosecutor or the judge can delay or refuse these notices if necessary for the investigation or to prevent a serious threat to a person's life, freedom or physical integrity.
+- See a doctor. You can ask from the start and at each extension. If custody lasts more than 48 hours, the examination is compulsory.
+- Have a lawyer. You can ask for a lawyer of your choice from the start, at any time, and at the start of each extension. If you don't have one, or they can't be reached, you can ask for a court-appointed lawyer (avocat commis d'office). They can talk with you for 30 minutes, confidentially, then attend your interviews and confrontations. They have 2 hours to arrive: the interview cannot start before then, unless the prosecutor gives written, reasoned permission. Their involvement can only be delayed by a magistrate's decision, for compelling reasons, and for a period limited by law.
+- Have an interpreter, free of charge, if you don't speak or understand French, for your interviews and to talk to your lawyer.
+- Read certain documents. You can ask to see, at the latest before any extension: the report notifying you of your custody, the medical certificates and the reports of your interviews.
+- Make observations. When the magistrate decides on an extension, you can make observations asking them to end custody.
+
+Your custody conditions: a mattress and a blanket to rest, a clean cell, water, hot meals at normal times.
+
+# How long
+- 24 hours at first, counted from your arrest (or from the time of the alcohol or drug test, or from being placed in a sobering-up cell).
+- A 24-hour extension, so 48 in total, is possible if the offence is punishable by at least 1 year in prison and if it is the only way to achieve one of the aims. It is decided by the prosecutor, or by the investigating judge (juge d'instruction). You can make observations.
+- For some serious offences, custody can last up to 72, 96 or 144 hours (144 hours for terrorism), by decision of the liberty and custody judge (juge des libertés et de la détention) or the investigating judge.
+
+# Interviews
+You don't have to answer questions: you can remain silent. You can be interviewed and confronted for as long as custody lasts.
+
+What you say is written down in a report (procès-verbal). You can reread it, have your observations added to it and sign it. If you refuse to sign it, the report must say so. Your signature confirms that the interview took place and what was said in it (Cour de cassation, 9 November 2010).
+
+Before signing: reread everything and check that what is written is really what you said. Talk to your lawyer about it, who can also reread the report and add written observations, attached to the case file.
+
+The custody report also contains notes on how it went, which you must initial. If you refuse, this is noted (article 64 of the code of criminal procedure).
+
+If you suffer violence during custody, have it noted in the report and tell your lawyer.
+
+You can also be photographed (TAJ file), fingerprinted, and for some serious offences a biological sample can be taken. Refusing these procedures is an offence.
+
+# When you leave
+Your personal belongings are returned to you, except those that are confiscated.
+
+At the end of custody, the prosecutor or the investigating judge decides to release you or to bring you before a magistrate. This appearance takes place on the same day custody ends. If that is not possible, at the latest 20 hours later, and you then stay in a cell at the court.
+
+One year after the end of custody, you can ask the prosecutor, by registered letter or by a statement at the court registry, to see the case file in order to make observations.
+
+? Which documents exactly are you given when you leave, apart from your personal belongings and the summary of your rights?
+
+# Sources
+- Ministry of Justice, "Déclaration des droits" given to an adult placed in police custody (drug trafficking version, February 2023): https://www.justice.gouv.fr/sites/default/files/2023-06/F3%20-GAV-Majeur-Trafic%20stup%C3%A9fiants%20modifi%C3%A9e%20LPJ.pdf
+- service-public.gouv.fr, "Garde à vue", page checked on 10 July 2025: https://www.service-public.gouv.fr/particuliers/vosdroits/F14837
+- Code of criminal procedure (code de procédure pénale), articles 62-2, 63 to 64-1, 706-88 (Légifrance): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006575090/1993-02-28
+- Cour de cassation, criminal chamber, 9 November 2010, n° 10-85.072: https://www.legifrance.gouv.fr/juri/id/JURITEXT000023164973
+- Amnesty International France, "Manifester en France : tout savoir sur tes droits", 5 October 2026: https://www.amnesty.fr/reperes/france-connaitre-droits-manifestation/
+
+The declaration of rights that was read is the one for custody for drug trafficking: for an ordinary offence, the durations are those in this sheet. The 3-hour time limit for informing someone close to you and how long the lawyer can be delayed still need checking for ordinary custody.
+
+These articles will be repealed and replaced by a new code on 1 January 2029 (ordonnance n° 2025-1091 of 19 November 2025): this sheet will need to be reviewed then.
+
+Written on 24 October 2026 from these sources by the development assistant, who is not a lawyer, and translated from French. No human review so far.

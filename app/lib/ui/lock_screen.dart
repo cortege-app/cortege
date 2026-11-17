@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
+import '../l10n/language.dart';
 import 'theme.dart';
 import 'widgets.dart';
 
@@ -81,7 +82,7 @@ class _LockScreenState extends State<LockScreen> {
       _busy = false;
       // Même message pour tout code qui n'ouvre rien : on ne dit jamais s'il
       // existe un autre coffre.
-      if (!opened) _error = 'Code incorrect.';
+      if (!opened) _error = tr('Wrong code.', 'Code incorrect.');
     });
     if (!opened) await _refreshWait();
   }
@@ -101,14 +102,16 @@ class _LockScreenState extends State<LockScreen> {
                 Expanded(
                   child: PinPad(
                     title: 'Cortège',
-                    subtitle: 'Tape ton code.',
-                    error: _wait > Duration.zero ? 'Trop d\'essais. Réessaie dans ${waitText(_wait)}.' : _error,
+                    subtitle: tr('Enter your code.', 'Tape ton code.'),
+                    error: _wait > Duration.zero
+                        ? tr('Too many attempts. Try again in ${waitText(_wait)}.', 'Trop d\'essais. Réessaie dans ${waitText(_wait)}.')
+                        : _error,
                     busy: _busy,
                     locked: _wait > Duration.zero,
                     onSubmit: _submit,
                   ),
                 ),
-                TextButton(onPressed: _forgotten, child: const Text('Code oublié ?')),
+                TextButton(onPressed: _forgotten, child: Text(tr('Forgot your code?', 'Code oublié ?'))),
               ],
             ),
           ),
@@ -132,43 +135,52 @@ class ForgotCodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('Code oublié')),
+      appBar: AppBar(title: Text(tr('Forgotten code', 'Code oublié'))),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
             Text(
-              'Personne ne peut retrouver ton code, pas même nous : il n\'est écrit nulle part.',
+              tr(
+                "Nobody can recover your code, not even us: it isn't written down anywhere.",
+                'Personne ne peut retrouver ton code, pas même nous : il n\'est écrit nulle part.',
+              ),
               style: theme.bodyLarge,
             ),
             const SizedBox(height: 12),
             Text(
-              'La seule issue est de tout effacer : le coffre, tes groupes, tes messages, tes codes et les cartes. C\'est définitif. Ensuite tu choisis un nouveau code et tu repars de zéro.',
+              tr(
+                'The only way out is to erase everything: the vault, your groups, your messages, your codes and the maps. It is permanent. Then you choose a new code and start from scratch.',
+                'La seule issue est de tout effacer : le coffre, tes groupes, tes messages, tes codes et les cartes. C\'est définitif. Ensuite tu choisis un nouveau code et tu repars de zéro.',
+              ),
               style: theme.bodyLarge,
             ),
             const SizedBox(height: 12),
             Text(
-              'Pas sûr de l\'avoir oublié ? Reviens à l\'écran de code et essaie encore.',
+              tr(
+                'Not sure you forgot it? Go back to the code screen and try again.',
+                'Pas sûr de l\'avoir oublié ? Reviens à l\'écran de code et essaie encore.',
+              ),
               style: theme.bodyMedium?.copyWith(color: Palette.muted),
             ),
             const SizedBox(height: 24),
             Text(
-              'Tout effacer',
+              tr('Erase everything', 'Tout effacer'),
               style: theme.titleLarge?.copyWith(color: Palette.danger),
             ),
             const SizedBox(height: 8),
             Text(
-              'Garde le doigt appuyé trois secondes. Impossible à annuler.',
+              tr('Keep your finger pressed for three seconds. This cannot be undone.', 'Garde le doigt appuyé trois secondes. Impossible à annuler.'),
               style: theme.bodyMedium?.copyWith(color: Palette.muted),
             ),
             const SizedBox(height: 12),
             HoldToConfirmButton(
-              label: 'Tout effacer',
+              label: tr('Erase everything', 'Tout effacer'),
               onConfirmed: controller.wipeEverything,
             ),
             const SizedBox(height: 16),
             BigButton(
-              label: 'Retour à l\'écran de code',
+              label: tr('Back to the code screen', 'Retour à l\'écran de code'),
               primary: false,
               onPressed: () => Navigator.of(context).pop(),
             ),

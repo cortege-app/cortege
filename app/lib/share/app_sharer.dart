@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
+import '../l10n/language.dart';
+
 /// La copie du fichier d'installation de l'appli, prête à être envoyée.
 class AppPackage {
   const AppPackage(this.file, this.size);
@@ -39,7 +41,10 @@ class NoAppSharer implements AppSharer {
 
   @override
   Future<AppPackage> prepare() async =>
-      throw AppShareException('Le partage de l\'appli n\'est pas disponible ici.');
+      throw AppShareException(tr(
+        "Sharing the app isn't available here.",
+        'Le partage de l\'appli n\'est pas disponible ici.',
+      ));
 
   @override
   Future<bool> send() async => false;
@@ -56,20 +61,24 @@ class PlatformAppSharer implements AppSharer {
     try {
       result = await _channel.invokeMapMethod<String, Object?>('prepare');
     } on MissingPluginException {
-      throw AppShareException('Le partage de l\'appli n\'est pas disponible ici.');
+      throw AppShareException(tr(
+        "Sharing the app isn't available here.",
+        'Le partage de l\'appli n\'est pas disponible ici.',
+      ));
     } on PlatformException {
-      throw AppShareException('L\'appli n\'a pas pu se copier.');
+      throw AppShareException(tr("The app couldn't copy itself.", 'L\'appli n\'a pas pu se copier.'));
     }
     final error = result?['error'];
     if (error == 'split') {
-      throw AppShareException(
+      throw AppShareException(tr(
+        "This installation is split into several pieces: its file wouldn't install on the other person's phone.",
         'Cette installation est en plusieurs morceaux : son fichier ne s\'installerait pas chez l\'autre personne.',
-      );
+      ));
     }
     final path = result?['path'];
     final size = result?['size'];
     if (error != null || path is! String || size is! int) {
-      throw AppShareException('L\'appli n\'a pas pu se copier.');
+      throw AppShareException(tr("The app couldn't copy itself.", 'L\'appli n\'a pas pu se copier.'));
     }
     return AppPackage(File(path), size);
   }

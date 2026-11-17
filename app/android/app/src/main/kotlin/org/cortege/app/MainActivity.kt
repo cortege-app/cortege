@@ -138,6 +138,9 @@ class MainActivity : FlutterActivity() {
                         "start" -> {
                             askNotificationPermission()
                             val intent = Intent(this, KeepAliveService::class.java)
+                            call.argument<String>("title")?.let {
+                                intent.putExtra(KeepAliveService.EXTRA_TITLE, it)
+                            }
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                                 startForegroundService(intent)
                             } else {

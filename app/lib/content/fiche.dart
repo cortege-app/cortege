@@ -22,6 +22,8 @@
 ///
 /// Les lignes `? ` sont des emplacements vides : ils s'affichent comme tels et
 /// ne passent jamais pour du contenu validé.
+import '../l10n/language.dart';
+
 enum ReviewBy { juriste, secouristes }
 
 enum ReviewStatus { aValider, valide }
@@ -79,16 +81,19 @@ class Fiche {
 
   /// La phrase sous le bandeau d'un brouillon : ce qu'il est et ce qu'il n'est pas.
   String? get draftNotice => draftFromSources && needsReview
-      ? 'Brouillon écrit par un assistant d\'après des sources officielles. Personne ne l\'a relu. Les sources sont en bas de la fiche.'
+      ? tr(
+          'Draft written by an assistant from official sources. Nobody has reviewed it. The sources are at the bottom of the sheet.',
+          'Brouillon écrit par un assistant d\'après des sources officielles. Personne ne l\'a relu. Les sources sont en bas de la fiche.',
+        )
       : null;
 
   int get toWriteCount => blocks.whereType<ToWriteBlock>().length;
 
   String get bannerText {
-    if (!needsReview) return 'Relu par $reviewedBy';
+    if (!needsReview) return tr('Reviewed by $reviewedBy', 'Relu par $reviewedBy');
     return switch (reviewBy) {
-      ReviewBy.juriste => 'À FAIRE VALIDER PAR UN JURISTE',
-      ReviewBy.secouristes => 'À FAIRE VALIDER PAR DES SECOURISTES',
+      ReviewBy.juriste => tr('TO BE REVIEWED BY A LAWYER', 'À FAIRE VALIDER PAR UN JURISTE'),
+      ReviewBy.secouristes => tr('TO BE REVIEWED BY FIRST-AIDERS', 'À FAIRE VALIDER PAR DES SECOURISTES'),
     };
   }
 }

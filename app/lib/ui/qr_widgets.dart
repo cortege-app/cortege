@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/language.dart';
 import '../mesh/group.dart';
 import '../mesh/mesh_controller.dart';
 import '../mesh/qr_codec.dart';
@@ -18,7 +19,7 @@ class QrCodeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Semantics(
-        label: 'Code QR',
+        label: tr('QR code', 'Code QR'),
         image: true,
         child: SizedBox(
           width: size,
@@ -83,7 +84,7 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
         _message = null;
       });
     } on FormatException {
-      setState(() => _message = 'Ce QR n\'est pas une invitation de groupe Cortège.');
+      setState(() => _message = tr("This QR code isn't a Cortège group invitation.", 'Ce QR n\'est pas une invitation de groupe Cortège.'));
     }
   }
 
@@ -119,7 +120,7 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
     final theme = Theme.of(context).textTheme;
     final found = _found;
     return Scaffold(
-      appBar: AppBar(title: const Text('Rejoindre un groupe')),
+      appBar: AppBar(title: Text(tr('Join a group', 'Rejoindre un groupe'))),
       body: SafeArea(
         child: found != null && _conflict
             ? LeaveEventPrompt(
@@ -135,28 +136,31 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
             ? ListView(
                 padding: const EdgeInsets.all(16),
                 children: [
-                  Text('Groupe trouvé', style: theme.titleMedium),
+                  Text(tr('Group found', 'Groupe trouvé'), style: theme.titleMedium),
                   const SizedBox(height: 8),
                   Text(found.name, style: theme.headlineMedium),
                   const SizedBox(height: 16),
                   Text(
-                    'Quand tu rejoins, tout le groupe peut lire tes messages, et ton téléphone rejoint le réseau des gens de l\'événement.',
+                    tr(
+                      "When you join, the whole group can read your messages, and your phone joins the network of the event's people.",
+                      'Quand tu rejoins, tout le groupe peut lire tes messages, et ton téléphone rejoint le réseau des gens de l\'événement.',
+                    ),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                   const SizedBox(height: 24),
                   BigButton(
-                    label: _joining ? 'Un instant...' : 'Rejoindre',
+                    label: _joining ? tr('One moment...', 'Un instant...') : tr('Join', 'Rejoindre'),
                     onPressed: _joining ? null : () => _join(found),
                   ),
                   const SizedBox(height: 12),
-                  BigButton(label: 'Annuler', primary: false, onPressed: _joining ? null : _cancel),
+                  BigButton(label: tr('Cancel', 'Annuler'), primary: false, onPressed: _joining ? null : _cancel),
                 ],
               )
             : QrScanner(
                 onText: _onText,
                 message: _message,
                 messageIsError: _message != null,
-                pasteLabel: 'Coller une invitation copiée',
+                pasteLabel: tr('Paste a copied invitation', 'Coller une invitation copiée'),
               ),
       ),
     );

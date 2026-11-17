@@ -20,7 +20,7 @@ class KeepAliveService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        val notification = buildNotification()
+        val notification = buildNotification(intent?.getStringExtra(EXTRA_TITLE) ?: "Service running")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             startForeground(
                 NOTIFICATION_ID,
@@ -33,7 +33,7 @@ class KeepAliveService : Service() {
         return START_NOT_STICKY
     }
 
-    private fun buildNotification(): Notification {
+    private fun buildNotification(title: String): Notification {
         val builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             manager.createNotificationChannel(
@@ -49,14 +49,16 @@ class KeepAliveService : Service() {
         }
         return builder
             .setSmallIcon(android.R.drawable.stat_sys_data_bluetooth)
-            .setContentTitle("Service actif")
+            .setContentTitle(title)
             .setOngoing(true)
             .setVisibility(Notification.VISIBILITY_SECRET)
             .build()
     }
 
-    private companion object {
-        const val CHANNEL_ID = "service"
-        const val NOTIFICATION_ID = 1
+    companion object {
+        /** Le titre de la notification, dans la langue choisie dans l'appli. */
+        const val EXTRA_TITLE = "title"
+        private const val CHANNEL_ID = "service"
+        private const val NOTIFICATION_ID = 1
     }
 }

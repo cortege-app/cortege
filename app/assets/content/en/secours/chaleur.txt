@@ -1,0 +1,53 @@
+titre: Heat
+resume: Sun, crowds, dehydration.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Recognize it
+Three conditions, from least to most serious:
+
+- Dehydration. First thirst, dry lips, unusual tiredness. Then intense thirst, dry mouth and tongue, dry, cold and pale skin, little urine, headaches, dizziness, sometimes disorientation.
+- Heat exhaustion. A temperature between 38 and 40 °C (sometimes normal, especially in older people), weakness, headaches, dizziness, nausea or vomiting, fast breathing, heavy sweating, a change in behaviour.
+- Heatstroke. A temperature of at least 40 °C, first with sweating then dry skin with no sweat, great weakness, disturbed consciousness (fainting, seizures, delirium, coma), a big drop in blood pressure.
+
+Warning signs of heatstroke: headaches, dizziness, nausea, confusion or drowsiness, temperature above 39 °C, red and hot skin, intense thirst, fast pulse and breathing.
+
+Exhaustion or dehydration are treated on the spot, then the person sees a doctor. Heatstroke is a medical emergency: a temperature of at least 40 °C with disturbed consciousness or a drop in blood pressure.
+
+# First steps
+For exhaustion or dehydration:
+- Move the person to a cool, dry, airy place and have them lie down.
+- Have them drink straight away and regularly: water, fruit juice or an energy drink.
+- Cool them down: sprinkle them with cold water, fan their wet skin, or apply damp cloths. For an adult, you can put ice wrapped in cloth on the head, the back of the neck, the armpits and the groin.
+
+For heatstroke:
+- Call 15 or 112 straight away.
+- Move the person to a cool place and have them drink.
+- Remove their clothes, sprinkle them with cool water or cover them with damp cloths. Create a draught if you can.
+- If they are unconscious and breathing normally, put them in the recovery position while waiting for help (see the "Feeling unwell" sheet).
+
+# Prevent it
+- Drink water regularly, before you feel thirsty.
+- Stay somewhere cool whenever you can, and take it easy: avoid unnecessary effort.
+- Limit coffee, tea and alcohol.
+
+? What to do before and during a protest to limit the risks: what to bring, where to find shade, how often to drink?
+
+# What not to do
+- Don't give aspirin, non-steroidal anti-inflammatories or paracetamol for heatstroke: they can make the symptoms worse.
+- Don't put ice cubes directly on the skin: wrap them in cloth to avoid burns.
+
+# When to call for help
+Call 15 or 112 as soon as you suspect heatstroke, and as soon as you see its warning signs.
+
+For dehydration, call 15 straight away if consciousness is disturbed, if the person refuses to drink or can't, or if their skin is an unusual colour.
+
+# Sources
+- Assurance maladie (ameli), "Canicule et soins urgents : épuisement, déshydratation et coup de chaleur", updated on 2 June 2026: https://www.ameli.fr/assure/sante/themes/canicule-chaleur/canicule-et-soins-urgents-epuisement-deshydratation-et-coup-de-chaleur
+- Santé publique France, "Les fortes chaleurs nous concernent tous : adoptons les bons réflexes": https://www.santepubliquefrance.fr/index.php/les-actualites/les-fortes-chaleurs-nous-concernent-tous-adoptons-les-bons-reflexes
+- Croix-Rouge française, "L'inconscience": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/inconscience
+
+Temperature thresholds vary between sources: act at the first signs.
+
+Written on 24 October 2026 from these sources by the development assistant, who is not a first aider, and translated from French. No human review so far.

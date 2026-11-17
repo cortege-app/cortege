@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/services.dart';
 
+import '../l10n/language.dart';
 import 'geo.dart';
 
 /// D'où vient le cap du téléphone. Sur Android : les capteurs du système, sans
@@ -90,6 +91,9 @@ double smoothAngle(double? previous, double next, {double factor = 0.3}) {
 String turnInstruction(double relative) {
   final toRight = relative <= 180;
   final degrees = (toRight ? relative : 360 - relative).round();
-  if (degrees < 10) return 'Droit devant';
-  return 'Tourne-toi de $degrees° vers la ${toRight ? 'droite' : 'gauche'}';
+  if (degrees < 10) return tr('Straight ahead', 'Droit devant');
+  return tr(
+    'Turn $degrees° to the ${toRight ? 'right' : 'left'}',
+    'Tourne-toi de $degrees° vers la ${toRight ? 'droite' : 'gauche'}',
+  );
 }

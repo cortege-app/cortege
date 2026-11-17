@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../l10n/language.dart';
 import '../mesh/qr_codec.dart';
 import 'theme.dart';
 import 'widgets.dart';
@@ -24,14 +25,15 @@ class QrScanner extends StatefulWidget {
     this.paused = false,
     this.message,
     this.messageIsError = false,
-    this.pasteLabel = 'Coller le code copié',
+    this.pasteLabel,
   });
 
   final void Function(String text) onText;
   final bool paused;
   final String? message;
   final bool messageIsError;
-  final String pasteLabel;
+  /// Sans valeur : « Coller le code copié », dans la langue de l'appli.
+  final String? pasteLabel;
 
   @override
   State<QrScanner> createState() => _QrScannerState();
@@ -69,7 +71,7 @@ class _QrScannerState extends State<QrScanner> {
     try {
       final cameras = await availableCameras();
       if (cameras.isEmpty) {
-        if (mounted) setState(() => _error = 'Pas de caméra sur ce téléphone.');
+        if (mounted) setState(() => _error = tr('No camera on this phone.', 'Pas de caméra sur ce téléphone.'));
         return;
       }
       final description = cameras.firstWhere(
@@ -96,8 +98,11 @@ class _QrScannerState extends State<QrScanner> {
       if (!mounted) return;
       setState(() {
         _error = e.code.toLowerCase().contains('denied')
-            ? 'La caméra est refusée. Autorise-la dans les réglages d\'Android pour scanner un QR.'
-            : 'La caméra ne démarre pas.';
+            ? tr(
+                'Camera access is denied. Allow it in Android settings to scan a QR code.',
+                'La caméra est refusée. Autorise-la dans les réglages d\'Android pour scanner un QR.',
+              )
+            : tr("The camera won't start.", 'La caméra ne démarre pas.');
       });
     }
   }
@@ -115,7 +120,7 @@ class _QrScannerState extends State<QrScanner> {
       }
     } on CameraException {
       _streaming = false;
-      if (mounted) setState(() => _error = 'La caméra ne redémarre pas.');
+      if (mounted) setState(() => _error = tr("The camera won't restart.", 'La caméra ne redémarre pas.'));
     }
   }
 
@@ -194,7 +199,10 @@ class _QrScannerState extends State<QrScanner> {
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
           child: Text(
             message ??
-                'Remplis le cadre avec le QR, à 15 ou 25 cm, sans bouger. Monte la luminosité de l\'autre écran.',
+                tr(
+                  "Fill the frame with the QR code, 15 to 25 cm away, holding still. Turn up the other screen's brightness.",
+                  'Remplis le cadre avec le QR, à 15 ou 25 cm, sans bouger. Monte la luminosité de l\'autre écran.',
+                ),
             style: theme.bodyLarge?.copyWith(color: isError ? Palette.danger : Palette.text),
           ),
         ),
@@ -202,13 +210,17 @@ class _QrScannerState extends State<QrScanner> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              'Images analysées : $_analyzed',
+              tr('Frames analyzed: $_analyzed', 'Images analysées : $_analyzed'),
               style: theme.bodyMedium?.copyWith(color: Palette.muted),
             ),
           ),
         Padding(
           padding: const EdgeInsets.all(16),
-          child: BigButton(label: widget.pasteLabel, primary: false, onPressed: _paste),
+          child: BigButton(
+            label: widget.pasteLabel ?? tr('Paste the copied code', 'Coller le code copié'),
+            primary: false,
+            onPressed: _paste,
+          ),
         ),
       ],
     );
