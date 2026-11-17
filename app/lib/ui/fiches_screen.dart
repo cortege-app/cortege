@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../content/catalog.dart';
 import '../content/fiche.dart';
+import '../l10n/language.dart';
 import 'theme.dart';
 import 'widgets.dart';
 
@@ -63,7 +64,25 @@ class FicheListScreen extends StatefulWidget {
 }
 
 class _FicheListScreenState extends State<FicheListScreen> {
-  late final Future<List<Fiche>> _fiches = widget.catalog.loadAll(widget.category);
+  late Future<List<Fiche>> _fiches = widget.catalog.loadAll(widget.category);
+
+  @override
+  void initState() {
+    super.initState();
+    Language.notifier.addListener(_reload);
+  }
+
+  @override
+  void dispose() {
+    Language.notifier.removeListener(_reload);
+    super.dispose();
+  }
+
+  /// Les fiches sont relues dans la nouvelle langue.
+  void _reload() {
+    if (!mounted) return;
+    setState(() => _fiches = widget.catalog.loadAll(widget.category));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +97,7 @@ class _FicheListScreenState extends State<FicheListScreen> {
               return Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
-                  'Impossible de lire les fiches.',
+                  tr("Can't read the sheets.", 'Impossible de lire les fiches.'),
                   style: theme.bodyLarge?.copyWith(color: Palette.danger),
                 ),
               );
@@ -95,8 +114,14 @@ class _FicheListScreenState extends State<FicheListScreen> {
                   const SizedBox(height: 12),
                   Text(
                     onlyDrafts
-                        ? 'Personne n\'a encore relu ces fiches. Vérifie auprès d\'un avocat ou de secouristes avant de t\'y fier pour une décision grave.'
-                        : 'Ces fiches ne sont pas encore toutes rédigées ni relues. Celles qui n\'ont que des questions à rédiger ne servent à rien pour l\'instant. Ne t\'y fie pas.',
+                        ? tr(
+                            'Nobody has reviewed these sheets yet. Check with a lawyer or first-aiders before relying on them for a serious decision.',
+                            'Personne n\'a encore relu ces fiches. Vérifie auprès d\'un avocat ou de secouristes avant de t\'y fier pour une décision grave.',
+                          )
+                        : tr(
+                            "These sheets aren't all written or reviewed yet. The ones with only questions to write are useless for now. Don't rely on them.",
+                            'Ces fiches ne sont pas encore toutes rédigées ni relues. Celles qui n\'ont que des questions à rédiger ne servent à rien pour l\'instant. Ne t\'y fie pas.',
+                          ),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                   const SizedBox(height: 16),
@@ -202,7 +227,7 @@ class _BlockView extends StatelessWidget {
       ToWriteBlock(:final text) => Padding(
           padding: const EdgeInsets.only(top: 8),
           child: Semantics(
-            label: 'Texte à rédiger : $text',
+            label: tr('Text to write: $text', 'Texte à rédiger : $text'),
             excludeSemantics: true,
             child: Container(
               width: double.infinity,
@@ -214,7 +239,7 @@ class _BlockView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'À RÉDIGER',
+                    tr('TO BE WRITTEN', 'À RÉDIGER'),
                     style: theme.bodyMedium?.copyWith(
                       color: Palette.muted,
                       fontWeight: FontWeight.w800,

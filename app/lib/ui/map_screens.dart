@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
+import '../l10n/language.dart';
 import '../map/map_view.dart';
 import '../map/pmtiles.dart';
 import '../map/tile_store.dart';
@@ -176,8 +177,10 @@ class _MapScreenState extends State<MapScreen> {
     if (first == null) {
       setState(() {
         _locating = false;
-        _locationMessage =
-            'Position introuvable : la localisation est éteinte, refusée, ou le GPS ne capte pas.';
+        _locationMessage = tr(
+          "Can't find your position: location is off or denied, or the GPS has no signal.",
+          'Position introuvable : la localisation est éteinte, refusée, ou le GPS ne capte pas.',
+        );
       });
       return;
     }
@@ -222,8 +225,8 @@ class _MapScreenState extends State<MapScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(point?.kind.label ?? 'Lieu', style: theme.bodyMedium?.copyWith(color: Palette.muted)),
-                Text(marker.label.isEmpty ? (point?.kind.label ?? 'Lieu') : marker.label, style: theme.headlineSmall),
+                Text(point?.kind.displayLabel ?? tr('Place', 'Lieu'), style: theme.bodyMedium?.copyWith(color: Palette.muted)),
+                Text(marker.label.isEmpty ? (point?.kind.displayLabel ?? tr('Place', 'Lieu')) : marker.label, style: theme.headlineSmall),
                 if (distance != null) ...[
                   const SizedBox(height: 4),
                   Text(distance, style: theme.titleMedium),
@@ -233,7 +236,7 @@ class _MapScreenState extends State<MapScreen> {
                   Text(point.note, style: theme.bodyLarge),
                 ],
                 const SizedBox(height: 12),
-                BigButton(label: 'Fermer', primary: false, onPressed: () => Navigator.of(context).pop()),
+                BigButton(label: tr('Close', 'Fermer'), primary: false, onPressed: () => Navigator.of(context).pop()),
               ],
             ),
           ),
@@ -250,10 +253,10 @@ class _MapScreenState extends State<MapScreen> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Carte'),
+            Text(tr('Map', 'Carte')),
             if (!_loading && _store == null && _camera != null)
               Text(
-                'Sans fond de carte',
+                tr('No base map', 'Sans fond de carte'),
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Palette.muted),
               ),
           ],
@@ -263,7 +266,7 @@ class _MapScreenState extends State<MapScreen> {
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute<void>(builder: (_) => OrganizationScreen(controller: widget.controller)),
             ),
-            child: const Text('Organisation'),
+            child: Text(tr('Organization', 'Organisation')),
           ),
         ],
       ),
@@ -291,19 +294,21 @@ class _MapScreenState extends State<MapScreen> {
                               top: 12,
                               child: Column(
                                 children: [
-                                  _MapButton(label: '+', onPressed: () => _camera!.zoomBy(1), tooltip: 'Zoom avant'),
+                                  _MapButton(label: '+', onPressed: () => _camera!.zoomBy(1), tooltip: tr('Zoom in', 'Zoom avant')),
                                   const SizedBox(height: 8),
-                                  _MapButton(label: '-', onPressed: () => _camera!.zoomBy(-1), tooltip: 'Zoom arrière'),
+                                  _MapButton(label: '-', onPressed: () => _camera!.zoomBy(-1), tooltip: tr('Zoom out', 'Zoom arrière')),
                                   const SizedBox(height: 8),
                                   _MapButton(
                                     label: _locating ? '...' : (_updates == null ? 'GPS' : 'GPS'),
                                     selected: _updates != null,
                                     onPressed: _toggleLocation,
-                                    tooltip: _updates == null ? 'Afficher ma position' : 'Masquer ma position',
+                                    tooltip: _updates == null
+                                        ? tr('Show my position', 'Afficher ma position')
+                                        : tr('Hide my position', 'Masquer ma position'),
                                   ),
                                   if (_updates != null) ...[
                                     const SizedBox(height: 8),
-                                    _MapButton(label: '><', onPressed: _recenter, tooltip: 'Me centrer'),
+                                    _MapButton(label: '><', onPressed: _recenter, tooltip: tr('Center on me', 'Me centrer')),
                                   ],
                                 ],
                               ),
@@ -384,14 +389,22 @@ class _NoMap extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       children: [
         Text(
-          error == null ? 'Pas d\'événement sur ce téléphone' : 'La carte ne s\'ouvre pas',
+          error == null
+              ? tr('No event on this phone', 'Pas d\'événement sur ce téléphone')
+              : tr("The map won't open", 'La carte ne s\'ouvre pas'),
           style: theme.headlineSmall,
         ),
         const SizedBox(height: 12),
         Text(
           error == null
-              ? 'L\'organisateur t\'envoie un fichier d\'événement : ouvre-le avec Cortège depuis ta messagerie, ou importe-le depuis « Organisation ». L\'appli ne télécharge rien, tout se passe sur le téléphone.'
-              : 'Le fichier est abîmé ou n\'a pas la bonne clé. Réimporte l\'événement depuis « Organisation ».',
+              ? tr(
+                  'The organizer sends you an event file: open it with Cortège from your messaging app, or import it from "Organization". The app downloads nothing, everything happens on the phone.',
+                  'L\'organisateur t\'envoie un fichier d\'événement : ouvre-le avec Cortège depuis ta messagerie, ou importe-le depuis « Organisation ». L\'appli ne télécharge rien, tout se passe sur le téléphone.',
+                )
+              : tr(
+                  "The file is damaged or doesn't have the right key. Import the event again from \"Organization\".",
+                  'Le fichier est abîmé ou n\'a pas la bonne clé. Réimporte l\'événement depuis « Organisation ».',
+                ),
           style: theme.bodyLarge,
         ),
         if (error != null) ...[
@@ -401,7 +414,7 @@ class _NoMap extends StatelessWidget {
         const SizedBox(height: 24),
         if (error == null) ...[
           BigButton(
-            label: 'Importer un événement (fichier)',
+            label: tr('Import an event (file)', 'Importer un événement (fichier)'),
             onPressed: () async {
               final picked = await controller.filePicker.pick();
               if (picked == null || !context.mounted) return;
@@ -415,7 +428,7 @@ class _NoMap extends StatelessWidget {
           const SizedBox(height: 12),
         ],
         BigButton(
-          label: 'Organisation',
+          label: tr('Organization', 'Organisation'),
           primary: error != null,
           onPressed: () => Navigator.of(context).push(
             MaterialPageRoute<void>(builder: (_) => OrganizationScreen(controller: controller)),

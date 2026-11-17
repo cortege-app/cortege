@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
+import '../l10n/language.dart';
 import '../vault/eraser.dart';
 import 'channels.dart';
 import 'compass.dart';
@@ -14,14 +15,18 @@ import 'names.dart';
 import 'torch.dart';
 
 enum AlertKind {
-  injury(1, 'Blessure'),
-  faint(2, 'Malaise'),
-  gas(3, 'Gaz');
+  injury(1, 'Injury', 'Blessure'),
+  faint(2, 'Fainting', 'Malaise'),
+  gas(3, 'Gas', 'Gaz');
 
-  const AlertKind(this.code, this.label);
+  const AlertKind(this.code, this._english, this._french);
 
   final int code;
-  final String label;
+  final String _english;
+  final String _french;
+
+  /// Le nom affiché, dans la langue de l'appli.
+  String get label => tr(_english, _french);
 
   static AlertKind? fromCode(int code) {
     for (final kind in values) {

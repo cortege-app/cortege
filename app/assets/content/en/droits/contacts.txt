@@ -1,0 +1,41 @@
+titre: Useful contacts
+resume: Legal help you can reach.
+relecture: juriste
+statut: a_valider
+redaction: brouillon_source
+
+# Legal help
+The number of the event's legal support line (permanence juridique), if there is one, is given by the organizers: you'll find it in the event, under "Organization".
+
+If you are placed in police custody (garde à vue), you can ask for a lawyer of your choice, or a court-appointed lawyer (avocat commis d'office) (see the "Police custody" sheet).
+
+Legal guides on your rights at protests are published by the Ligue des droits de l'Homme, the Syndicat des avocats de France, the Syndicat de la magistrature and the Observatoire parisien des libertés publiques.
+
+? Which organizations and lawyers in your city assist people who are arrested, and what number can you reach them on?
+
+# Afterwards
+If you believe you suffered abuse from the police, you can, together or separately:
+
+- refer the matter to the Défenseur des droits (the French rights ombudsman), online through the service-public.gouv.fr procedure "Saisir en ligne le Défenseur des droits", or by free post with no stamp: Défenseur des droits, Libre réponse 71120, 75342 Paris cedex 07. You can also make an appointment with a Défenseur des droits delegate near you.
+- report the facts to the IGPN, the national police inspectorate, through its online form: https://www.signalement-igpn.fsi.interieur.gouv.fr/
+- report the facts to the IGGN, the gendarmerie inspectorate, through its online form (procedure on service-public.gouv.fr).
+- for the municipal police, contact the mayor of the town.
+- file a complaint (porter plainte), at a police station, at the gendarmerie, or with the public prosecutor (procureur de la République).
+
+A report to the IGPN or the IGGN is not a complaint. Anonymous reports are not processed. A false accusation can be passed on to the courts (article 226-10 of the penal code).
+
+Referring a matter to the Défenseur des droits does not pause the time limits for taking legal action.
+
+# Emergencies
+Emergency numbers are in the First aid section.
+
+# Sources
+- service-public.gouv.fr, "Litige avec les forces de l'ordre ou une société de sécurité privée", page checked on 13 August 2026: https://www.service-public.gouv.fr/particuliers/vosdroits/F2546
+- Défenseur des droits, online referral: https://www.service-public.gouv.fr/particuliers/vosdroits/R20689 ; map of delegates: https://www.defenseurdesdroits.fr/carte-des-delegues
+- IGPN, reporting platform: https://www.signalement-igpn.fsi.interieur.gouv.fr/
+- IGGN, online reporting: https://www.service-public.gouv.fr/particuliers/vosdroits/R47031
+- Amnesty International France, 5 October 2026, for the organizations' guides: https://www.amnesty.fr/reperes/france-connaitre-droits-manifestation/
+
+No phone number for the Défenseur des droits could be verified, so none is given here.
+
+Written on 24 October 2026 from these sources by the development assistant, who is not a lawyer, and translated from French. No human review so far.

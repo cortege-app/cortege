@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/language.dart';
+
 import 'theme.dart';
 
 class PlaceholderScreen extends StatelessWidget {
@@ -13,7 +15,7 @@ class PlaceholderScreen extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(16),
           child: Text(
-            'Cette partie n\'est pas encore disponible.',
+            tr("This part isn't available yet.", 'Cette partie n\'est pas encore disponible.'),
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge

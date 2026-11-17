@@ -1,0 +1,58 @@
+titre: Search
+resume: Bag, clothes, vehicle, phone.
+relecture: juriste
+statut: a_valider
+redaction: brouillon_source
+
+# Searching your belongings
+In the street, the police can only inspect or search your bag in specific cases:
+
+- On written orders (réquisitions) from the public prosecutor (procureur de la République), to look for certain offences (terrorism, weapons, explosives, theft, handling stolen goods, drug trafficking), in the places and for the length of time they set: 24 hours at most, renewable by a reasoned decision. The search is done in your presence, and you can only be held for as long as necessary (article 78-2-2).
+- At the site of a protest on the public highway and in its immediate surroundings, again on written orders from the prosecutor (article 78-2-5).
+- To prevent a serious threat to the safety of people and property, with your consent or, failing that, on the prosecutor's instructions. While waiting for those instructions, you can be held for 30 minutes at most (article 78-2-4).
+- Licensed private security guards, the SNCF and the RATP can look in your bag. To search it, they need your consent.
+
+A simple security pat-down does not allow your bag to be searched without your consent, unless there is evidence of an offence in progress (Cour de cassation, 23 March 2016).
+
+When the search is done on the prosecutor's orders, the law does not require your consent: it requires your presence. With a private security guard, the SNCF or the RATP, you can refuse, but you can then be refused entry.
+
+# Security pat-down
+This is an external search, over your clothes, for dangerous objects, for example a box cutter.
+
+- In police custody (garde à vue), a police officer or gendarme can do it without your consent.
+- During an identity check, it must be done out of public view.
+- At the entrance to an event of more than 300 people, it is done by a licensed private security guard, under the supervision of a judicial police officer. Your express consent is required: without it, you can be refused entry.
+
+The person patting you down must be of the same sex as you.
+
+# More thorough search
+A full search, called a strip search (fouille à corps), means fully undressing, without contact. It is only allowed if a pat-down or a detector is not enough, and it must be done by a person of the same sex.
+
+In police custody, it must be ordered by a judicial police officer and be essential to the investigation. It takes place in a closed, private room, out of sight.
+
+A search inside the body can only be done by a doctor.
+
+# Your phone
+The service-public.gouv.fr text on searches sets no specific rule for phones.
+
+As part of an investigation, the judicial authorities can ask you for the unlock code. Refusing can be an offence (article 434-15-2 of the penal code): 3 years in prison and a €270,000 fine, and 5 years and €450,000 if handing over the code would have prevented a crime or offence or limited its effects.
+
+The conditions: you know the code, the phone has a cryptology feature that may have been used to prepare or commit an offence, and the request comes from the judicial authorities, by formal order. The Cour de cassation ruled on 7 November 2022 that an unlock code can be a secret decryption convention if the phone has a cryptology feature and the code makes it possible to decrypt data. The judge must check this.
+
+! To be checked by the lawyer: case law since 2022, and what applies to a simple check in the street. Before answering this request, you can ask to speak to a lawyer.
+
+# After the search
+A written report (procès-verbal) is drawn up if an offence is found or if you ask for it. It states the place, the date and the start and end times of the inspection or search. One copy is given to you, another is sent to the public prosecutor.
+
+If you can, write down the time, the place, what was looked at, the officers' RIO numbers and the names of witnesses.
+
+# Sources
+- service-public.gouv.fr, "Fouilles, palpations et contrôles des effets personnels", page checked on 19 August 2026: https://www.service-public.gouv.fr/particuliers/vosdroits/F32041
+- Code of criminal procedure (code de procédure pénale), articles 78-2-2, 78-2-4 and 78-2-5, version in force on 23 October 2026 (Légifrance): https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006151880/
+- Cour de cassation, criminal chamber, 23 March 2016, n° 14-87.370: https://www.legifrance.gouv.fr/juri/id/JURITEXT000032311314/
+- Penal code, article 434-15-2 (Légifrance): https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032654251
+- Cour de cassation, 7 November 2022, n° 21-83.146, ruling published in the bulletin: https://www.legifrance.gouv.fr/juri/id/JURITEXT000046583035
+
+These articles will be repealed and replaced by a new code on 1 January 2029 (ordonnance n° 2025-1091 of 19 November 2025): this sheet will need to be reviewed then.
+
+Written on 24 October 2026 from these sources by the development assistant, who is not a lawyer, and translated from French. No human review so far.

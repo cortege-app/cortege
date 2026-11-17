@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../l10n/language.dart';
 import '../mesh/medic_service.dart';
 import '../mesh/mesh_controller.dart';
 import '../mesh/proximity.dart';
@@ -45,7 +46,7 @@ class _ImHereScreenState extends State<ImHereScreen> {
     return ListenableBuilder(
       listenable: widget.mesh,
       builder: (context, _) => Scaffold(
-        appBar: AppBar(title: const Text('Aider à me trouver')),
+        appBar: AppBar(title: Text(tr('Help me get found', 'Aider à me trouver'))),
         body: SafeArea(
           child: ListView(
             padding: const EdgeInsets.all(16),
@@ -59,30 +60,30 @@ class _ImHereScreenState extends State<ImHereScreen> {
                   ),
                 ),
                 child: Text(
-                  _medic.beaconOn ? 'Signal Bluetooth actif' : 'Signal Bluetooth éteint',
+                  _medic.beaconOn ? tr('Bluetooth signal on', 'Signal Bluetooth actif') : tr('Bluetooth signal off', 'Signal Bluetooth éteint'),
                   style: theme.titleLarge,
                 ),
               ),
               if (!_medic.beaconOn) ...[
                 const SizedBox(height: 8),
                 Text(
-                  'Le signal n\'a pas pu démarrer sur ce téléphone. Le clignotement marche quand même.',
+                  tr("The signal couldn't start on this phone. Flashing still works.", 'Le signal n\'a pas pu démarrer sur ce téléphone. Le clignotement marche quand même.'),
                   style: theme.bodyMedium?.copyWith(color: Palette.danger),
                 ),
               ],
               const SizedBox(height: 16),
               Text(
-                'Tant que tu restes sur cet écran, ton téléphone envoie un signal que seul le medic qui a reçu ton alerte sait reconnaître. Il s\'en sert pour savoir s\'il se rapproche. Ça porte de 20 à 50 m.',
+                tr('As long as you stay on this screen, your phone sends a signal that only the medic who received your alert can recognize. They use it to tell whether they are getting closer. It reaches 20 to 50 m.', 'Tant que tu restes sur cet écran, ton téléphone envoie un signal que seul le medic qui a reçu ton alerte sait reconnaître. Il s\'en sert pour savoir s\'il se rapproche. Ça porte de 20 à 50 m.'),
                 style: theme.bodyLarge,
               ),
               const SizedBox(height: 8),
               Text(
-                'Quelqu\'un avec un scanner Bluetooth voit qu\'un signal est émis, pas à qui il est ni ce qu\'il veut dire. Il s\'arrête quand tu quittes cet écran.',
+                tr('Someone with a Bluetooth scanner can see that a signal is being sent, but not whose it is or what it means. It stops when you leave this screen.', 'Quelqu\'un avec un scanner Bluetooth voit qu\'un signal est émis, pas à qui il est ni ce qu\'il veut dire. Il s\'arrête quand tu quittes cet écran.'),
                 style: theme.bodyMedium?.copyWith(color: Palette.muted),
               ),
               const SizedBox(height: 24),
               BigButton(
-                label: 'Faire clignoter l\'écran et la lampe',
+                label: tr('Flash the screen and the light', 'Faire clignoter l\'écran et la lampe'),
                 primary: false,
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute<void>(
@@ -92,7 +93,7 @@ class _ImHereScreenState extends State<ImHereScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'Ça se voit de loin, par tout le monde. À utiliser quand le medic est tout près.',
+                tr('Everyone can see it from far away. Use it when the medic is very close.', 'Ça se voit de loin, par tout le monde. À utiliser quand le medic est tout près.'),
                 style: theme.bodyMedium?.copyWith(color: Palette.muted),
               ),
             ],
@@ -151,7 +152,7 @@ class _FlashScreenState extends State<FlashScreen> {
             Expanded(
               child: Center(
                 child: Text(
-                  'Je suis ici',
+                  tr("I'm here", 'Je suis ici'),
                   style: TextStyle(fontSize: 56, fontWeight: FontWeight.w900, color: ink),
                 ),
               ),
@@ -160,7 +161,7 @@ class _FlashScreenState extends State<FlashScreen> {
               padding: const EdgeInsets.all(16),
               child: Semantics(
                 button: true,
-                label: 'Arrêter',
+                label: tr('Stop', 'Arrêter'),
                 excludeSemantics: true,
                 child: InkWell(
                   onTap: () => Navigator.of(context).pop(),
@@ -170,7 +171,7 @@ class _FlashScreenState extends State<FlashScreen> {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(border: Border.all(color: ink, width: 4)),
                     child: Text(
-                      'Arrêter',
+                      tr('Stop', 'Arrêter'),
                       style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: ink),
                     ),
                   ),
@@ -251,17 +252,17 @@ class _FindScreenState extends State<FindScreen> {
   }
 
   static String _level(ProximityLevel level) => switch (level) {
-        ProximityLevel.veryClose => 'Tout près',
-        ProximityLevel.close => 'Près',
-        ProximityLevel.near => 'Dans les parages',
-        ProximityLevel.far => 'Loin',
+        ProximityLevel.veryClose => tr('Very close', 'Tout près'),
+        ProximityLevel.close => tr('Close', 'Près'),
+        ProximityLevel.near => tr('Nearby', 'Dans les parages'),
+        ProximityLevel.far => tr('Far', 'Loin'),
       };
 
   static String _trend(ProximityTrend? trend) => switch (trend) {
-        ProximityTrend.closer => 'Tu te rapproches',
-        ProximityTrend.farther => 'Tu t\'éloignes',
-        ProximityTrend.steady => 'Pas de changement',
-        null => 'Bouge un peu pour que je compare',
+        ProximityTrend.closer => tr("You're getting closer", 'Tu te rapproches'),
+        ProximityTrend.farther => tr("You're moving away", 'Tu t\'éloignes'),
+        ProximityTrend.steady => tr('No change', 'Pas de changement'),
+        null => tr('Move a bit so I can compare', 'Bouge un peu pour que je compare'),
       };
 
   @override
@@ -271,16 +272,16 @@ class _FindScreenState extends State<FindScreen> {
     final rssi = _tracker.current(now);
     final level = rssi == null ? null : ProximityTracker.levelOf(rssi);
     return Scaffold(
-      appBar: AppBar(title: const Text('Chaud / froid')),
+      appBar: AppBar(title: Text(tr('Hot / cold', 'Chaud / froid'))),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
             if (rssi == null) ...[
-              Text('Aucun signal', style: theme.headlineMedium),
+              Text(tr('No signal', 'Aucun signal'), style: theme.headlineMedium),
               const SizedBox(height: 12),
               Text(
-                'Soit la personne n\'a pas appuyé sur « Aider à me trouver » sur son téléphone, soit tu es trop loin : le signal porte de 20 à 50 m.',
+                tr("Either the person hasn't pressed “Help me get found” on their phone, or you're too far away: the signal reaches 20 to 50 m.", 'Soit la personne n\'a pas appuyé sur « Aider à me trouver » sur son téléphone, soit tu es trop loin : le signal porte de 20 à 50 m.'),
                 style: theme.bodyLarge,
               ),
             ] else ...[
@@ -290,8 +291,8 @@ class _FindScreenState extends State<FindScreen> {
               ),
               const SizedBox(height: 16),
               Semantics(
-                label: 'Force du signal',
-                value: '${(ProximityTracker.fraction(rssi) * 100).round()} pour cent',
+                label: tr('Signal strength', 'Force du signal'),
+                value: tr('${(ProximityTracker.fraction(rssi) * 100).round()} percent', '${(ProximityTracker.fraction(rssi) * 100).round()} pour cent'),
                 child: Container(
                   height: 40,
                   decoration: BoxDecoration(border: Border.all(color: Palette.text, width: 2)),
@@ -317,26 +318,26 @@ class _FindScreenState extends State<FindScreen> {
               const SizedBox(height: 16),
               Text(
                 level == ProximityLevel.veryClose
-                    ? 'Cherche le point où la jauge est la plus haute'
+                    ? tr('Find the spot where the gauge is highest', 'Cherche le point où la jauge est la plus haute')
                     : _trend(_shownTrend),
                 style: theme.headlineSmall,
               ),
               const SizedBox(height: 4),
               Text(
-                '$rssi dBm · meilleur signal jusqu\'ici : ${_tracker.best} dBm',
+                tr('$rssi dBm · best signal so far: ${_tracker.best} dBm', '$rssi dBm · meilleur signal jusqu\'ici : ${_tracker.best} dBm'),
                 style: theme.bodyMedium?.copyWith(color: Palette.muted),
               ),
               if (level == ProximityLevel.veryClose) ...[
                 const SizedBox(height: 12),
                 Text(
-                  'Tu es tout près. À cette distance le signal varie trop pour te guider : regarde autour de toi, ou demande à la personne de faire clignoter son téléphone.',
+                  tr("You're very close. At this distance the signal varies too much to guide you: look around, or ask the person to flash their phone.", 'Tu es tout près. À cette distance le signal varie trop pour te guider : regarde autour de toi, ou demande à la personne de faire clignoter son téléphone.'),
                   style: theme.bodyLarge,
                 ),
               ],
             ],
             const SizedBox(height: 24),
             Text(
-              'Marche lentement et regarde si la jauge monte. Le signal change aussi quand tu tournes le téléphone, que tu mets la main devant ou qu\'un corps passe : tiens-le toujours dans la même position, devant toi, et fie-toi à la tendance sur quelques secondes, pas à un chiffre.',
+              tr('Walk slowly and watch whether the gauge rises. The signal also changes when you turn the phone, put your hand in front of it or a body passes by: always hold it the same way, in front of you, and trust the trend over a few seconds, not a single number.', 'Marche lentement et regarde si la jauge monte. Le signal change aussi quand tu tournes le téléphone, que tu mets la main devant ou qu\'un corps passe : tiens-le toujours dans la même position, devant toi, et fie-toi à la tendance sur quelques secondes, pas à un chiffre.'),
               style: theme.bodyMedium?.copyWith(color: Palette.muted),
             ),
           ],

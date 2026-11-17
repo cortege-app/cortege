@@ -1,5 +1,7 @@
 import 'package:flutter/services.dart';
 
+import '../l10n/language.dart';
+
 import 'fiche.dart';
 
 enum FicheCategory { droits, secours }
@@ -17,8 +19,13 @@ class ContentCatalog {
     FicheCategory.secours: ['urgences', 'lacrymogenes', 'chaleur', 'malaise', 'blessure'],
   };
 
-  static String assetPath(FicheCategory category, String id) =>
-      'assets/content/${category.name}/$id.txt';
+  /// Les fiches françaises sont à la racine de `assets/content/`, leurs
+  /// traductions anglaises dans `assets/content/en/`.
+  static String assetPath(FicheCategory category, String id, [AppLanguage? language]) =>
+      switch (language ?? Language.current) {
+        AppLanguage.fr => 'assets/content/${category.name}/$id.txt',
+        AppLanguage.en => 'assets/content/en/${category.name}/$id.txt',
+      };
 
   Future<Fiche> load(FicheCategory category, String id) async =>
       parseFiche(id, await _bundle.loadString(assetPath(category, id)));

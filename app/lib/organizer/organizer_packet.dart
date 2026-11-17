@@ -38,19 +38,23 @@ class PacketRejected implements Exception {
 
 /// Ce qu'un organisateur peut poser sur la carte.
 enum PointKind {
-  water('E', 'Point d\'eau'),
-  toilets('WC', 'Toilettes'),
-  meeting('RV', 'Rendez-vous'),
-  dispersal('D', 'Dispersion'),
-  medic('M', 'Poste de secours'),
-  legal('J', 'Aide juridique'),
-  exit('S', 'Sortie'),
-  info('i', 'Information');
+  water('E', 'Point d\'eau', 'Water point'),
+  toilets('WC', 'Toilettes', 'Toilets'),
+  meeting('RV', 'Rendez-vous', 'Meeting point'),
+  dispersal('D', 'Dispersion', 'Dispersal'),
+  medic('M', 'Poste de secours', 'First aid post'),
+  legal('J', 'Aide juridique', 'Legal aid'),
+  exit('S', 'Sortie', 'Exit'),
+  info('i', 'Information', 'Information');
 
-  const PointKind(this.symbol, this.label);
+  const PointKind(this.symbol, this.label, this.englishLabel);
 
   final String symbol;
+
+  /// Nom français (outil de l'organisateur). Dans l'appli, passer par
+  /// `displayLabel` (ui/organizer_screens.dart), qui suit la langue choisie.
   final String label;
+  final String englishLabel;
 
   static PointKind? parse(String code) {
     for (final kind in values) {

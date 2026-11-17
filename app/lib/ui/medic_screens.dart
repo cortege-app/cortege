@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../l10n/language.dart';
 import '../mesh/geo.dart';
 import '../mesh/medic_invite.dart';
 import '../mesh/mesh_controller.dart';
@@ -37,7 +38,7 @@ class MedicAlertBanner extends StatelessWidget {
           padding: const EdgeInsets.all(12),
           color: Palette.danger,
           child: Text(
-            open == 1 ? 'Un blessé attend un medic' : '$open blessés attendent un medic',
+            open == 1 ? tr('An injured person is waiting for a medic', 'Un blessé attend un medic') : tr('$open injured people are waiting for a medic', '$open blessés attendent un medic'),
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Colors.black),
           ),
         ),
@@ -58,13 +59,13 @@ class MedicScreen extends StatelessWidget {
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Créer le canal des medics'),
-        content: const Text(
-          'Tu deviens le premier medic de cet événement. Les autres medics devront scanner ton code pour lire les alertes. À ne remettre qu\'à des medics que tu connais.',
+        title: Text(tr('Create the medic channel', 'Créer le canal des medics')),
+        content: Text(
+          tr('You become the first medic of this event. The other medics will have to scan your code to read the alerts. Only give it to medics you know.', 'Tu deviens le premier medic de cet événement. Les autres medics devront scanner ton code pour lire les alertes. À ne remettre qu\'à des medics que tu connais.'),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annuler')),
-          TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Créer')),
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(tr('Cancel', 'Annuler'))),
+          TextButton(onPressed: () => Navigator.pop(context, true), child: Text(tr('Create', 'Créer'))),
         ],
       ),
     );
@@ -82,30 +83,30 @@ class MedicScreen extends StatelessWidget {
         final now = mesh.now();
         final alerts = medic.alertsForMedic;
         return Scaffold(
-          appBar: AppBar(title: const Text('Rôle medic')),
+          appBar: AppBar(title: Text(tr('Medic role', 'Rôle medic'))),
           body: SafeArea(
             child: ListView(
               padding: const EdgeInsets.all(16),
               children: [
                 if (!medic.canInviteMedics) ...[
                   Text(
-                    'Si tu es secouriste ou street medic, tu peux recevoir les alertes de blessés de l\'événement.',
+                    tr("If you're a first aider or street medic, you can receive the event's injury alerts.", 'Si tu es secouriste ou street medic, tu peux recevoir les alertes de blessés de l\'événement.'),
                     style: theme.bodyLarge,
                   ),
                   const SizedBox(height: 8),
                   Text(
                     medic.hasChannel
-                        ? 'Ce téléphone sait envoyer une alerte aux medics, mais pas la lire.'
-                        : 'Les alertes sont lisibles par les seuls medics : elles sont chiffrées pour eux. Il faut donc qu\'un medic crée le canal, puis donne son code aux autres.',
+                        ? tr('This phone can send an alert to the medics, but not read one.', 'Ce téléphone sait envoyer une alerte aux medics, mais pas la lire.')
+                        : tr('Only medics can read the alerts: they are encrypted for them. So one medic has to create the channel, then give their code to the others.', 'Les alertes sont lisibles par les seuls medics : elles sont chiffrées pour eux. Il faut donc qu\'un medic crée le canal, puis donne son code aux autres.'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                   const SizedBox(height: 16),
                   if (!medic.hasChannel) ...[
-                    BigButton(label: 'Créer le canal des medics', onPressed: () => _create(context)),
+                    BigButton(label: tr('Create the medic channel', 'Créer le canal des medics'), onPressed: () => _create(context)),
                     const SizedBox(height: 12),
                   ],
                   BigButton(
-                    label: 'Rejoindre le canal d\'un medic',
+                    label: tr("Join a medic's channel", 'Rejoindre le canal d\'un medic'),
                     primary: medic.hasChannel,
                     onPressed: () => _push(context, MedicScanScreen(mesh: mesh)),
                   ),
@@ -115,29 +116,31 @@ class MedicScreen extends StatelessWidget {
                     decoration: BoxDecoration(border: Border.all(color: Palette.line, width: 2)),
                     child: Column(
                       children: [
-                        InfoRow('Réception des alertes', medic.isMedic ? 'activée' : 'coupée'),
-                        InfoRow('Alertes en attente', '${alerts.where((a) => !a.answered).length}'),
+                        InfoRow(tr('Receiving alerts', 'Réception des alertes'), medic.isMedic ? tr('on', 'activée') : tr('off', 'coupée')),
+                        InfoRow(tr('Pending alerts', 'Alertes en attente'), '${alerts.where((a) => !a.answered).length}'),
                       ],
                     ),
                   ),
                   const SizedBox(height: 12),
                   BigButton(
-                    label: medic.isMedic ? 'Couper la réception' : 'Activer la réception',
+                    label: medic.isMedic ? tr('Stop receiving', 'Couper la réception') : tr('Start receiving', 'Activer la réception'),
                     primary: false,
                     onPressed: () => medic.setActive(!medic.isMedic),
                   ),
                   const SizedBox(height: 16),
                   if (medic.isMedic) ...[
-                    Text('Alertes reçues', style: theme.titleLarge),
+                    Text(tr('Alerts received', 'Alertes reçues'), style: theme.titleLarge),
                     const SizedBox(height: 8),
                     if (alerts.isEmpty)
                       Text(
-                        'Aucune alerte pour l\'instant. Elles disparaissent d\'ici 2 h et quand tu verrouilles tout.',
+                        tr('No alerts yet. They disappear within 2 h and when you lock everything.', 'Aucune alerte pour l\'instant. Elles disparaissent d\'ici 2 h et quand tu verrouilles tout.'),
                         style: theme.bodyMedium?.copyWith(color: Palette.muted),
                       ),
                     for (final alert in alerts) ...[
                       NavTile(
-                        title: '${alert.kind.label}${alert.answered ? ', réponse envoyée' : ''}',
+                        title: alert.answered
+                            ? tr('${alert.kind.label}, reply sent', '${alert.kind.label}, réponse envoyée')
+                            : alert.kind.label,
                         subtitle: agoText(alert.receivedAt, now),
                         onTap: () => _push(context, AlertDetailScreen(mesh: mesh, alertId: alert.id)),
                       ),
@@ -146,13 +149,13 @@ class MedicScreen extends StatelessWidget {
                     const SizedBox(height: 8),
                   ],
                   BigButton(
-                    label: 'Montrer le code des medics',
+                    label: tr('Show the medic code', 'Montrer le code des medics'),
                     primary: false,
                     onPressed: () => _push(context, MedicCodeScreen(mesh: mesh)),
                   ),
                   const SizedBox(height: 24),
                   HoldToConfirmButton(
-                    label: 'Quitter le rôle de medic',
+                    label: tr('Leave the medic role', 'Quitter le rôle de medic'),
                     duration: const Duration(seconds: 2),
                     onConfirmed: () => medic.leave(),
                   ),
@@ -195,7 +198,7 @@ class _MedicCodeScreenState extends State<MedicCodeScreen> {
     final theme = Theme.of(context).textTheme;
     final width = MediaQuery.sizeOf(context).width - 32;
     return Scaffold(
-      appBar: AppBar(title: const Text('Code des medics')),
+      appBar: AppBar(title: Text(tr('Medic code', 'Code des medics'))),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
@@ -205,11 +208,11 @@ class _MedicCodeScreenState extends State<MedicCodeScreen> {
               const SizedBox(height: 16),
             ],
             Text(
-              'Celui qui scanne ce code lit toutes les alertes de blessés, avec leur position approximative. Ne le montre qu\'à des medics que tu connais, en face à face.',
+              tr('Whoever scans this code can read every injury alert, with its approximate location. Only show it to medics you know, face to face.', 'Celui qui scanne ce code lit toutes les alertes de blessés, avec leur position approximative. Ne le montre qu\'à des medics que tu connais, en face à face.'),
               style: theme.bodyLarge?.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 16),
-            BigButton(label: 'Terminé', onPressed: () => Navigator.of(context).pop()),
+            BigButton(label: tr('Done', 'Terminé'), onPressed: () => Navigator.of(context).pop()),
           ],
         ),
       ),
@@ -242,7 +245,7 @@ class _MedicScanScreenState extends State<MedicScanScreen> {
       invite = MedicInvite.decode(text);
     } on FormatException {
       setState(() {
-        _message = 'Ce QR n\'est pas un code de medic Cortège.';
+        _message = tr('This QR is not a Cortège medic code.', 'Ce QR n\'est pas un code de medic Cortège.');
         _error = true;
       });
       return;
@@ -279,7 +282,7 @@ class _MedicScanScreenState extends State<MedicScanScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('Rejoindre les medics')),
+      appBar: AppBar(title: Text(tr('Join the medics', 'Rejoindre les medics'))),
       body: SafeArea(
         child: _conflict != null
             ? LeaveEventPrompt(
@@ -292,14 +295,14 @@ class _MedicScanScreenState extends State<MedicScanScreen> {
             ? ListView(
                 padding: const EdgeInsets.all(16),
                 children: [
-                  Text('Tu es medic de cet événement.', style: theme.headlineMedium),
+                  Text(tr("You're a medic for this event.", 'Tu es medic de cet événement.'), style: theme.headlineMedium),
                   const SizedBox(height: 8),
                   Text(
-                    'Les alertes des blessés arriveront ici tant que le maillage tourne.',
+                    tr('Injury alerts will arrive here while the mesh is running.', 'Les alertes des blessés arriveront ici tant que le maillage tourne.'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                   const SizedBox(height: 24),
-                  BigButton(label: 'Terminé', onPressed: () => Navigator.of(context).pop()),
+                  BigButton(label: tr('Done', 'Terminé'), onPressed: () => Navigator.of(context).pop()),
                 ],
               )
             : QrScanner(
@@ -307,7 +310,7 @@ class _MedicScanScreenState extends State<MedicScanScreen> {
                 paused: _busy,
                 message: _message,
                 messageIsError: _error,
-                pasteLabel: 'Coller un code copié',
+                pasteLabel: tr('Paste a copied code', 'Coller un code copié'),
               ),
       ),
     );
@@ -379,10 +382,10 @@ class _AlertDetailScreenState extends State<AlertDetailScreen> {
         final matches = widget.mesh.medic.alertsForMedic.where((a) => a.id == widget.alertId);
         if (matches.isEmpty) {
           return Scaffold(
-            appBar: AppBar(title: const Text('Alerte')),
+            appBar: AppBar(title: Text(tr('Alert', 'Alerte'))),
             body: Padding(
               padding: const EdgeInsets.all(16),
-              child: Text('Cette alerte a expiré.', style: theme.bodyLarge),
+              child: Text(tr('This alert has expired.', 'Cette alerte a expiré.'), style: theme.bodyLarge),
             ),
           );
         }
@@ -398,10 +401,10 @@ class _AlertDetailScreenState extends State<AlertDetailScreen> {
                 Text(agoText(alert.receivedAt, widget.mesh.now()), style: theme.titleMedium),
                 const SizedBox(height: 16),
                 if (target == null)
-                  Text('Pas de position dans cette alerte.', style: theme.bodyLarge)
+                  Text(tr('No location in this alert.', 'Pas de position dans cette alerte.'), style: theme.bodyLarge)
                 else ...[
                   Text(
-                    alert.precise != null ? 'Position précise' : 'Position approximative (environ 200 m)',
+                    alert.precise != null ? tr('Precise location', 'Position précise') : tr('Approximate location (about 200 m)', 'Position approximative (environ 200 m)'),
                     style: theme.titleMedium,
                   ),
                   Text(_position(target), style: theme.headlineSmall),
@@ -412,8 +415,8 @@ class _AlertDetailScreenState extends State<AlertDetailScreen> {
                     if (isWithinMargin(me, target, precise: alert.precise != null)) ...[
                       Text(
                         alert.precise != null
-                            ? 'Tu es sur place, à quelques dizaines de mètres : la précision du GPS ne suffit plus pour te guider. Cherche à vue, ou passe sur « Chaud / froid » et demande-lui de faire clignoter son téléphone.'
-                            : "Tu es dans la zone de l'alerte (la position n'est connue qu'à 150 m près). Cherche à vue ou demande à la personne sa position précise.",
+                            ? tr("You're there, within a few dozen meters: GPS is no longer precise enough to guide you. Look around, or switch to “Hot / cold” and ask them to flash their phone.", 'Tu es sur place, à quelques dizaines de mètres : la précision du GPS ne suffit plus pour te guider. Cherche à vue, ou passe sur « Chaud / froid » et demande-lui de faire clignoter son téléphone.')
+                            : tr("You're in the alert's area (the location is only known to within 150 m). Look around or ask the person for their precise location.", "Tu es dans la zone de l'alerte (la position n'est connue qu'à 150 m près). Cherche à vue ou demande à la personne sa position précise."),
                         style: theme.bodyLarge,
                       ),
                       const SizedBox(height: 12),
@@ -430,20 +433,20 @@ class _AlertDetailScreenState extends State<AlertDetailScreen> {
                         !isWithinMargin(me, target, precise: false)) ...[
                       const SizedBox(height: 8),
                       Text(
-                        'La position n\'est exacte qu\'à 200 m près : la flèche te met dans la bonne zone, pas devant la personne. Demande-lui sa position précise ou cherche-la à vue.',
+                        tr('The location is only accurate to within 200 m: the arrow gets you to the right area, not in front of the person. Ask them for their precise location or look around.', 'La position n\'est exacte qu\'à 200 m près : la flèche te met dans la bonne zone, pas devant la personne. Demande-lui sa position précise ou cherche-la à vue.'),
                         style: theme.bodyMedium?.copyWith(color: Palette.muted),
                       ),
                     ],
                   ] else ...[
                     BigButton(
-                      label: _locating ? 'Recherche de ta position...' : 'Voir la direction depuis ici',
+                      label: _locating ? tr('Finding your location...', 'Recherche de ta position...') : tr('Show the direction from here', 'Voir la direction depuis ici'),
                       primary: false,
                       onPressed: _locating ? null : _locate,
                     ),
                     if (_locationFailed) ...[
                       const SizedBox(height: 8),
                       Text(
-                        'Ta position est introuvable. Vérifie que la localisation est activée.',
+                        tr("Your location can't be found. Check that location is turned on.", 'Ta position est introuvable. Vérifie que la localisation est activée.'),
                         style: theme.bodyMedium?.copyWith(color: Palette.danger),
                       ),
                     ],
@@ -452,12 +455,12 @@ class _AlertDetailScreenState extends State<AlertDetailScreen> {
                 const SizedBox(height: 24),
                 if (alert.answered) ...[
                   Text(
-                    'Tu as répondu. Si la personne décide de t\'envoyer sa position précise, elle apparaîtra ici.',
+                    tr('You answered. If the person decides to send you their precise location, it will appear here.', 'Tu as répondu. Si la personne décide de t\'envoyer sa position précise, elle apparaîtra ici.'),
                     style: theme.bodyLarge,
                   ),
                   const SizedBox(height: 16),
                   BigButton(
-                    label: 'Chaud / froid (signal Bluetooth)',
+                    label: tr('Hot / cold (Bluetooth signal)', 'Chaud / froid (signal Bluetooth)'),
                     primary: false,
                     onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute<void>(
@@ -467,14 +470,14 @@ class _AlertDetailScreenState extends State<AlertDetailScreen> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'La personne doit appuyer sur « Aider à me trouver » sur son téléphone.',
+                    tr('The person has to press “Help me get found” on their phone.', 'La personne doit appuyer sur « Aider à me trouver » sur son téléphone.'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                 ] else
-                  BigButton(label: 'J\'arrive', onPressed: _answer),
+                  BigButton(label: tr("I'm coming", 'J\'arrive'), onPressed: _answer),
                 const SizedBox(height: 8),
                 Text(
-                  'La personne voit ton pseudo quand tu réponds. Rien ne dit à d\'autres medics que tu y vas : préviens-les toi-même.',
+                  tr("The person sees your nickname when you answer. Nothing tells other medics you're going: let them know yourself.", 'La personne voit ton pseudo quand tu réponds. Rien ne dit à d\'autres medics que tu y vas : préviens-les toi-même.'),
                   style: theme.bodyMedium?.copyWith(color: Palette.muted),
                 ),
               ],

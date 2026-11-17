@@ -1,0 +1,50 @@
+titre: Tear gas
+resume: Gas, stinging eyes and skin.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Recognize it
+Tear gases are irritant agents. The most common one, CS, irritates the eyes, the airways and the skin. The signs:
+
+- eyes: watering, redness, sometimes sensitivity to light,
+- skin: burning, stinging, sometimes blisters if the product stays on the skin,
+- nose and throat: runny nose, coughing, sneezing, wheezing, shortness of breath, chest pain,
+- sometimes: nausea, vomiting, headaches.
+
+These effects wear off within a few hours. Most people recover within half an hour.
+
+# First steps
+- Leave the area, towards fresh air. Leaving the area is usually enough to get your breathing back to normal quickly.
+- Eyes: rinse thoroughly, with clean water or saline solution, eyelids held open, for at least 10 minutes. For a chemical in the eye, the INRS recommends 15 minutes.
+- Skin: remove the product by brushing, washing or rinsing with plenty of water. Water can briefly make the pain worse, but it still works.
+
+? How should you position yourself relative to the wind and the height of the ground to get out of the cloud as fast as possible?
+
+# What not to do
+- Don't rub your eyes with your fingers: it can make the irritation worse (advice from an ophthalmologist at Cochin hospital reported by the press).
+- Milk or Coca-Cola are no more effective than water. Advice to use Maalox, vinegar or lemon is not backed by any medical source consulted.
+
+! To be checked by first aiders: the two points above come from the press, not from an official source.
+
+# Special cases
+Contact lenses: if you wear them, take them out if you can, with clean hands, before rinsing. The INRS advises soft lens wearers to wear glasses when they may be exposed to aerosols.
+
+Asthma and lungs: some people get irritated airways, with bouts of breathlessness similar to asthma. People with a chronic eye, skin or lung condition should avoid exposure.
+
+? Children, pregnant women: what changes?
+
+# When to call for help
+If the symptoms last or other signs appear, see a doctor.
+
+? At what level of breathing difficulty or eye pain should you call 15?
+
+# Sources
+- INRS, toxicology sheet n° 215, (2-chlorobenzylidene)malononitrile (CS gas), updated 2014: https://www.inrs.fr/dam/ficheTox/FicheFicheTox/FICHETOX_215-1.pdf
+- INRS, "Produit chimique dans l'œil ou sur la peau : les bons réflexes": https://www.inrs.fr/actualites/affiches-produit-chimique-peau-oeil.html
+- MSD Manual, "Agents chimiques de lutte anti-émeute", last revised October 2024: https://www.merckmanuals.com/fr-ca/accueil/l%C3%A9sions-et-intoxications/armes-de-destruction-massive/agents-chimiques-de-lutte-anti-%C3%A9meute
+- Slate.fr, "le lait n'est pas le remède miracle pour soulager les effets des gaz lacrymogènes": https://www.slate.fr/story/91107/gaz-lacrymogenes-remedes
+
+No official French guidance specific to protests (SAMU, Ministry of the Interior or of Health) was found. The INRS writes for the workplace; the CS sheet dates from 2014; the MSD Manual is a medical reference work, not first-aid guidance.
+
+Written on 24 October 2026 from these sources by the development assistant, who is not a first aider, and translated from French. No human review so far.

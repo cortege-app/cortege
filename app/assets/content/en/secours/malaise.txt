@@ -1,0 +1,78 @@
+titre: Feeling unwell
+resume: Someone feels ill or collapses.
+relecture: secouristes
+statut: a_valider
+redaction: brouillon_source
+
+# Recognize it
+Signs of a heart attack: a tight pain in the chest, which can spread to the arm, shoulder, neck, jaw or stomach. Sometimes also difficulty breathing, sweating, nausea, stomach pain.
+
+Feeling unwell can also come from heat or lack of water: see the "Heat" sheet.
+
+# The person responds
+Don't play it down, even if they say it's nothing serious: they need help straight away.
+
+Ask them these questions: how long has this been going on, is it the first time, have they already been hospitalized or do they take medication for it?
+
+Call 15 (SAMU, emergency medical service), or ask someone to do it. If you are alone, do it yourself.
+
+Help them rest in a comfortable position: lying down, half-sitting, or sitting if they prefer. Check regularly that they are conscious and breathing normally.
+
+# The person doesn't respond
+- First, loosen their collar, tie or belt. Put one hand on their forehead and gently tilt their head back. With two fingers of your other hand, lift their chin.
+- Next, check their breathing for 10 seconds: look whether the chest rises, listen near their mouth, feel for breath on your cheek.
+- Then have someone alert the emergency services: 15 or 18. If you are alone, go for help or call yourself.
+
+If they are breathing normally: put them in the recovery position (position latérale de sécurité, PLS), unless you suspect a trauma injury (in that case call the emergency services and follow their advice):
+- Remove their glasses and straighten their legs in line with the body.
+- Place the arm nearest to you at a right angle, elbow bent, palm up.
+- Bring their other arm against their ear, on your side, and keep the palms against each other.
+- Grab their far leg just behind the knee and raise it, keeping the foot on the ground.
+- Roll them towards you by pulling on the leg, until their knee touches the ground.
+- Gently slide your hand out from under their head while holding the elbow, without moving the head.
+- Adjust the top leg so that the hip and knee form a right angle.
+- Open their mouth with your thumb and index finger, without moving the head, so fluids can drain.
+- Check regularly that their breathing stays normal.
+
+If they are not breathing, or not normally, it is a cardiac arrest:
+- Have someone call 15 or 18 and bring a defibrillator if there is one. If you are alone, do it yourself.
+- Lay them on their back, on a hard surface. Kneel beside them.
+- Place the heel of one hand in the centre of their bare chest, the other hand on top. Don't press on the ribs or the bottom of the breastbone.
+- Arms straight, shoulders directly above their chest, push the breastbone down 5 to 6 cm. Let the chest come all the way back up between each push. Do 30 compressions, at about 2 per second.
+- If you know how, then give 2 mouth-to-mouth rescue breaths, then start 30 compressions again. If you can't give breaths, carry on with compressions only.
+- As soon as the defibrillator arrives, switch it on and follow its voice instructions.
+- Keep going until help arrives or until they breathe normally.
+
+# If the person is choking
+They are conscious but can't speak, breathe or cough. They may wheeze or try to cough silently.
+
+- Stand to the side and slightly behind them. Lean them forward, supporting their chest with one hand.
+- Give up to 5 slaps between the shoulder blades. After each slap, check whether the object has come out.
+- If not, stand behind them, put your arms around the top of their stomach and lean them forward. Place a closed fist between the navel and the bottom of the breastbone, held by your other hand. Pull hard towards you and upwards, up to 5 times.
+- If the object doesn't come out, alternate 5 back slaps and 5 abdominal thrusts.
+- If they lose consciousness, lay them down gently, alert the emergency services straight away and start chest compressions as for a cardiac arrest.
+
+# What not to do
+- Don't play down someone feeling unwell because they say they're fine.
+- Don't press on the soft part under the chin of an unconscious person.
+- Don't put someone you suspect has a trauma injury in the recovery position: call the emergency services and follow their advice.
+
+? What other actions make things worse, for example giving them a drink or pulling them up suddenly?
+
+# When to call for help
+Call 15, 18 or 112 in all these cases:
+- a tight pain in the chest,
+- a person who doesn't respond,
+- a person who isn't breathing, or not normally,
+- a person who is choking and isn't helped by the slaps and thrusts.
+
+# Sources
+- Croix-Rouge française, "Malaise cardiaque": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/malaise-cardiaque
+- Croix-Rouge française, "L'inconscience": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/inconscience
+- Croix-Rouge française, "L'arrêt cardiaque": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/arret-cardiaque
+- Croix-Rouge française, "L'étouffement": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/etouffement
+- Croix-Rouge française, "Les étapes pour porter secours": https://www.croix-rouge.fr/les-gestes-de-premiers-secours/4-etapes-pour-porter-secours
+
+The Red Cross page on cardiac arrest gives two compression rates (100 and 120 per minute): this sheet says "about 2 per second". The update dates of these pages are not given.
+
+Written on 24 October 2026 from these sources by the development assistant, who is not a first aider, and translated from French. No human review so far.

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/language.dart';
 import '../vault/pin_policy.dart';
 import 'texts.dart';
 import 'widgets.dart';
@@ -40,7 +41,7 @@ class _PinCreateFlowState extends State<PinCreateFlow> {
     if (pin != first) {
       setState(() {
         _first = null;
-        _error = 'Les deux codes ne sont pas pareils. Recommence.';
+        _error = tr("The two codes don't match. Start again.", 'Les deux codes ne sont pas pareils. Recommence.');
       });
       return;
     }
@@ -61,7 +62,7 @@ class _PinCreateFlowState extends State<PinCreateFlow> {
 
   @override
   Widget build(BuildContext context) => PinPad(
-        title: _first == null ? widget.title : 'Tape-le encore une fois',
+        title: _first == null ? widget.title : tr('Enter it once more', 'Tape-le encore une fois'),
         subtitle: _first == null ? widget.hint : null,
         error: _error,
         busy: _busy,

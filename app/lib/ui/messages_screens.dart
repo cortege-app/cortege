@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../l10n/language.dart';
 import '../mesh/group.dart';
 import '../mesh/mesh_controller.dart';
 import '../mesh/mesh_node.dart';
@@ -17,14 +18,16 @@ String meshStatusLine(MeshController mesh) {
     case MeshStatus.stopped:
       final nothingToServe =
           mesh.groups.isEmpty && mesh.buddies.isEmpty && !mesh.medic.hasChannel;
-      return nothingToServe ? 'rien à relayer' : 'arrêté';
+      return nothingToServe ? tr('nothing to relay', 'rien à relayer') : tr('stopped', 'arrêté');
     case MeshStatus.starting:
-      return 'démarrage...';
+      return tr('starting...', 'démarrage...');
     case MeshStatus.running:
       final n = mesh.neighborCount;
-      return n == 0 ? 'actif, aucun voisin' : 'actif, $n voisin${n > 1 ? 's' : ''}';
+      return n == 0
+          ? tr('active, no neighbors', 'actif, aucun voisin')
+          : tr('active, $n neighbor${n > 1 ? 's' : ''}', 'actif, $n voisin${n > 1 ? 's' : ''}');
     case MeshStatus.unavailable:
-      return mesh.statusDetail ?? 'indisponible';
+      return mesh.statusDetail ?? tr('unavailable', 'indisponible');
   }
 }
 
@@ -60,18 +63,21 @@ class MessagesScreen extends StatelessWidget {
                 decoration: BoxDecoration(border: Border.all(color: Palette.line, width: 2)),
                 child: Column(
                   children: [
-                    InfoRow('Maillage', meshStatusLine(mesh)),
-                    InfoRow('Pseudo', mesh.displayName ?? 'à choisir'),
+                    InfoRow(tr('Mesh', 'Maillage'), meshStatusLine(mesh)),
+                    InfoRow(tr('Nickname', 'Pseudo'), mesh.displayName ?? tr('not set', 'à choisir')),
                   ],
                 ),
               ),
               if (mesh.status == MeshStatus.unavailable) ...[
                 const SizedBox(height: 12),
-                BigButton(label: 'Réessayer', primary: false, onPressed: mesh.retryTransport),
+                BigButton(label: tr('Try again', 'Réessayer'), primary: false, onPressed: mesh.retryTransport),
               ],
               const SizedBox(height: 8),
               Text(
-                'Derrière l\'écran de code, le maillage continue pendant le délai réglé dans les réglages, puis il s\'arrête : tu ne reçois et tu ne relaies plus rien jusqu\'au prochain déverrouillage.',
+                tr(
+                  'Behind the lock screen, the mesh keeps running for the time set in Settings, then it stops: you receive and relay nothing until you unlock again.',
+                  'Derrière l\'écran de code, le maillage continue pendant le délai réglé dans les réglages, puis il s\'arrête : tu ne reçois et tu ne relaies plus rien jusqu\'au prochain déverrouillage.',
+                ),
                 style: theme.bodyMedium?.copyWith(color: Palette.muted),
               ),
               const SizedBox(height: 16),
@@ -85,18 +91,18 @@ class MessagesScreen extends StatelessWidget {
               ],
               const SizedBox(height: 8),
               BigButton(
-                label: 'Créer un groupe',
+                label: tr('Create a group', 'Créer un groupe'),
                 onPressed: () => _push(context, NewGroupScreen(mesh: mesh)),
               ),
               const SizedBox(height: 12),
               BigButton(
-                label: 'Rejoindre avec un QR',
+                label: tr('Join with a QR code', 'Rejoindre avec un QR'),
                 primary: false,
                 onPressed: () => _join(context),
               ),
               const SizedBox(height: 12),
               BigButton(
-                label: 'Changer mon pseudo',
+                label: tr('Change my nickname', 'Changer mon pseudo'),
                 primary: false,
                 onPressed: () => _push(context, DisplayNameScreen(mesh: mesh)),
               ),
@@ -132,7 +138,10 @@ class _DisplayNameScreenState extends State<DisplayNameScreen> {
       await widget.mesh.setDisplayName(_controller.text);
       if (mounted) Navigator.of(context).pop(true);
     } on ArgumentError {
-      setState(() => _error = 'Entre un pseudo de 1 à ${MeshNode.maxNameBytes} lettres.');
+      setState(() => _error = tr(
+        'Enter a nickname of 1 to ${MeshNode.maxNameBytes} letters.',
+        'Entre un pseudo de 1 à ${MeshNode.maxNameBytes} lettres.',
+      ));
     }
   }
 
@@ -140,13 +149,16 @@ class _DisplayNameScreenState extends State<DisplayNameScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('Pseudo')),
+      appBar: AppBar(title: Text(tr('Nickname', 'Pseudo'))),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
             Text(
-              'C\'est le nom que les autres voient à côté de tes messages. Choisis-en un qui ne te désigne pas.',
+              tr(
+                "It's the name others see next to your messages. Pick one that doesn't identify you.",
+                'C\'est le nom que les autres voient à côté de tes messages. Choisis-en un qui ne te désigne pas.',
+              ),
               style: theme.bodyLarge,
             ),
             const SizedBox(height: 16),
@@ -161,13 +173,13 @@ class _DisplayNameScreenState extends State<DisplayNameScreen> {
               style: theme.bodyLarge,
               decoration: InputDecoration(
                 border: const OutlineInputBorder(borderRadius: BorderRadius.zero),
-                labelText: 'Pseudo',
+                labelText: tr('Nickname', 'Pseudo'),
                 errorText: _error,
               ),
               onSubmitted: (_) => _save(),
             ),
             const SizedBox(height: 16),
-            BigButton(label: 'Enregistrer', onPressed: _save),
+            BigButton(label: tr('Save', 'Enregistrer'), onPressed: _save),
           ],
         ),
       ),
@@ -210,7 +222,10 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
     } on FormatException {
       setState(() {
         _busy = false;
-        _error = 'Donne un nom au groupe (${GroupInvite.maxNameBytes} lettres au plus).';
+        _error = tr(
+          'Give the group a name (${GroupInvite.maxNameBytes} letters at most).',
+          'Donne un nom au groupe (${GroupInvite.maxNameBytes} lettres au plus).',
+        );
       });
     }
   }
@@ -219,13 +234,16 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('Nouveau groupe')),
+      appBar: AppBar(title: Text(tr('New group', 'Nouveau groupe'))),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
             Text(
-              'Tu recevras un QR à faire scanner par les personnes que tu invites.',
+              tr(
+                "You'll get a QR code for the people you invite to scan.",
+                'Tu recevras un QR à faire scanner par les personnes que tu invites.',
+              ),
               style: theme.bodyLarge,
             ),
             const SizedBox(height: 16),
@@ -239,13 +257,16 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
               style: theme.bodyLarge,
               decoration: InputDecoration(
                 border: const OutlineInputBorder(borderRadius: BorderRadius.zero),
-                labelText: 'Nom du groupe',
+                labelText: tr('Group name', 'Nom du groupe'),
                 errorText: _error,
               ),
               onSubmitted: (_) => _create(),
             ),
             const SizedBox(height: 16),
-            BigButton(label: _busy ? 'Un instant...' : 'Créer', onPressed: _busy ? null : _create),
+            BigButton(
+              label: _busy ? tr('One moment...', 'Un instant...') : tr('Create', 'Créer'),
+              onPressed: _busy ? null : _create,
+            ),
           ],
         ),
       ),
@@ -282,7 +303,10 @@ class _InviteScreenState extends State<InviteScreen> {
   /// les autres applis : on le vide au bout d'une minute.
   Future<void> _copy(String text) async {
     await Clipboard.setData(ClipboardData(text: text));
-    setState(() => _copied = 'Copié. Il sera effacé du presse-papiers dans une minute.');
+    setState(() => _copied = tr(
+          'Copied. It will be cleared from the clipboard in one minute.',
+          'Copié. Il sera effacé du presse-papiers dans une minute.',
+        ));
     Timer(const Duration(minutes: 1), () async {
       final current = await Clipboard.getData(Clipboard.kTextPlain);
       if (current?.text == text) await Clipboard.setData(const ClipboardData(text: ''));
@@ -297,7 +321,7 @@ class _InviteScreenState extends State<InviteScreen> {
     final invite = widget.mesh.inviteFor(widget.groupId);
     final width = MediaQuery.sizeOf(context).width - 32;
     return Scaffold(
-      appBar: AppBar(title: const Text('Inviter')),
+      appBar: AppBar(title: Text(tr('Invite', 'Inviter'))),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
@@ -307,17 +331,23 @@ class _InviteScreenState extends State<InviteScreen> {
             Center(child: QrCodeView(data: invite.encode(), size: width.clamp(200, 640))),
             const SizedBox(height: 16),
             Text(
-              'Fais scanner ce QR par les personnes à inviter, en face de toi. L\'écran est au maximum de luminosité pour ça.',
+              tr(
+                'Have the people you invite scan this QR code, face to face. The screen is at full brightness for this.',
+                'Fais scanner ce QR par les personnes à inviter, en face de toi. L\'écran est au maximum de luminosité pour ça.',
+              ),
               style: theme.bodyLarge,
             ),
             const SizedBox(height: 8),
             Text(
-              'Quiconque le scanne peut lire et écrire dans le groupe. Ne le publie pas et ne le photographie pas.',
+              tr(
+                "Anyone who scans it can read and write in the group. Don't post it and don't photograph it.",
+                'Quiconque le scanne peut lire et écrire dans le groupe. Ne le publie pas et ne le photographie pas.',
+              ),
               style: theme.bodyMedium?.copyWith(color: Palette.muted),
             ),
             const SizedBox(height: 16),
             BigButton(
-              label: 'Ouvrir le groupe',
+              label: tr('Open the group', 'Ouvrir le groupe'),
               onPressed: () => Navigator.of(context).pushReplacement(
                 MaterialPageRoute<void>(
                   builder: (_) => GroupScreen(mesh: widget.mesh, groupId: widget.groupId),
@@ -326,7 +356,7 @@ class _InviteScreenState extends State<InviteScreen> {
             ),
             const SizedBox(height: 12),
             BigButton(
-              label: 'Copier l\'invitation en texte',
+              label: tr('Copy the invitation as text', 'Copier l\'invitation en texte'),
               primary: false,
               onPressed: () => _copy(invite.encode()),
             ),
@@ -404,7 +434,7 @@ class _GroupScreenState extends State<GroupScreen> {
                     builder: (_) => InviteScreen(mesh: widget.mesh, groupId: widget.groupId),
                   ),
                 ),
-                child: const Text('Inviter'),
+                child: Text(tr('Invite', 'Inviter')),
               ),
             ],
           ),
@@ -418,7 +448,7 @@ class _GroupScreenState extends State<GroupScreen> {
                     border: Border(bottom: BorderSide(color: Palette.line, width: 1)),
                   ),
                   child: Text(
-                    'Maillage : ${meshStatusLine(widget.mesh)}',
+                    tr('Mesh: ${meshStatusLine(widget.mesh)}', 'Maillage : ${meshStatusLine(widget.mesh)}'),
                     style: theme.bodyMedium?.copyWith(color: Palette.muted),
                   ),
                 ),
@@ -427,7 +457,10 @@ class _GroupScreenState extends State<GroupScreen> {
                       ? Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text(
-                            'Aucun message. Les messages disparaissent tout seuls (réglage d\'effacement).',
+                            tr(
+                              'No messages. Messages disappear on their own (auto-erase setting).',
+                              'Aucun message. Les messages disparaissent tout seuls (réglage d\'effacement).',
+                            ),
                             style: theme.bodyLarge?.copyWith(color: Palette.muted),
                           ),
                         )
@@ -469,7 +502,7 @@ class _GroupScreenState extends State<GroupScreen> {
                             height: 56,
                             child: FilledButton(
                               onPressed: _controller.text.trim().isEmpty || tooLong ? null : _send,
-                              child: const Text('Envoyer'),
+                              child: Text(tr('Send', 'Envoyer')),
                             ),
                           ),
                         ],
@@ -477,15 +510,18 @@ class _GroupScreenState extends State<GroupScreen> {
                       const SizedBox(height: 4),
                       Text(
                         tooLong
-                            ? 'Trop long : $_bytes sur ${MeshNode.maxBodyBytes} octets.'
-                            : (_error ?? '$_bytes / ${MeshNode.maxBodyBytes} octets'),
+                            ? tr(
+                                'Too long: $_bytes of ${MeshNode.maxBodyBytes} bytes.',
+                                'Trop long : $_bytes sur ${MeshNode.maxBodyBytes} octets.',
+                              )
+                            : (_error ?? tr('$_bytes / ${MeshNode.maxBodyBytes} bytes', '$_bytes / ${MeshNode.maxBodyBytes} octets')),
                         style: theme.bodyMedium?.copyWith(
                           color: tooLong ? Palette.danger : Palette.muted,
                         ),
                       ),
                       const SizedBox(height: 8),
                       HoldToConfirmButton(
-                        label: 'Quitter le groupe',
+                        label: tr('Leave the group', 'Quitter le groupe'),
                         onConfirmed: _leave,
                         duration: const Duration(seconds: 2),
                       ),
@@ -511,7 +547,7 @@ class _MessageTile extends StatelessWidget {
     final theme = Theme.of(context).textTheme;
     final time = '${message.sentAt.toLocal().hour.toString().padLeft(2, '0')}:'
         '${message.sentAt.toLocal().minute.toString().padLeft(2, '0')}';
-    final who = message.mine ? 'Toi' : '${message.senderName} (${message.senderTag})';
+    final who = message.mine ? tr('You', 'Toi') : '${message.senderName} (${message.senderTag})';
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Semantics(

@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:bluetooth_low_energy/bluetooth_low_energy.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 
+import '../l10n/language.dart';
 import 'frame.dart';
 import 'group.dart';
 import 'keep_alive.dart';
@@ -75,7 +76,7 @@ class BleMeshTransport implements MeshTransport {
     await _ensureAuthorized();
     if (_central.state != BluetoothLowEnergyState.poweredOn ||
         _peripheral.state != BluetoothLowEnergyState.poweredOn) {
-      throw MeshTransportUnavailable('Bluetooth éteint', retryable: true);
+      throw MeshTransportUnavailable(tr('Bluetooth is off', 'Bluetooth éteint'), retryable: true);
     }
 
     _keys = keys;
@@ -113,7 +114,7 @@ class BleMeshTransport implements MeshTransport {
             characteristics: [_inbox!],
           ),
         ),
-        'Le Bluetooth',
+        tr('Bluetooth', 'Le Bluetooth'),
       );
       _trace('service GATT ajouté');
       await _startRadio();
@@ -127,7 +128,7 @@ class BleMeshTransport implements MeshTransport {
     } catch (error) {
       _trace('échec du démarrage : $error');
       await stop();
-      throw MeshTransportUnavailable('Bluetooth indisponible', retryable: true);
+      throw MeshTransportUnavailable(tr('Bluetooth unavailable', 'Bluetooth indisponible'), retryable: true);
     }
   }
 
@@ -153,17 +154,17 @@ class BleMeshTransport implements MeshTransport {
     _trace('demande des autorisations');
     final centralOk = await _guard(
       _central.authorize(),
-      'La demande d\'autorisation',
+      tr('The permission request', 'La demande d\'autorisation'),
       const Duration(minutes: 2),
     );
     final peripheralOk = await _guard(
       _peripheral.authorize(),
-      'La demande d\'autorisation',
+      tr('The permission request', 'La demande d\'autorisation'),
       const Duration(minutes: 2),
     );
     _trace('autorisations : central=$centralOk périphérique=$peripheralOk');
     if (!centralOk || !peripheralOk) {
-      throw MeshTransportUnavailable('Permission Bluetooth refusée');
+      throw MeshTransportUnavailable(tr('Bluetooth permission denied', 'Permission Bluetooth refusée'));
     }
   }
 
@@ -176,7 +177,7 @@ class BleMeshTransport implements MeshTransport {
       operation.timeout(
         timeout,
         onTimeout: () =>
-            throw MeshTransportUnavailable('$what ne répond pas', retryable: true),
+            throw MeshTransportUnavailable(tr('$what is not responding', '$what ne répond pas'), retryable: true),
       );
 
   /// Journal de mise au point : étapes seulement, jamais de clé ni de contenu.
@@ -226,7 +227,7 @@ class BleMeshTransport implements MeshTransport {
     if (!_running || _keys == null) return true;
     try {
       await _peripheral.stopAdvertising();
-      await _guard(_peripheral.startAdvertising(_advertisement(_keys!)), 'L\'annonce Bluetooth');
+      await _guard(_peripheral.startAdvertising(_advertisement(_keys!)), tr('Bluetooth advertising', 'L\'annonce Bluetooth'));
       return true;
     } catch (error) {
       _trace('balise impossible ($error)');
@@ -234,7 +235,7 @@ class BleMeshTransport implements MeshTransport {
       // voient plus. On remet l'annonce normale.
       _beacon = null;
       try {
-        await _guard(_peripheral.startAdvertising(_advertisement(_keys!)), 'L\'annonce Bluetooth');
+        await _guard(_peripheral.startAdvertising(_advertisement(_keys!)), tr('Bluetooth advertising', 'L\'annonce Bluetooth'));
       } catch (_) {}
       return false;
     }
@@ -260,14 +261,14 @@ class BleMeshTransport implements MeshTransport {
     _trace('annonce de la période $_period');
     await _guard(
       _peripheral.startAdvertising(_advertisement(keys)),
-      'L\'annonce Bluetooth',
+      tr('Bluetooth advertising', 'L\'annonce Bluetooth'),
     );
     _trace('annonce démarrée, recherche');
     await _guard(
       _central.startDiscovery(
         serviceUUIDs: [for (final bytes in keys.servicesToScan(now)) UUID(bytes)],
       ),
-      'La recherche Bluetooth',
+      tr('Bluetooth scanning', 'La recherche Bluetooth'),
     );
   }
 
@@ -285,7 +286,9 @@ class BleMeshTransport implements MeshTransport {
     }
     final unauthorized = state == BluetoothLowEnergyState.unauthorized;
     _events?.onFailure(
-      unauthorized ? 'Permission Bluetooth refusée' : 'Bluetooth éteint',
+      unauthorized
+          ? tr('Bluetooth permission denied', 'Permission Bluetooth refusée')
+          : tr('Bluetooth is off', 'Bluetooth éteint'),
       !unauthorized,
     );
   }
